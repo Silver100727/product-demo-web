@@ -1,8 +1,61 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { delay, motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
+const features = [
+  {
+    title: "Luxury & Elegance",
+    description:
+      "Our gifts are crafted with premium materials and sophisticated design, perfect for any occasion.",
+    icon: () => (
+      <svg
+        className="w-12 h-12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <path d="M12 15l-2 5l9-9l-9-9l2 5l-5 4l5 4z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Thoughtful Selection",
+    description:
+      "Each item in our collection is handpicked to convey gratitude and appreciation.",
+    icon: () => (
+      <svg
+        className="w-12 h-12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
+  },
+  {
+    title: "Exclusive Packaging",
+    description:
+      "Our premium gift packaging ensures a luxurious unboxing experience for your loved ones.",
+    icon: () => (
+      <svg
+        className="w-12 h-12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    ),
+  },
+];
 const Home = () => {
   return (
     <div className="min-h-screen pt-16">
@@ -23,21 +76,23 @@ const Home = () => {
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.4 }}
             className="text-white max-w-2xl"
           >
-            <h1 className="text-5xl font-bold mb-6">
-              Experience Premium Technology
+            <h1 className="text-5xl font-bold">Celebrate Every Moment with</h1>
+            <h1 className="text-5xl font-bold mb-6 text-amber-400">
+              RS Gratitude Gifts
             </h1>
             <p className="text-xl mb-8">
-              Discover our collection of high-end audio equipment and smart devices
-              designed to enhance your lifestyle.
+              Discover our exclusive collection of premium gifts designed to
+              express appreciation, celebrate milestones, and create lasting
+              memories.
             </p>
             <Link
               to="/products"
               className="inline-flex items-center px-6 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
             >
-              Explore Products
+              Explore Our Collection
               <ArrowRight className="ml-2" size={20} />
             </Link>
           </motion.div>
@@ -54,11 +109,11 @@ const Home = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Why Choose Us?
+              Why Choose RS Gratitude Gifts?
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              We offer premium quality products with exceptional customer service
-              and industry-leading warranty coverage.
+              We curate exceptional gifts that convey gratitude, elegance, and
+              thoughtfulness, ensuring every occasion is truly special.
             </p>
           </motion.div>
 
@@ -83,38 +138,5 @@ const Home = () => {
     </div>
   );
 };
-
-const features = [
-  {
-    title: "Premium Quality",
-    description: "All our products are crafted with the finest materials and attention to detail.",
-    icon: () => (
-      <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M12 15l-2 5l9-9l-9-9l2 5l-5 4l5 4z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Expert Support",
-    description: "Our team of experts is always ready to help you with any questions or concerns.",
-    icon: () => (
-      <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
-  },
-  {
-    title: "Warranty Coverage",
-    description: "Enjoy peace of mind with our comprehensive warranty coverage on all products.",
-    icon: () => (
-      <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      </svg>
-    ),
-  },
-];
 
 export default Home;

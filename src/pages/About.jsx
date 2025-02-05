@@ -2,6 +2,44 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Shield, HeartHandshake } from 'lucide-react';
 
+const values = [
+  {
+    title: "Heartfelt Appreciation",
+    description: "We believe in the power of gratitude and strive to help you express it in every gesture.",
+    icon: HeartHandshake,
+  },
+  {
+    title: "Premium Quality",
+    description: "Our gifts are carefully curated using only the finest materials and craftsmanship.",
+    icon: Shield,
+  },
+  {
+    title: "Thoughtful Service",
+    description: "Our dedicated team goes above and beyond to ensure a personalized gifting experience.",
+    icon: Users,
+  },
+];
+
+const team = [
+  {
+    name: "Sarah Johnson",
+    position: "Founder & Creative Director",
+    description: "With a keen eye for detail and a passion for meaningful gifting, Sarah leads our creative vision.",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
+  },
+  {
+    name: "Michael Chen",
+    position: "Head of Gifting Strategy",
+    description: "Michael curates our exclusive collection, ensuring each gift tells its own unique story.",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
+  },
+  {
+    name: "Emily Rodriguez",
+    position: "Customer Happiness Manager",
+    description: "Emily is dedicated to providing exceptional service, making every experience unforgettable.",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
+  },
+];
 const About = () => {
   return (
     <div className="min-h-screen pt-24 pb-12 bg-gray-50">
@@ -10,12 +48,17 @@ const About = () => {
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay:  0.5 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">About Us</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            About RS Gratitude Gifts
+          </h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            We're passionate about bringing you the best in technology and innovation.
-            Our commitment to quality and customer satisfaction drives everything we do.
+            At RS Gratitude Gifts, we believe that every gift carries a story.
+            Our passion lies in curating premium, thoughtful gifts that celebrate relationships,
+            honor milestones, and express heartfelt gratitude.
           </p>
         </motion.div>
 
@@ -25,12 +68,13 @@ const About = () => {
             initial={{ x: -20, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ delay:  0.2 }}
             className="bg-white p-8 rounded-lg shadow-md"
           >
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
             <p className="text-gray-600">
-              To provide innovative technology solutions that enhance people's lives
-              while maintaining the highest standards of quality and customer service.
+              Our mission is to spread joy and gratitude by offering a handpicked selection of premium gifts.
+              Every item is chosen to make your moments of appreciation even more special.
             </p>
           </motion.div>
 
@@ -38,13 +82,13 @@ const About = () => {
             initial={{ x: 20, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ delay:  0.2 }}
             className="bg-white p-8 rounded-lg shadow-md"
           >
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h2>
             <p className="text-gray-600">
-              To become the leading provider of premium technology products,
-              recognized globally for our commitment to innovation, quality, and
-              customer satisfaction.
+              Our vision is to be the leading name in thoughtful gifting,
+              recognized for our unwavering commitment to quality, innovation, and creating moments of true connection.
             </p>
           </motion.div>
         </div>
@@ -66,7 +110,7 @@ const About = () => {
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.6 }}
                 className="text-center"
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-4">
@@ -98,7 +142,7 @@ const About = () => {
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.6 }}
                 className="bg-white p-6 rounded-lg shadow-md"
               >
                 <img
@@ -120,43 +164,6 @@ const About = () => {
   );
 };
 
-const values = [
-  {
-    title: "Customer First",
-    description: "We prioritize our customers' needs and satisfaction in everything we do.",
-    icon: HeartHandshake,
-  },
-  {
-    title: "Quality Excellence",
-    description: "We maintain the highest standards of quality in our products and services.",
-    icon: Shield,
-  },
-  {
-    title: "Team Collaboration",
-    description: "We work together to achieve exceptional results and drive innovation.",
-    icon: Users,
-  },
-];
 
-const team = [
-  {
-    name: "Sarah Johnson",
-    position: "CEO & Founder",
-    description: "With over 15 years of experience in technology and innovation.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
-  },
-  {
-    name: "Michael Chen",
-    position: "Head of Product",
-    description: "Leading product development and innovation strategies.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
-  },
-  {
-    name: "Emily Rodriguez",
-    position: "Customer Success Manager",
-    description: "Ensuring exceptional customer experience and satisfaction.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
-  },
-];
 
 export default About;

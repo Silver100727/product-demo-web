@@ -49,7 +49,7 @@ export const products = [
     },
   },
   {
-    id: 1,
+    id: 3,
     name: "Premium Wireless Headphones",
     description:
       "Experience crystal-clear sound with our premium wireless headphones. Featuring advanced noise cancellation and premium materials for ultimate comfort.",
@@ -74,7 +74,7 @@ export const products = [
     },
   },
   {
-    id: 2,
+    id: 4,
     name: "Smart Fitness Watch",
     description:
       "Track your fitness goals with precision using our advanced smart fitness watch. Monitor your health metrics in real-time.",
@@ -98,7 +98,7 @@ export const products = [
     },
   },
   {
-    id: 1,
+    id: 5,
     name: "Premium Wireless Headphones",
     description:
       "Experience crystal-clear sound with our premium wireless headphones. Featuring advanced noise cancellation and premium materials for ultimate comfort.",
@@ -123,7 +123,7 @@ export const products = [
     },
   },
   {
-    id: 2,
+    id: 6,
     name: "Smart Fitness Watch",
     description:
       "Track your fitness goals with precision using our advanced smart fitness watch. Monitor your health metrics in real-time.",
@@ -147,7 +147,7 @@ export const products = [
     },
   },
   {
-    id: 1,
+    id: 7,
     name: "Premium Wireless Headphones",
     description:
       "Experience crystal-clear sound with our premium wireless headphones. Featuring advanced noise cancellation and premium materials for ultimate comfort.",
@@ -172,7 +172,7 @@ export const products = [
     },
   },
   {
-    id: 2,
+    id: 8,
     name: "Smart Fitness Watch",
     description:
       "Track your fitness goals with precision using our advanced smart fitness watch. Monitor your health metrics in real-time.",
@@ -196,7 +196,7 @@ export const products = [
     },
   },
   {
-    id: 1,
+    id: 9,
     name: "Premium Wireless Headphones",
     description:
       "Experience crystal-clear sound with our premium wireless headphones. Featuring advanced noise cancellation and premium materials for ultimate comfort.",
@@ -221,7 +221,7 @@ export const products = [
     },
   },
   {
-    id: 2,
+    id: 10,
     name: "Smart Fitness Watch",
     description:
       "Track your fitness goals with precision using our advanced smart fitness watch. Monitor your health metrics in real-time.",

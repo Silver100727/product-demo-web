@@ -15,11 +15,11 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white shadow-lg fixed w-full z-50">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <NavLink to="/" className="text-xl font-bold text-gray-800">
-              TechStore
+              RS Gratitude Gift
             </NavLink>
           </div>
 

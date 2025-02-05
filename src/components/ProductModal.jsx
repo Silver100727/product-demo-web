@@ -23,14 +23,16 @@ const ProductModal = ({ product, onClose }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="absolute inset-0 bg-black/60"
+        transition={{ delay:  0.3 }}
+        className="absolute inset-0 bg-black/70"
         onClick={onClose}
       />
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.9 }}
+        exit={{ opacity: 0, scale: 0.5 }}
+        transition={{ delay:  0.3 }}
         className="relative bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
       >
         <button

@@ -32,7 +32,7 @@ function App() {
         </Routes>
         {formModalBox && <FormModal onClose={() => setFormModalBox(false)} />}
         <footer className="text-center p-4 bg-gray-200 text-gray-700">
-          &copy; {new Date().getFullYear()} Your Company Name. All rights
+          &copy; {new Date().getFullYear()} RS Gratitude Gift. All rights
           reserved.
         </footer>
       </div>
