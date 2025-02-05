@@ -12,11 +12,11 @@ import FormModal from "./components/FormModal.jsx";
 function App() {
   const [formModalBox, setFormModalBox] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setFormModalBox(true);
-    }, 10000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setFormModalBox(true);
+  //   }, 5000);
+  // }, []);
 
   return (
     <Router>

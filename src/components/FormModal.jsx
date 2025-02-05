@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
+import FormfacadeEmbed from "@formfacade/embed-react";
 
 const FormModal = ({ onClose }) => {
   return (
@@ -26,7 +27,14 @@ const FormModal = ({ onClose }) => {
           <X size={20} />
         </button>
 
-        <div className="grid md:grid-cols-2 h-full">Submit</div>
+        <div className="grid md:grid-cols-2 h-full w-screen">
+          <FormfacadeEmbed
+            formFacadeURL="https://formfacade.com/include/104909126239609168005/form/1FAIpQLSfu3A_x8DPyZKsp67FskEvnXDoPAFjHmC62pZQIIa4pfa1cFA/classic.js/?div=ff-compose"
+            onSubmitForm={() => {
+              onClose();
+            }}
+          />
+        </div>
       </motion.div>
     </div>
   );
