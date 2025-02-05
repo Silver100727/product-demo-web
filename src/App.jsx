@@ -30,6 +30,10 @@ function App() {
         <Route path="/about" element={<About />} />
       </Routes>
       {formModalBox && <FormModal onClose={() => setFormModalBox(false)} />}
+      <footer className="text-center p-4 bg-gray-200 text-gray-700">
+        &copy; {new Date().getFullYear()} Your Company Name. All rights
+        reserved.
+      </footer>
     </div>
   );
 }

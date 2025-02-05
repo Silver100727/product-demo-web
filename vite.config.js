@@ -7,5 +7,5 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ["lucide-react"],
   },
-  base: "/product-demo-web/", // Replace with your GitHub repository name
+  // base: "/product-demo-web/", // Replace with your GitHub repository name
 });
