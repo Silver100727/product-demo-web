@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { products } from "../data/products.js";
 
-const ProductDetail = () => {
+const ProductDetail = (props) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const product = products.find((p) => p.id == id);
+  const product = props.productsList.find((p) => p._id == id);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   if (!product) {
@@ -20,13 +19,13 @@ const ProductDetail = () => {
 
   const nextImage = () => {
     setCurrentImageIndex((prev) =>
-      prev === product.images.length - 1 ? 0 : prev + 1
+      prev === product.imageLinks.length - 1 ? 0 : prev + 1
     );
   };
 
   const prevImage = () => {
     setCurrentImageIndex((prev) =>
-      prev === 0 ? product.images.length - 1 : prev - 1
+      prev === 0 ? product.imageLinks.length - 1 : prev - 1
     );
   };
 
@@ -51,8 +50,8 @@ const ProductDetail = () => {
             <AnimatePresence mode="wait">
               <motion.img
                 key={currentImageIndex}
-                src={product.images[currentImageIndex]}
-                alt={product.name}
+                src={product.imageLinks[currentImageIndex]}
+                alt={product.title}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -76,7 +75,7 @@ const ProductDetail = () => {
             </div>
 
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-              {product.images.map((_, index) => (
+              {product.imageLinks.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
@@ -94,10 +93,10 @@ const ProductDetail = () => {
             animate={{ opacity: 1, x: 0 }}
           >
             <h1 className="text-3xl font-bold text-gray-900 mb-4">
-              {product.name}
+              {product.title}
             </h1>
             <p className="text-2xl text-blue-600 font-semibold mb-6">
-              ${product.price.toFixed(2)}
+              ${product.price}
             </p>
             <p className="text-gray-600 mb-8">{product.description}</p>
 
@@ -122,7 +121,7 @@ const ProductDetail = () => {
             <div>
               <h2 className="text-xl font-semibold mb-4">Specifications</h2>
               <div className="bg-white rounded-lg shadow-md p-6">
-                {Object.entries(product.specifications).map(
+                {Object.entries(product.specification).map(
                   ([key, value], index) => (
                     <motion.div
                       key={key}

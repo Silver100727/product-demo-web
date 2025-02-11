@@ -1,9 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ProductCard from "../components/ProductCard.jsx";
-import { products } from "../data/products.js";
 
-const Products = () => {
+const Products = (props) => {
   return (
     <div className="min-h-screen pt-24 pb-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
@@ -26,9 +25,11 @@ const Products = () => {
           animate={{ y: 0, opacity: 1 }}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {products.map((product, index) => (
-            <ProductCard key={product.id} product={product} index={index} />
-          ))}
+          {props.productsList.map((product, index) =>
+            product.isLive ? (
+              <ProductCard key={product.id} product={product} index={index} />
+            ) : null
+          )}
         </motion.div>
       </div>
     </div>

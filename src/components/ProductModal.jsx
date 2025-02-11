@@ -7,13 +7,13 @@ const ProductModal = ({ product, onClose }) => {
 
   const nextImage = () => {
     setCurrentImageIndex((prev) =>
-      prev === product.images.length - 1 ? 0 : prev + 1
+      prev === product.imageLinks.length - 1 ? 0 : prev + 1
     );
   };
 
   const prevImage = () => {
     setCurrentImageIndex((prev) =>
-      prev === 0 ? product.images.length - 1 : prev - 1
+      prev === 0 ? product.imageLinks.length - 1 : prev - 1
     );
   };
 
@@ -50,12 +50,12 @@ const ProductModal = ({ product, onClose }) => {
             >
               <motion.img
                 key={currentImageIndex}
-                src={product.images[currentImageIndex]}
-                alt={product.name}
+                src={product.imageLinks[currentImageIndex]}
+                alt={product.title}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className={`w-full h-full ${"object-cover cursor-zoom-in"}`}
+                className={`w-full h-full ${"object-cover "}`}
               />
             </div>
 
@@ -79,7 +79,7 @@ const ProductModal = ({ product, onClose }) => {
             </button>
 
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-              {product.images.map((_, index) => (
+              {product.imageLinks.map((_, index) => (
                 <button
                   key={index}
                   onClick={(e) => {
@@ -97,10 +97,10 @@ const ProductModal = ({ product, onClose }) => {
           {/* Product Information */}
           <div className="p-6 overflow-y-auto">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              {product.name}
+              {product.title}
             </h2>
             <p className="text-xl text-blue-600 font-semibold mb-4">
-              ${product.price.toFixed(2)}
+              ${product.price}
             </p>
             <p className="text-gray-600 mb-6">{product.description}</p>
 
@@ -125,7 +125,7 @@ const ProductModal = ({ product, onClose }) => {
             <div>
               <h3 className="text-lg font-semibold mb-3">Specifications</h3>
               <div className="bg-gray-50 rounded-lg p-4">
-                {Object.entries(product.specifications).map(
+                {Object.entries(product.specification).map(
                   ([key, value], index) => (
                     <motion.div
                       key={key}

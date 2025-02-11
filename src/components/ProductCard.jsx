@@ -4,7 +4,7 @@ import { ChevronRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import ProductModal from "./ProductModal";
 
-const ProductCard = ({ product, index }) => {
+const ProductCard = ({ product }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -19,8 +19,8 @@ const ProductCard = ({ product, index }) => {
       >
         <div className="relative overflow-hidden">
           <img
-            src={product.images[0]}
-            alt={product.name}
+            src={product.imageLinks[0]}
+            alt={product.title}
             className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -34,7 +34,7 @@ const ProductCard = ({ product, index }) => {
         </div>
         <div className="p-4">
           <h3 className="text-xl font-semibold text-gray-600">
-            {product.name}
+            {product.title}
           </h3>
           <p className="mt-2 text-sm text-gray-600 line-clamp-2">
             {product.description}
@@ -42,7 +42,7 @@ const ProductCard = ({ product, index }) => {
           <div className="mt-4 flex items-center justify-between">
             <span className="text-blue-600 font-semibold"></span>
             <Link
-              to={`/products/${product.id}`}
+              to={`/products/${product._id}`}
               className="flex items-center text-blue-600 hover:text-blue-700"
             >
               View Details

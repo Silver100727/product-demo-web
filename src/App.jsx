@@ -7,16 +7,36 @@ import ProductDetail from "./pages/ProductDetail.jsx";
 import Categories from "./pages/Categories.jsx";
 import CategoryDetail from "./pages/CategoryDetail.jsx";
 import About from "./pages/About.jsx";
-import FormModal from "./components/FormModal.jsx";
-
+import axios from "axios";
+const BaseUrl = "https://api.rsgratitudegifts.com/api/addproduct";
 function App() {
-  const [formModalBox, setFormModalBox] = useState(false);
+  const [productsList, setProductsList] = useState([]);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setFormModalBox(true);
-  //   }, 5000);
-  // }, []);
+  const fetchProdutFromDb = () => {
+    axios
+      .post(
+        BaseUrl,
+        {
+          type: "get",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        if (res.data.success) {
+          setProductsList(res.data.data);
+        } else {
+          setProductsList([]);
+        }
+      })
+      .catch((err) => {});
+  };
+  useEffect(() => {
+    fetchProdutFromDb();
+  }, []);
 
   return (
     <Router>
@@ -24,14 +44,19 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<ProductDetail />} />
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/categories/:id" element={<CategoryDetail />} />
+          <Route
+            path="/products"
+            element={<Products productsList={productsList} />}
+          />
+          <Route
+            path="/products/:id"
+            element={<ProductDetail productsList={productsList} />}
+          />
+          {/* <Route path="/categories" element={<Categories />} /> */}
+          {/* <Route path="/categories/:id" element={<CategoryDetail />} /> */}
           <Route path="/about" element={<About />} />
         </Routes>
-        {formModalBox && <FormModal onClose={() => setFormModalBox(false)} />}
-        <footer className="text-center p-4 bg-gray-200 text-gray-700">
+        <footer className="text-center p-4 bg-gray-200 text-gray-700 text-sm">
           &copy; {new Date().getFullYear()} RS Gratitude Gift. All rights
           reserved.
         </footer>
