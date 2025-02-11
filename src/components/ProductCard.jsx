@@ -4,19 +4,18 @@ import { ChevronRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import ProductModal from "./ProductModal";
 
-const ProductCard = ({ product,index }) => {
+const ProductCard = ({ product, index }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
       <motion.div
-        key={product.id}
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         whileHover={{ scale: 1.02 }}
-        viewport={{ once: true }}
-        transition={{ delay: index * 0.2 }}
-        className="bg-white rounded-lg shadow-md overflow-hidden group"
+        // viewport={{ once: true }}
+        // transition={{ delay: index * 0.1 }}
+        className="bg-white rounded-lg shadow-md overflow-hidden relative group cursor-pointer"
       >
         <div className="relative overflow-hidden">
           <img

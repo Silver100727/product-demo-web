@@ -8,7 +8,7 @@ const Products = () => {
     <div className="min-h-screen pt-24 pb-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
-          initial={{ y: 20, opacity: 0 }}
+          initial={{ y: -70, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           className="text-center mb-12"
         >
@@ -21,11 +21,15 @@ const Products = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product,index) => (
+        <motion.div
+          initial={{ y: 70, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {products.map((product, index) => (
             <ProductCard key={product.id} product={product} index={index} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

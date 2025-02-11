@@ -30,10 +30,7 @@ const Navbar = () => {
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) => {
-                  console.log(`Path: ${link.to}, isActive: ${isActive}`);
-                  return `text-gray-600 hover:text-blue-400 transition-colors ${
-                    isActive ? "font-semibold text-blue-400" : ""
-                  }`;
+                  return `text-gray-600 hover:text-blue-400 transition-colors ${ isActive ? "font-semibold text-blue-500" : ""}`;
                 }}
                 end
               >
