@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-const CategoryCard = ({ category }) => {
+const CategoryCard = ({category}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

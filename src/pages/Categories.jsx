@@ -1,9 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import CategoryCard from "../components/CategoryCard.jsx";
-import { categories } from "../data/categories.js";
 
-const Categories = () => {
+const Categories = (props) => {
   return (
     <div className="min-h-screen pt-24 pb-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
@@ -24,7 +23,7 @@ const Categories = () => {
           animate={{ y: 0, opacity: 1 }}
           className="grid md:grid-cols-2 gap-8"
         >
-          {categories.map((category) => (
+          {props.categoryList.map((category) => (
             <CategoryCard key={category.id} category={category} />
           ))}
         </motion.div>

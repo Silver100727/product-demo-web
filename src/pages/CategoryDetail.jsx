@@ -2,7 +2,6 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronLeft } from 'lucide-react';
-import { categories } from '../data/categories.js';
 import ProductCard from '../components/ProductCard.jsx';
 
 const CategoryDetail = () => {
