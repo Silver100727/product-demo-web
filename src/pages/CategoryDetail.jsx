@@ -22,7 +22,7 @@ const CategoryDetail = () => {
       <div className="max-w-7xl mx-auto px-4">
         <Link
           to="/categories"
-          className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8"
+          className="cursor-pointer inline-flex items-center text-gray-600 hover:text-gray-900 mb-3"
         >
           <ChevronLeft size={20} />
           <span>Back to Categories</span>

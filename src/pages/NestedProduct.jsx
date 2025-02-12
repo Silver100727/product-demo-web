@@ -10,13 +10,12 @@ const NestedProduct = (props) => {
   const NestedProductList = props.productsList.filter(
     (p) => p.category == product
   );
-  console.log("NestedProduct", NestedProductList);
   return (
     <div className="min-h-screen pt-24 pb-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         <button
           onClick={() => navigate(-1)}
-          className="mb-8 flex items-center text-gray-600 hover:text-gray-900"
+          className="cursor-pointer mb-3 flex items-center text-gray-600 hover:text-gray-900"
         >
           <ChevronLeft size={20} />
           <span>Back</span>

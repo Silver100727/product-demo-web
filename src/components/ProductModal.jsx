@@ -23,7 +23,6 @@ const ProductModal = ({ product, onClose }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ delay:  0.3 }}
         className="absolute inset-0 bg-black/70"
         onClick={onClose}
       />
@@ -32,12 +31,12 @@ const ProductModal = ({ product, onClose }) => {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.5 }}
-        transition={{ delay:  0.3 }}
-        className="relative bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
+        transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
+        className="relative bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[76vh] overflow-hidden"
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/80 hover:bg-white shadow-md"
+          className="cursor-pointer absolute top-4 right-4 z-10 p-2 rounded-full bg-white/80 hover:bg-white shadow-md"
         >
           <X size={20} />
         </button>
@@ -45,9 +44,7 @@ const ProductModal = ({ product, onClose }) => {
         <div className="grid md:grid-cols-2 h-full">
           {/* Image Gallery */}
           <div className="relative aspect-square">
-            <div
-              className={`relative h-full cursor-zoom-in ${"overflow-hidden"}`}
-            >
+            <div className={`relative h-full overflow-hidden`}>
               <motion.img
                 key={currentImageIndex}
                 src={product.imageLinks[currentImageIndex]}
@@ -55,7 +52,7 @@ const ProductModal = ({ product, onClose }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className={`w-full h-full ${"object-cover "}`}
+                className={`w-full h-full object-cover`}
               />
             </div>
 
@@ -64,7 +61,7 @@ const ProductModal = ({ product, onClose }) => {
                 e.stopPropagation();
                 prevImage();
               }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-md"
+              className="cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-md"
             >
               <ChevronLeft size={20} />
             </button>
@@ -73,7 +70,7 @@ const ProductModal = ({ product, onClose }) => {
                 e.stopPropagation();
                 nextImage();
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-md"
+              className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-md"
             >
               <ChevronRight size={20} />
             </button>
@@ -95,7 +92,7 @@ const ProductModal = ({ product, onClose }) => {
           </div>
 
           {/* Product Information */}
-          <div className="p-6 overflow-y-auto">
+          <div className="max-h-[76vh] overflow-y-auto p-5">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
               {product.title}
             </h2>
@@ -104,22 +101,24 @@ const ProductModal = ({ product, onClose }) => {
             </p>
             <p className="text-gray-600 mb-6">{product.description}</p>
 
-            <div className="mb-6">
+            <div>
               <h3 className="text-lg font-semibold mb-3">Features</h3>
-              <ul className="space-y-2">
-                {product.features.map((feature, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-center text-gray-600"
-                  >
-                    <span className="w-2 h-2 bg-blue-600 rounded-full mr-3" />
-                    {feature}
-                  </motion.li>
-                ))}
-              </ul>
+              <div className="mb-6">
+                <ul className="space-y-2 bg-gray-50 rounded-lg p-4">
+                  {product.features.map((feature, index) => (
+                    <motion.li
+                      key={index}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-center text-gray-600"
+                    >
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3" />
+                      {feature}
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <div>

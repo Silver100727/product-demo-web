@@ -21,7 +21,7 @@ const Categories = (props) => {
         <motion.div
           initial={{ y: 70, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="grid md:grid-cols-2 gap-8"
+          className="grid md:grid-cols-3 gap-8"
         >
           {props.categoryList.map((category) => (
             <CategoryCard key={category.id} category={category} />

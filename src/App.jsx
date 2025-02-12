@@ -79,10 +79,7 @@ function App() {
 
           <Route path="/about" element={<About />} />
         </Routes>
-        <footer className="text-center p-4 bg-gray-200 text-gray-700 text-sm">
-          &copy; {new Date().getFullYear()} RS Gratitude Gift. All rights
-          reserved.
-        </footer>
+       
       </div>
     </Router>
   );

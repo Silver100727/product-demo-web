@@ -34,18 +34,18 @@ const ProductDetail = (props) => {
       <div className="max-w-7xl mx-auto px-4">
         <button
           onClick={() => navigate(-1)}
-          className="mb-8 flex items-center text-gray-600 hover:text-gray-900"
+          className="cursor-pointer mb-3 flex items-center text-gray-600 hover:text-gray-900"
         >
           <ChevronLeft size={20} />
           <span>Back</span>
         </button>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-5">
           {/* Image Gallery */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="relative aspect-square bg-white rounded-lg shadow-md overflow-hidden"
+            className="relative aspect-3/2 bg-white rounded-lg shadow-md"
           >
             <AnimatePresence mode="wait">
               <motion.img
@@ -55,7 +55,7 @@ const ProductDetail = (props) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-lg"
               />
             </AnimatePresence>
 
@@ -91,6 +91,7 @@ const ProductDetail = (props) => {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
+            className="aspect-3/2 overflow-y-auto"
           >
             <h1 className="text-3xl font-bold text-gray-900 mb-4">
               {product.title}
@@ -100,22 +101,24 @@ const ProductDetail = (props) => {
             </p>
             <p className="text-gray-600 mb-8">{product.description}</p>
 
-            <div className="mb-8">
+            <div>
               <h2 className="text-xl font-semibold mb-4">Features</h2>
-              <ul className="space-y-2">
-                {product.features.map((feature, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-center text-gray-600"
-                  >
-                    <span className="w-2 h-2 bg-blue-600 rounded-full mr-3" />
-                    {feature}
-                  </motion.li>
-                ))}
-              </ul>
+              <div className="mb-8 bg-white rounded-lg shadow-md p-6">
+                <ul className="space-y-2">
+                  {product.features.map((feature, index) => (
+                    <motion.li
+                      key={index}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-center text-gray-600"
+                    >
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3" />
+                      {feature}
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <div>
@@ -141,6 +144,7 @@ const ProductDetail = (props) => {
             </div>
           </motion.div>
         </div>
+
       </div>
     </div>
   );

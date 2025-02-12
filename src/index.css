@@ -6,7 +6,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  html::-webkit-scrollbar {
+  *::-webkit-scrollbar {
     display: none !important;
   }
 

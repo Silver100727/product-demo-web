@@ -20,7 +20,7 @@ const CategoryCard = ({category}) => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           <div className="absolute bottom-0 left-0 p-6">
             <h3 className="text-2xl font-bold text-white">{category.name}</h3>
-            <p className="mt-2 text-white/90">{category.description}</p>
+            <p className="mt-2 text-white/90 line-clamp-2">{category.description}</p>
           </div>
         </div>
       </Link>
