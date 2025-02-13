@@ -32,7 +32,7 @@ const ProductModal = ({ product, onClose }) => {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.5 }}
         transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
-        className="relative bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[76vh] overflow-hidden"
+        className="relative bg-white rounded-lg max-w-4xl w-full max-h-[76vh] overflow-y-scroll"
       >
         <button
           onClick={onClose}
@@ -41,9 +41,9 @@ const ProductModal = ({ product, onClose }) => {
           <X size={20} />
         </button>
 
-        <div className="grid md:grid-cols-2 h-full">
+        <div className="grid md:grid-cols-2">
           {/* Image Gallery */}
-          <div className="relative aspect-square">
+          <div className="relative aspect-square ">
             <div className={`relative h-full overflow-hidden`}>
               <motion.img
                 key={currentImageIndex}
@@ -92,7 +92,7 @@ const ProductModal = ({ product, onClose }) => {
           </div>
 
           {/* Product Information */}
-          <div className="max-h-[76vh] overflow-y-auto p-5">
+          <div className="md:aspect-square overflow-y-auto p-5">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
               {product.title}
             </h2>

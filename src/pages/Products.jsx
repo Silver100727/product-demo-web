@@ -27,7 +27,7 @@ const Products = (props) => {
         >
           {props.productsList.map((product, index) =>
             product.isLive ? (
-              <ProductCard key={product.id} product={product} index={index} />
+              <ProductCard key={product._id} product={product} index={index} />
             ) : null
           )}
         </motion.div>
