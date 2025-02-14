@@ -50,7 +50,7 @@ const About = () => {
   return (
     <div className="min-h-screen pt-24 pb-12 bg-white top-0">
       <div class="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
-      <div class="absolute top-100 right-auto left-0 bottom-auto h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
+      <div class="absolute top-130 right-auto left-50 bottom-auto h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
 
       <div className="max-w-7xl mx-auto px-4 ">
         {/* Hero Section */}
