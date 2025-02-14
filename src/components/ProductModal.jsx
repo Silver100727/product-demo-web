@@ -30,8 +30,8 @@ const ProductModal = ({ product, onClose }) => {
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.5 }}
         transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
+        exit={{ opacity: 0, scale: 0.5 }}
         className="relative bg-white rounded-lg max-w-4xl w-full max-h-[76vh] overflow-y-scroll"
       >
         <button
