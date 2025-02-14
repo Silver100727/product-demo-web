@@ -64,10 +64,17 @@ function App() {
     fetchProdutFromDb();
   }, []);
 
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
-        <Navbar />
+        <Navbar scrolled={scrolled}/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
@@ -188,7 +195,8 @@ function App() {
               </div>
             </div>
 
-            <div className="border-t border-gray-800 mt-8 pt-8 pb-4 text-center text-gray-400">
+            <div className="pt-15 pb-2 text-center text-[13px] text-gray-400">
+              <p>Terms and Conditions Privacy Policy</p>
               <p>
                 &copy; {new Date().getFullYear()} RS Gratitude Gifts. All rights
                 reserved.

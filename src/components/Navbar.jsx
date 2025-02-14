@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Gift, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
@@ -14,11 +14,26 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-lg fixed w-full z-50">
+    <motion.nav
+      initial={{ borderRadius: "0px" }}
+      animate={{
+        borderRadius: props.scrolled ? "60px" : "0px",
+        width: props.scrolled ? "90%" : "100%",
+        left: props.scrolled ? "5%" : "",
+        top: props.scrolled ? "2%" : "",
+
+      }}
+      transition={{ duration: 0.5 }}
+      className="bg-white shadow-lg fixed w-full z-50"
+    >
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <NavLink to="/" className="text-xl font-bold text-gray-800">
+            <NavLink
+              to="/"
+              className="text-xl font-bold text-gray-800 flex items-center"
+            >
+              <Gift className="h-8 w-8 text-purple-400 mx-2" />
               RS Gratitude Gift
             </NavLink>
           </div>
@@ -30,7 +45,9 @@ const Navbar = () => {
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) => {
-                  return `text-gray-600 hover:text-blue-400 transition-colors ${ isActive ? "font-semibold text-blue-500" : ""}`;
+                  return `text-gray-600 hover:text-blue-400 transition-colors ${
+                    isActive ? "font-semibold text-blue-500" : ""
+                  }`;
                 }}
                 end
               >
@@ -81,7 +98,7 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 };
 

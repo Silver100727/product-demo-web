@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 const features = [
   {
@@ -57,6 +56,9 @@ const features = [
 ];
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className="min-h-screen pt-16 flex flex-col gap-6">
@@ -105,7 +107,6 @@ const Home = () => {
                   ></path>
                 </svg>
                 Explore Our Collection
-                <ArrowRight className="ml-2" size={20} />
               </Link>
             </motion.div>
           </div>
