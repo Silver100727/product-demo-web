@@ -17,7 +17,7 @@ const Navbar = (props) => {
     <motion.nav
       initial={{ borderRadius: "0px" }}
       animate={{
-        borderRadius: props.scrolled ? "60px" : "0px",
+        borderRadius: props.scrolled && !isOpen ? "60px" : "0px",
         width: props.scrolled ? "90%" : "100%",
         left: props.scrolled ? "5%" : "",
         top: props.scrolled ? "2%" : "",

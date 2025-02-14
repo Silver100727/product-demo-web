@@ -22,6 +22,7 @@ const ProductModal = ({ product, onClose }) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
         exit={{ opacity: 0 }}
         className="absolute inset-0 bg-black/70"
         onClick={onClose}
