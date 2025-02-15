@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import ProductCard from "../components/ProductCard.jsx";
 import { useNavigate, useParams } from "react-router-dom";
@@ -10,8 +10,11 @@ const NestedProduct = (props) => {
   const NestedProductList = props.productsList.filter(
     (p) => p.category == product
   );
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
-    <div className="min-h-screen pt-24 pb-12 bg-gray-50">
+    <div className="min-h-screen pt-24 pb-12 bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
       <div className="max-w-7xl mx-auto px-4">
         <button
           onClick={() => navigate(-1)}

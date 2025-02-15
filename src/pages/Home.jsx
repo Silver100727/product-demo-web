@@ -80,19 +80,19 @@ const Home = () => {
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-white max-w-full text-center"
+              className="text-white max-w-full text-center flex flex-col items-center"
             >
               <h1 className="text-5xl font-bold">
                 Celebrate Every Moment with RS Gratitude Gifts
               </h1>
-              <p className="text-xl max-w-3xl mb-8">
+              <p className="mb-8 max-w-2xl">
                 Discover our exclusive collection of premium gifts designed to
                 express appreciation, celebrate milestones, and create lasting
                 memories.
               </p>
               <Link
                 to="/products"
-                className="inline-flex flex-row items-center justify-center px-6 py-3 bg-[#4D95F8] text-white rounded-lg font-semibold hover:bg-[#FD2DF5] hover:text-white transition-colors"
+                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-[#4D95F8] text-white rounded-2xl font-semibold hover:bg-[#FD2DF5] hover:text-white transition-colors"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -13,15 +13,16 @@ const Navbar = (props) => {
     { to: "/about", label: "About" },
   ];
 
+  console.log("isOpen", isOpen);
+
   return (
     <motion.nav
       initial={{ borderRadius: "0px" }}
       animate={{
-        borderRadius: props.scrolled && !isOpen ? "60px" : "0px",
+        borderRadius: props.scrolled ? (isOpen ? "20px" : "60px") : "0px",
         width: props.scrolled ? "90%" : "100%",
         left: props.scrolled ? "5%" : "",
         top: props.scrolled ? "2%" : "",
-
       }}
       transition={{ duration: 0.5 }}
       className="bg-white shadow-lg fixed w-full z-50"
@@ -62,7 +63,11 @@ const Navbar = (props) => {
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-600 hover:text-gray-900"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? (
+                <X size={24} cursor="pointer" />
+              ) : (
+                <Menu size={24} cursor="pointer" />
+              )}
             </button>
           </div>
         </div>
@@ -76,6 +81,7 @@ const Navbar = (props) => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-white"
+            style={{ borderRadius: isOpen ? "20px" : "0px" }}
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
               {links.map((link) => (

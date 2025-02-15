@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Users, Shield, HeartHandshake } from "lucide-react";
-
+import { Building2, Award } from "lucide-react";
 const values = [
   {
     title: "Heartfelt Appreciation",
@@ -20,6 +20,24 @@ const values = [
     description:
       "Our dedicated team goes above and beyond to ensure a personalized gifting experience.",
     icon: Users,
+  },
+];
+
+const work = [
+  {
+    title: "10,000+",
+    description: "Happy Customers",
+    icon: Users,
+  },
+  {
+    title: "50+",
+    description: "Partner Organizations",
+    icon: Building2,
+  },
+  {
+    title: "15+",
+    description: "Years of Excellence",
+    icon: Award,
   },
 ];
 
@@ -52,10 +70,10 @@ const About = () => {
   }, []);
   return (
     <div className="min-h-screen pt-24 pb-12 bg-white top-0">
-      <div class="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
-      <div class="absolute top-130 right-auto left-50 bottom-auto h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
+      <div className="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
+      <div className="absolute top-130 right-auto left-50 bottom-auto h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
 
-      <div className="max-w-7xl mx-auto px-4 ">
+      <div className="max-w-7xl mx-auto px-10">
         {/* Hero Section */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
@@ -138,6 +156,34 @@ const About = () => {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {value.title}
                 </h3>
+                <p className="text-gray-600">{value.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Work */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+            Our Work
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {work.map((value, index) => (
+              <motion.div
+                key={value.title}
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.6 }}
+                className="text-center bg-white rounded-lg shadow-md p-6 z-10"
+              >
+                <value.icon className="w-12 h-12 mx-auto mb-4 text-purple-600" />
+                <h3 className="text-3xl font-bold mb-2">{value.title}</h3>
                 <p className="text-gray-600">{value.description}</p>
               </motion.div>
             ))}

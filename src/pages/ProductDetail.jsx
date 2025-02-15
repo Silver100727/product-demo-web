@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ScanEye, X } from "lucide-react";
 
 const ProductDetail = (props) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const product = props.productsList.find((p) => p._id == id);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   if (!product) {
     return (
@@ -29,8 +30,12 @@ const ProductDetail = (props) => {
     );
   };
 
+  // Handlers to open/close modal
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
-    <div className="h-screen pt-24 pb-12 flex flex-col px-4 bg-gray-50">
+    <div className="h-screen pt-24 pb-12 flex flex-col px-4 bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
       <button
         onClick={() => navigate(-1)}
         className="cursor-pointer mb-3 flex items-center text-gray-600 hover:text-gray-900"
@@ -54,20 +59,20 @@ const ProductDetail = (props) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-cover rounded-lg cursor-pointer"
             />
           </AnimatePresence>
 
           <div className="absolute inset-0 flex items-center justify-between p-4">
             <button
               onClick={prevImage}
-              className="p-2 rounded-full bg-white/80 hover:bg-white shadow-md"
+              className="p-2 rounded-full bg-white/80 hover:bg-white shadow-md cursor-pointer"
             >
               <ChevronLeft size={24} />
             </button>
             <button
               onClick={nextImage}
-              className="p-2 rounded-full bg-white/80 hover:bg-white shadow-md"
+              className="p-2 rounded-full bg-white/80 hover:bg-white shadow-md cursor-pointer"
             >
               <ChevronRight size={24} />
             </button>
@@ -78,11 +83,20 @@ const ProductDetail = (props) => {
               <button
                 key={index}
                 onClick={() => setCurrentImageIndex(index)}
-                className={`w-2 h-2 rounded-full ${
+                className={`w-2 h-2 cursor-pointer rounded-full ${
                   index === currentImageIndex ? "bg-blue-600" : "bg-gray-300"
                 }`}
               />
             ))}
+          </div>
+
+          <div className="absolute top-3 left-7 -translate-x-1/2 flex space-x-2">
+            <button
+              onClick={openModal}
+              className="p-2 rounded-full bg-white/80 hover:bg-white shadow-md cursor-pointer"
+            >
+              <ScanEye size={20} className="text-gray-500" />
+            </button>
           </div>
         </motion.div>
 
@@ -117,7 +131,7 @@ const ProductDetail = (props) => {
             </ul>
           </div>
           <h2 className="text-xl font-semibold mb-4">Specifications</h2>
-          <div className="bg-white rounded-lg p-6">
+          <div className="rounded-lg p-6">
             {Object.entries(product.specification).map(
               ([key, value], index) => (
                 <motion.div
@@ -137,6 +151,91 @@ const ProductDetail = (props) => {
           </div>
         </motion.div>
       </div>
+
+      {/* Modal for enlarged image view */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <motion.div
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+              className="relative"
+              onClick={(e) => e.stopPropagation()} // Prevent closing modal when clicking on image
+            >
+              {/* Image with swipe gesture */}
+              <motion.img
+                key={currentImageIndex}
+                src={product.imageLinks[currentImageIndex]}
+                alt={product.title}
+                className="max-w-full max-h-screen"
+                drag="x" // Enable horizontal dragging
+                dragConstraints={{ left: 0, right: 0 }} // Constrain dragging
+                onDragEnd={(event, info) => {
+                  console.log("hiiiii");
+                  if (info.offset.x < -50) {
+                    nextImage(); // Swipe left to go next
+                  } else if (info.offset.x > 50) {
+                    prevImage(); // Swipe right to go previous
+                  }
+                }}
+              />
+
+              {/* Image indicators */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                {product.imageLinks.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`w-2 h-2 cursor-pointer rounded-full ${
+                      index === currentImageIndex
+                        ? "bg-blue-600"
+                        : "bg-gray-300"
+                    }`}
+                  />
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Navigation Buttons */}
+            <div className="absolute inset-0 flex items-center justify-between p-4">
+              <motion.button
+                onClick={prevImage}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="p-2 rounded-full bg-white/80 hover:bg-white shadow-md cursor-pointer"
+              >
+                <ChevronLeft size={34} className="text-gray-500" />
+              </motion.button>
+
+              <motion.button
+                onClick={nextImage}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="p-2 rounded-full bg-white/80 hover:bg-white shadow-md cursor-pointer"
+              >
+                <ChevronRight size={34} className="text-gray-500" />
+              </motion.button>
+            </div>
+
+            {/* Close Button */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={closeModal}
+              className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-gray-200"
+            >
+              <X size={20} className="text-gray-500" />
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
