@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { motion } from "framer-motion";
 import Navbar from "./components/Navbar.jsx";
 import Home from "./pages/Home.jsx";
 import Products from "./pages/Products.jsx";
@@ -74,7 +73,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
-        <Navbar scrolled={scrolled}/>
+        <Navbar scrolled={scrolled} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
@@ -123,21 +122,14 @@ function App() {
                     { to: "/about", page: "About" },
                   ].map((item, index) => {
                     return (
-                      <motion.li
-                        key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.5 }}
-                      >
+                      <li key={index}>
                         <Link
                           to={item.to}
                           className="text-gray-400 hover:text-white"
                         >
                           {item.page}
                         </Link>
-                      </motion.li>
+                      </li>
                     );
                   })}
                 </ul>
@@ -152,18 +144,7 @@ function App() {
                     { page: "rs.gratitudegifts@gmail.com" },
                     { page: "(+91) 123-456-7356" },
                   ].map((item, index) => {
-                    return (
-                      <motion.li
-                        key={index}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.5 }}
-                      >
-                        {item.page}
-                      </motion.li>
-                    );
+                    return <li key={index}>{item.page}</li>;
                   })}
                 </ul>
               </div>
@@ -177,18 +158,13 @@ function App() {
                     { icon: <TwitterIcon className="h-6 w-6" /> },
                   ].map((item, index) => {
                     return (
-                      <motion.a
+                      <a
                         href="#"
                         key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.5 }}
                         className="text-gray-400 hover:text-white"
                       >
                         {item.icon}
-                      </motion.a>
+                      </a>
                     );
                   })}
                 </div>

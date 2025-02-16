@@ -13,6 +13,7 @@ const ProductCard = ({ product }) => {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         whileHover={{ scale: 1.02 }}
+        viewport={{ once: true, amount: 0.3 }}
         className="bg-white rounded-lg shadow-md overflow-hidden relative group cursor-pointer"
       >
         <div className="relative overflow-hidden aspect-2/1">

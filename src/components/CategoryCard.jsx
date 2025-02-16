@@ -8,6 +8,7 @@ const CategoryCard = ({category}) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.02 }}
+      viewport={{ once: true, amount: 0.3 }}
       className="relative group cursor-pointer"
     >
       <Link to={`/categories/${category.id}`}>

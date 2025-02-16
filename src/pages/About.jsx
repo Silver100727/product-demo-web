@@ -78,8 +78,7 @@ const About = () => {
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-16"
         >
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -98,8 +97,7 @@ const About = () => {
           <motion.div
             initial={{ x: -20, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            viewport={{ once: true, amount: 0.3 }}
             className="bg-white p-8 rounded-lg shadow-md z-10"
           >
             <h2 className="text-2xl font-bold text-gray-900 mb-4 ">
@@ -115,8 +113,7 @@ const About = () => {
           <motion.div
             initial={{ x: 20, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            viewport={{ once: true, amount: 0.3 }}
             className="bg-white p-8 rounded-lg shadow-md z-10"
           >
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
@@ -134,7 +131,8 @@ const About = () => {
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.3 }}
+
           className="mb-20"
         >
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
@@ -146,8 +144,7 @@ const About = () => {
                 key={value.title}
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.6 }}
+                viewport={{ once: true, amount: 0.3 }}
                 className="text-center"
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-4">
@@ -166,7 +163,8 @@ const About = () => {
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.3 }}
+
           className="mb-20"
         >
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
@@ -178,8 +176,7 @@ const About = () => {
                 key={value.title}
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.6 }}
+                viewport={{ once: true, amount: 0.3 }}
                 className="text-center bg-white rounded-lg shadow-md p-6 z-10"
               >
                 <value.icon className="w-12 h-12 mx-auto mb-4 text-purple-600" />
@@ -194,7 +191,8 @@ const About = () => {
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.3 }}
+
           className="text-center "
         >
           <h2 className="text-3xl font-bold text-gray-900 mb-12">Our Team</h2>
@@ -204,8 +202,7 @@ const About = () => {
                 key={member.name}
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.6 }}
+                viewport={{ once: true, amount: 0.3 }}
                 className="bg-white p-6 rounded-lg shadow-md z-10"
               >
                 <img

@@ -178,7 +178,7 @@ const Home = () => {
                 key={feature.title}
                 initial={{ x: -20, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 1 }}
                 transition={{ delay: index * 0.5 }}
                 className="bg-white p-6 rounded-lg shadow-md border-b-2 z-10"
               >
