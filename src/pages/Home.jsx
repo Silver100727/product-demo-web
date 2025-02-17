@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
@@ -40,6 +40,7 @@ const duplicatedBrands = [
   ...brands,
   ...brands,
 ];
+
 const Banner = [
   {
     title: "Tailored Gifting Solutions",
@@ -167,17 +168,15 @@ const FutureImg = [
 
 const Home = () => {
   const [selectedFuturePrd, setselectedFuturePrd] = useState(FutureImg[0]);
-
+  const indexRef = useRef(0);
   useEffect(() => {
-    window.scrollTo(0, 0);
-    let index = 0;
-
+    // window.scrollTo(0, 0);
     let timer = setInterval(() => {
-      setselectedFuturePrd(FutureImg[index]);
-      if (index === FutureImg.length - 1) {
-        index = 0;
+      setselectedFuturePrd(FutureImg[indexRef.current]);
+      if (indexRef.current === FutureImg.length - 1) {
+        indexRef.current = 0;
       } else {
-        index++;
+        indexRef.current = indexRef.current + 1;
       }
     }, 3000);
 
@@ -188,7 +187,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col gap-6 pt-16 ">
+      <div className="min-h-screen flex flex-col gap-6 pt-16">
         {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0 }}
@@ -209,17 +208,17 @@ const Home = () => {
               transition={{ delay: 0.4 }}
               className="text-white max-w-full text-center flex flex-col items-center"
             >
-              <h1 className="text-5xl font-bold">
+              <h1 className="text-3xl md:text-5xl font-bold">
                 Celebrate Every Moment with RS Gratitude Gifts
               </h1>
-              <p className="mb-8 max-w-2xl">
+              <p className="mb-8 max-w-2xl text-base sm:text-lg">
                 Discover our exclusive collection of premium gifts designed to
                 express appreciation, celebrate milestones, and create lasting
                 memories.
               </p>
               <Link
                 to="/products"
-                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 hover:text-white transition-colors"
+                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 transition-colors"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -239,7 +238,8 @@ const Home = () => {
           </div>
         </motion.section>
 
-        <div className="max-w-7xl mx-auto px-4 py-16">
+        {/* Featured Product Section */}
+        <div className="max-w-7xl mx-auto px-4 py-6">
           <h2 className="text-4xl font-bold text-center mb-4">
             Featured Product
           </h2>
@@ -257,21 +257,23 @@ const Home = () => {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="relative aspect-3/2 bg-white rounded-lg shadow-md"
+              className="relative max-sm:h-[200px] max-sm:w-[280px] w-auto h-auto bg-white rounded-lg shadow-md"
             >
               <AnimatePresence mode="wait">
                 <motion.img
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
                   className="h-full w-full rounded-lg"
                   src={selectedFuturePrd.link}
                   key={selectedFuturePrd.key}
-                  alt=""
+                  alt="Featured product"
                 />
               </AnimatePresence>
             </motion.div>
 
-            <div className="grid grid-cols-5 gap-4 p-5">
+            {/* Responsive grid: 2 columns on very small screens, increasing for larger devices */}
+            <div className="grid grid-cols-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-5">
               {FutureImg.map((product) => (
                 <div
                   key={product.key}
@@ -280,40 +282,41 @@ const Home = () => {
                   }}
                 >
                   <img
-                    className="h-auto max-w-full rounded-lg"
+                    className="h-auto max-w-full rounded-lg cursor-pointer"
                     src={product.link}
-                    alt=""
+                    alt="Product thumbnail"
                   />
                 </div>
               ))}
             </div>
+
           </div>
         </div>
+
+        {/* Brands Carousel Section (commented out for now) */}
+        <section className=" bg-[#EFF6FF]">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-4xl font-bold text-center mb-8">Our Brands</h2>
+            <div className="overflow-hidden">
+              <div className="flex animate-marquee">
+                {duplicatedBrands.map((brand, index) => (
+                  <div key={index} className="flex-shrink-0 w-1/10  max-sm:w-1/4 p-4">
+                    <img
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="w-24 h-24 object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
-      {/* Brands Carousel Section */}
-      <section className="py-16 bg-[#EFF6FF]">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-8">Our Brands</h2>
-          <div className="overflow-hidden">
-            <div className="flex animate-marquee">
-              {duplicatedBrands.map((brand, index) => (
-                <div key={index} className="flex-shrink-0 w-1/10 p-4">
-                  <img
-                    src={brand.logo}
-                    alt={brand.name}
-                    className="w-24 h-24 object-contain"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* Footer Section */}
       <footer className="text-white relative bg-black">
         <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_2px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_2px)] bg-[size:34px_44px]"></div>
-        {/* Card Section */}
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -331,7 +334,7 @@ const Home = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8  px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
             {Banner.map((feature, index) => (
               <motion.div
                 key={feature.title}

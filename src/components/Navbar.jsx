@@ -13,8 +13,6 @@ const Navbar = (props) => {
     { to: "/about", label: "About" },
   ];
 
-  console.log("isOpen", isOpen);
-
   return (
     <motion.nav
       initial={{ borderRadius: "0px" }}

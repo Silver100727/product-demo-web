@@ -11,20 +11,16 @@
     scroll-behavior: smooth !important;
   }
 
-
   @keyframes marquee {
-    0% {
-      transform: translateX(0);
+    from {
+      transform: translateX(0%);
     }
-    100% {
+    to {
       transform: translateX(-50%);
     }
   }
-  
   .animate-marquee {
+    display: flex;
     animation: marquee 20s linear infinite;
-    /* The inner container is twice as wide to allow a seamless scroll */
-    width: 200%;
   }
-  
 }
