@@ -1,13 +1,11 @@
 import { FacebookIcon, Gift, InstagramIcon, TwitterIcon } from "lucide-react";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const navigate = useNavigate();
-
   return (
     <footer className="text-white relative pt-10 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]">
-      <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_2px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_2px)] bg-[size:34px_44px]"></div>
+      <div className="absolute bottom-0 left-0 right-0 top-0 pointer-events-none bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_2px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_2px)] bg-[size:34px_44px]" />
       <div className="max-w-7xl mx-auto px-8 pt-15">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -30,14 +28,8 @@ const Footer = () => {
                 { to: "/about", page: "About" },
               ].map((item, index) => {
                 return (
-                  <li
-                    key={index}
-                    className="text-gray-400 hover:text-white"
-                    onClick={() => {
-                      navigate(item.to);
-                    }}
-                  >
-                    {item.page}
+                  <li key={index} className="text-gray-400 hover:text-white">
+                    <Link to={item.to}>{item.page}</Link>
                   </li>
                 );
               })}
