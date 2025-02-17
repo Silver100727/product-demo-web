@@ -167,7 +167,6 @@ const ProductDetail = (props) => {
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
               className="relative"
-              onClick={(e) => e.stopPropagation()} // Prevent closing modal when clicking on image
             >
               {/* Image with swipe gesture */}
               <motion.img
@@ -175,55 +174,10 @@ const ProductDetail = (props) => {
                 src={product.imageLinks[currentImageIndex]}
                 alt={product.title}
                 className="max-w-full max-h-screen"
-                drag="x" // Enable horizontal dragging
-                dragConstraints={{ left: 0, right: 0 }} // Constrain dragging
-                onDragEnd={(event, info) => {
-                  console.log("hiiiii");
-                  if (info.offset.x < -50) {
-                    nextImage(); // Swipe left to go next
-                  } else if (info.offset.x > 50) {
-                    prevImage(); // Swipe right to go previous
-                  }
-                }}
               />
-
-              {/* Image indicators */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-                {product.imageLinks.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentImageIndex(index)}
-                    className={`w-2 h-2 cursor-pointer rounded-full ${
-                      index === currentImageIndex
-                        ? "bg-blue-600"
-                        : "bg-gray-300"
-                    }`}
-                  />
-                ))}
-              </div>
             </motion.div>
 
-            {/* Navigation Buttons */}
-            <div className="absolute inset-0 flex items-center justify-between p-4">
-              <motion.button
-                onClick={prevImage}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-2 rounded-full bg-white/80 hover:bg-white shadow-md cursor-pointer"
-              >
-                <ChevronLeft size={34} className="text-gray-500" />
-              </motion.button>
-
-              <motion.button
-                onClick={nextImage}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-2 rounded-full bg-white/80 hover:bg-white shadow-md cursor-pointer"
-              >
-                <ChevronRight size={34} className="text-gray-500" />
-              </motion.button>
-            </div>
-
+           
             {/* Close Button */}
             <motion.button
               whileHover={{ scale: 1.1 }}

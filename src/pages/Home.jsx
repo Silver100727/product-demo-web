@@ -1,11 +1,50 @@
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
-const features = [
+import Footer from "../components/Footer";
+
+const brands = [
   {
-    title: "Luxury & Elegance",
+    id: 1,
+    name: "nike-logo",
+    logo: "https://www.zarla.com/images/nike-logo-2400x2400-20220504.png?crop=1:1,smart&width=150&dpr=2",
+  },
+  {
+    id: 2,
+    name: "Brand Two",
+    logo: "https://www.zarla.com/images/zarla-chanel-combination-logo-2400x2400-20240701.png?crop=1:1,smart&width=150&dpr=2",
+  },
+  {
+    id: 3,
+    name: "Brand Three",
+    logo: "https://www.zarla.com/images/wwf-logo-2400x2400-20220518-2.png?crop=1:1,smart&width=150&dpr=2",
+  },
+  {
+    id: 4,
+    name: "Brand Four",
+    logo: "https://cdn.logojoy.com/wp-content/uploads/2018/05/30143448/196.png",
+  },
+  {
+    id: 5,
+    name: "Brand Five",
+    logo: "https://cdn.logojoy.com/wp-content/uploads/2018/05/30143416/810.png",
+  },
+  // Add more brands as needed
+];
+
+// Duplicate the brands array for seamless scrolling
+const duplicatedBrands = [
+  ...brands,
+  ...brands,
+  ...brands,
+  ...brands,
+  ...brands,
+];
+const Banner = [
+  {
+    title: "Tailored Gifting Solutions",
     description:
-      "Our gifts are crafted with premium materials and sophisticated design, perfect for any occasion.",
+      "We understand that every business is unique. That's why we offer fully customized gifts that reflect your brand and the relationships you want to nurture, whether it's with clients, employees, or partners.",
     icon: () => (
       <svg
         className="w-12 h-12"
@@ -19,9 +58,9 @@ const features = [
     ),
   },
   {
-    title: "Thoughtful Selection",
+    title: "End-to-End Service",
     description:
-      "Each item in our collection is handpicked to convey gratitude and appreciation.",
+      "From the initial gift selection to packaging and timely delivery, we handle it all. Our seamless process ensures that your gifting experience is hassle-free and your gifts arrive on time and beautifully presented.",
     icon: () => (
       <svg
         className="w-12 h-12"
@@ -38,9 +77,57 @@ const features = [
     ),
   },
   {
-    title: "Exclusive Packaging",
+    title: "High-Quality, Thoughtful Gifts",
     description:
-      "Our premium gift packaging ensures a luxurious unboxing experience for your loved ones.",
+      "At RS Gratitude Gifts, we pride ourselves on offering a wide variety of high-quality options—from branded merchandise to luxury items and personalized keepsakes. Each gift is carefully curated to create a lasting impression.",
+    icon: () => (
+      <svg
+        className="w-12 h-12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Reliability & Timeliness",
+    description:
+      "We value your time and the importance of timely delivery. Our team ensures that each gift is delivered on schedule, making sure you never miss an important occasion.",
+    icon: () => (
+      <svg
+        className="w-12 h-12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Exceptional Customer Service",
+    description:
+      "We put your needs first. Our customer-centric approach means you’ll receive attentive support and a personalized experience every step of the way.",
+    icon: () => (
+      <svg
+        className="w-12 h-12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Building Strong Relationships",
+    description:
+      "We don't just provide gifts; we help you strengthen your business relationships. Our gifts are designed to reinforce your brand, build loyalty, and foster positive, lasting connections with those who matter most.",
     icon: () => (
       <svg
         className="w-12 h-12"
@@ -55,13 +142,53 @@ const features = [
   },
 ];
 
+const FutureImg = [
+  {
+    key: 1,
+    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg",
+  },
+  {
+    key: 2,
+    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg",
+  },
+  {
+    key: 3,
+    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg",
+  },
+  {
+    key: 4,
+    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg",
+  },
+  {
+    key: 5,
+    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg",
+  },
+];
+
 const Home = () => {
+  const [selectedFuturePrd, setselectedFuturePrd] = useState(FutureImg[0]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    let index = 0;
+
+    let timer = setInterval(() => {
+      setselectedFuturePrd(FutureImg[index]);
+      if (index === FutureImg.length - 1) {
+        index = 0;
+      } else {
+        index++;
+      }
+    }, 3000);
+
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
+
   return (
     <>
-      <div className="min-h-screen pt-16 flex flex-col gap-6">
+      <div className="min-h-screen flex flex-col gap-6 pt-16 ">
         {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0 }}
@@ -92,7 +219,7 @@ const Home = () => {
               </p>
               <Link
                 to="/products"
-                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-[#4D95F8] text-white rounded-2xl font-semibold hover:bg-[#FD2DF5] hover:text-white transition-colors"
+                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 hover:text-white transition-colors"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +244,7 @@ const Home = () => {
             Featured Product
           </h2>
           <div className="text-center mb-12">
-            <p className="text-gray-600 max-w-7xl mx-auto">
+            <p className="text-gray-600 max-w-3xl mx-auto">
               At RS Gratitude Gifts, we offer a curated selection of top-quality
               products, from stylish apparel to cutting-edge electronics and
               more. Whether you're celebrating a milestone, showing
@@ -126,36 +253,67 @@ const Home = () => {
               product and find the ideal gift today!
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* {featuredCategories.map((category) => (
-            <Link
-              key={category.name}
-              to={`/categories/${category.slug}`}
-              className="group relative aspect-[4/5] overflow-hidden rounded-lg"
+          <div className="flex flex-col items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="relative aspect-3/2 bg-white rounded-lg shadow-md"
             >
-              <img
-                src={category.image}
-                alt={category.name}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-60 transition-opacity duration-500" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                  <h3 className="text-3xl font-bold text-white tracking-wider">
-                    {category.name}
-                  </h3>
+              <AnimatePresence mode="wait">
+                <motion.img
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="h-full w-full rounded-lg"
+                  src={selectedFuturePrd.link}
+                  key={selectedFuturePrd.key}
+                  alt=""
+                />
+              </AnimatePresence>
+            </motion.div>
+
+            <div className="grid grid-cols-5 gap-4 p-5">
+              {FutureImg.map((product) => (
+                <div
+                  key={product.key}
+                  onClick={() => {
+                    setselectedFuturePrd(product);
+                  }}
+                >
+                  <img
+                    className="h-auto max-w-full rounded-lg"
+                    src={product.link}
+                    alt=""
+                  />
                 </div>
-              </div>
-            </Link>
-          ))} */}
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
+      {/* Brands Carousel Section */}
+      <section className="py-16 bg-[#EFF6FF]">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-8">Our Brands</h2>
+          <div className="overflow-hidden">
+            <div className="flex animate-marquee">
+              {duplicatedBrands.map((brand, index) => (
+                <div key={index} className="flex-shrink-0 w-1/10 p-4">
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    className="w-24 h-24 object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="text-white relative bg-black">
         <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_2px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_2px)] bg-[size:34px_44px]"></div>
-
-        {/* Features Section */}
+        {/* Card Section */}
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -167,19 +325,20 @@ const Home = () => {
               Why Choose RS Gratitude Gifts?
             </h2>
             <p className="text-white max-w-2xl mx-auto">
-              We curate exceptional gifts that convey gratitude, elegance, and
-              thoughtfulness, ensuring every occasion is truly special.
+              Choose RS Gratitude Gifts for a gifting experience that reflects
+              the value you place on your business relationships. Let us help
+              you leave a lasting impression, one gift at a time.
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8  px-4">
-            {features.map((feature, index) => (
+            {Banner.map((feature, index) => (
               <motion.div
                 key={feature.title}
                 initial={{ x: -20, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true, amount: 1 }}
-                transition={{ delay: index * 0.5 }}
+                transition={{ delay: index * 0.2 }}
                 className="bg-white p-6 rounded-lg shadow-md border-b-2 z-10"
               >
                 <feature.icon className="w-12 h-12 text-blue-600 mb-4" />
@@ -192,6 +351,7 @@ const Home = () => {
           </div>
         </div>
       </footer>
+      <Footer />
     </>
   );
 };
