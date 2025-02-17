@@ -257,7 +257,7 @@ const Home = () => {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="relative max-sm:h-[200px] max-sm:w-[280px] w-auto h-auto bg-white rounded-lg shadow-md"
+              className="relative max-sm:h-[250px] max-sm:w-[330px] w-auto h-auto bg-[#EFF6FF]"
             >
               <AnimatePresence mode="wait">
                 <motion.img
@@ -289,7 +289,6 @@ const Home = () => {
                 </div>
               ))}
             </div>
-
           </div>
         </div>
 
@@ -300,7 +299,10 @@ const Home = () => {
             <div className="overflow-hidden">
               <div className="flex animate-marquee">
                 {duplicatedBrands.map((brand, index) => (
-                  <div key={index} className="flex-shrink-0 w-1/10  max-sm:w-1/4 p-4">
+                  <div
+                    key={index}
+                    className="flex-shrink-0 w-1/10  max-sm:w-1/4 p-4"
+                  >
                     <img
                       src={brand.logo}
                       alt={brand.name}
