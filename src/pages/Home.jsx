@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { brands } from "../utils";
+import Dummy from "./dummy";
 
 const Banner = [
   {
@@ -280,6 +281,7 @@ const Home = () => {
       </div>
 
       {/* Footer Section */}
+      <Dummy/>
       <footer className="text-white relative bg-black">
         <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_2px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_2px)] bg-[size:34px_44px]"></div>
         <div className="max-w-7xl mx-auto px-4">

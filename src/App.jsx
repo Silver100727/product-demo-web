@@ -9,6 +9,7 @@ import About from "./pages/About.jsx";
 import axios from "axios";
 import NestedProduct from "./pages/NestedProduct.jsx";
 import Brands from "./pages/Brands.jsx";
+import Dummy from "./pages/dummy.jsx";
 const BaseUrl = "https://rsgratitudegifts.com/api/routes.php?action=addproduct";
 
 function App() {
@@ -80,6 +81,8 @@ function App() {
             element={<Products productsList={productsList} />}
           />
           <Route path="/brands" element={<Brands />} />
+          <Route path="/dummy" element={<Dummy />} />
+
           <Route
             path="/products/:id"
             element={<ProductDetail productsList={productsList} />}
