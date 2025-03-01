@@ -6,7 +6,6 @@ import ProductModal from "./ProductModal";
 
 const ProductCard = ({ product }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <>
       <motion.div

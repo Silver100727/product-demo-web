@@ -40,10 +40,14 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4">Contact</h3>
             <ul className="space-y-2 text-gray-400">
               {[
-                { page: "301, Khaleel Building," },
-                { page: "Bangalore - Karnataka" },
+                { page: "No. 20, 3rd floor, Shivanand," },
+                { page: "Nagar, 6th Phase, JP Nagar," },
+                { page: "Bangalore - 560078" },
                 { page: "rs.gratitudegifts@gmail.com" },
                 { page: "(+91) 123-456-7356" },
+
+
+                  
               ].map((item, index) => {
                 return <li key={index}>{item.page}</li>;
               })}

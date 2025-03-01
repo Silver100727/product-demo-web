@@ -8,7 +8,7 @@ import Categories from "./pages/Categories.jsx";
 import About from "./pages/About.jsx";
 import axios from "axios";
 import NestedProduct from "./pages/NestedProduct.jsx";
-const BaseUrl = "https://api.rsgratitudegifts.com/api/addproduct";
+const BaseUrl = "https://rsgratitudegifts.com/api/routes.php?action=addproduct";
 
 function App() {
   const [productsList, setProductsList] = useState([]);

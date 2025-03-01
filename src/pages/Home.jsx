@@ -2,44 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
-
-const brands = [
-  {
-    id: 1,
-    name: "nike-logo",
-    logo: "https://www.zarla.com/images/nike-logo-2400x2400-20220504.png?crop=1:1,smart&width=150&dpr=2",
-  },
-  {
-    id: 2,
-    name: "Brand Two",
-    logo: "https://www.zarla.com/images/zarla-chanel-combination-logo-2400x2400-20240701.png?crop=1:1,smart&width=150&dpr=2",
-  },
-  {
-    id: 3,
-    name: "Brand Three",
-    logo: "https://www.zarla.com/images/wwf-logo-2400x2400-20220518-2.png?crop=1:1,smart&width=150&dpr=2",
-  },
-  {
-    id: 4,
-    name: "Brand Four",
-    logo: "https://cdn.logojoy.com/wp-content/uploads/2018/05/30143448/196.png",
-  },
-  {
-    id: 5,
-    name: "Brand Five",
-    logo: "https://cdn.logojoy.com/wp-content/uploads/2018/05/30143416/810.png",
-  },
-  // Add more brands as needed
-];
-
-// Duplicate the brands array for seamless scrolling
-const duplicatedBrands = [
-  ...brands,
-  ...brands,
-  ...brands,
-  ...brands,
-  ...brands,
-];
+import { brands } from "../utils";
 
 const Banner = [
   {
@@ -298,7 +261,7 @@ const Home = () => {
             <h2 className="text-4xl font-bold text-center mb-8">Our Brands</h2>
             <div className="overflow-hidden">
               <div className="flex animate-marquee">
-                {duplicatedBrands.map((brand, index) => (
+                {brands.map((brand, index) => (
                   <div
                     key={index}
                     className="flex-shrink-0 w-1/10  max-sm:w-1/4 p-4"
