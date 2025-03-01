@@ -9,10 +9,10 @@ const CategoryCard = ({ category }) => {
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.02 }}
       viewport={{ once: true, amount: 0.3 }}
-      className="relative group cursor-pointer min-w-[400px]"
+      className="relative group cursor-pointer"
     >
       <Link to={`/categories/${category.id}`}>
-        <div className="relative h-64 rounded-lg overflow-hidden">
+        <div className="relative h-64 min-w-[250px] sm:min-w-[300px] md:min-w-[350px] rounded-lg overflow-hidden">
           <img
             src={category.image}
             alt={category.name}
