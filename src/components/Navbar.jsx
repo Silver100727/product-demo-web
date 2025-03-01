@@ -1,26 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import { Gift, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Navbar = (props) => {
+const links = [
+  { to: "/", label: "Home" },
+  { to: "/products", label: "Products" },
+  { to: "/brands", label: "Brands" },
+  { to: "/categories", label: "Categories" },
+  { to: "/about", label: "About" },
+];
+
+const Navbar = ({ scrolled }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const links = [
-    { to: "/", label: "Home" },
-    { to: "/products", label: "Products" },
-    { to: "/categories", label: "Categories" },
-    { to: "/about", label: "About" },
-  ];
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <motion.nav
       initial={{ borderRadius: "0px" }}
       animate={{
-        borderRadius: props.scrolled ? (isOpen ? "20px" : "20px") : "0px",
-        width: props.scrolled ? "90%" : "100%",
-        left: props.scrolled ? "5%" : "",
-        top: props.scrolled ? "2%" : "",
+        borderRadius: scrolled ? (isOpen ? "20px" : "20px") : "0px",
+        width: scrolled ? "90%" : "100%",
+        left: scrolled ? "5%" : "",
+        top: scrolled ? "2%" : "",
       }}
       transition={{ duration: 0.5 }}
       className="bg-white shadow-lg fixed w-full z-50"
@@ -38,16 +43,16 @@ const Navbar = (props) => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {links.map((link) => (
+          <div className="hidden md:flex items-center space-x-5">
+            {links.map((link, index) => (
               <NavLink
-                key={link.to}
+                key={index}
                 to={link.to}
-                className={({ isActive }) => {
-                  return `text-gray-600 hover:text-blue-400 transition-colors ${
+                className={({ isActive }) =>
+                  `text-gray-600 hover:text-blue-400 transition-colors ${
                     isActive ? "font-semibold text-blue-500" : ""
-                  }`;
-                }}
+                  }`
+                }
                 end
               >
                 {link.label}
@@ -58,7 +63,7 @@ const Navbar = (props) => {
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={handleToggle}
               className="text-gray-600 hover:text-gray-900"
             >
               {isOpen ? (
@@ -82,13 +87,13 @@ const Navbar = (props) => {
             style={{ borderRadius: isOpen ? "20px" : "0px" }}
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {links.map((link) => (
+              {links.map((link, index) => (
                 <NavLink
-                  key={link.to}
+                  key={index}
                   to={link.to}
-                  onClick={() => setIsOpen(false)}
+                  onClick={handleToggle}
                   className={({ isActive }) =>
-                    `block px-3 py-2 rounded-md text-base font-medium ${
+                    `block px-3 py-1.5 rounded-md text-base font-medium ${
                       isActive
                         ? "text-blue-600 bg-blue-50"
                         : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"

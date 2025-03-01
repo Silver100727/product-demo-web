@@ -2,14 +2,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-const CategoryCard = ({category}) => {
+const CategoryCard = ({ category }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.02 }}
       viewport={{ once: true, amount: 0.3 }}
-      className="relative group cursor-pointer"
+      className="relative group cursor-pointer min-w-[400px]"
     >
       <Link to={`/categories/${category.id}`}>
         <div className="relative h-64 rounded-lg overflow-hidden">
@@ -21,7 +21,9 @@ const CategoryCard = ({category}) => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           <div className="absolute bottom-0 left-0 p-6">
             <h3 className="text-2xl font-bold text-white">{category.name}</h3>
-            <p className="mt-2 text-white/90 line-clamp-2">{category.description}</p>
+            <p className="mt-2 text-white/90 line-clamp-2">
+              {category.description}
+            </p>
           </div>
         </div>
       </Link>
