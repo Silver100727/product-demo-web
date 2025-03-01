@@ -45,9 +45,6 @@ const Footer = () => {
                 { page: "Bangalore - 560078" },
                 { page: "rs.gratitudegifts@gmail.com" },
                 { page: "(+91) 123-456-7356" },
-
-
-                  
               ].map((item, index) => {
                 return <li key={index}>{item.page}</li>;
               })}
