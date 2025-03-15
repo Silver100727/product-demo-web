@@ -134,7 +134,6 @@ const Home = () => {
   const [selectedFuturePrd, setselectedFuturePrd] = useState(FutureImg[0]);
   const indexRef = useRef(0);
   useEffect(() => {
-    // window.scrollTo(0, 0);
     let timer = setInterval(() => {
       setselectedFuturePrd(FutureImg[indexRef.current]);
       if (indexRef.current === FutureImg.length - 1) {
@@ -221,7 +220,7 @@ const Home = () => {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="relative max-sm:h-[250px] max-sm:w-[330px] w-auto h-auto bg-[#EFF6FF]"
+              className="relative max-sm:h-[250px] max-sm:w-full bg-[#EFF6FF]"
             >
               <AnimatePresence mode="wait">
                 <motion.img
@@ -278,6 +277,7 @@ const Home = () => {
             </div>
           </div>
         </section>
+        
       </div>
 
       {/* Footer Section */}
