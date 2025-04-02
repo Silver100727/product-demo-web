@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ProductCard from "../components/ProductCard.jsx";
-import Footer from "../components/Footer.jsx";
 import { ChevronDown } from "lucide-react";
 
 const CustomDropdown = ({ category, setCategory }) => {
@@ -20,10 +19,10 @@ const CustomDropdown = ({ category, setCategory }) => {
       {/* Dropdown Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between text-gray-600 items-center p-3 px-7 border border-gray-300 bg-white rounded-full shadow-sm focus:outline-none transition-all duration-300 ease-in-out cursor-pointer"
+        className="w-full flex justify-between h-10 text-sm text-gray-600 items-center p-3 px-7 border border-gray-300 bg-white rounded-full shadow-sm focus:outline-none transition-all duration-300 ease-in-out cursor-pointer"
       >
         {categories.find((c) => c.value === category)?.label}
-        <ChevronDown className="w-5 h-5 text-gray-500 transition-transform duration-300" />
+        <ChevronDown className="w-4 h-4 text-gray-500 transition-transform duration-300" />
       </button>
 
       {/* Dropdown Menu */}
@@ -36,7 +35,7 @@ const CustomDropdown = ({ category, setCategory }) => {
                 setCategory(item.value);
                 setIsOpen(false);
               }}
-              className={`p-2  cursor-pointer hover:bg-blue-500 hover:text-white transition duration-300 rounded-lg ${
+              className={`p-2  cursor-pointer hover:bg-[#C27AFF] text-sm hover:text-white transition duration-300 rounded-lg ${
                 category === item.value ? "bg-gray-100" : ""
               }`}
             >
@@ -70,14 +69,14 @@ const Products = (props) => {
   }, [searchTerm, category, props.productsList]);
 
   return (
-    <div className="min-h-screen flex flex-col gap-6 pt-24 bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
+    <div className="min-h-screen flex flex-col gap-6 py-24 bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           initial={{ y: -70, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           className="text-center mb-6"
         >
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">
             Our Products
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
@@ -86,15 +85,15 @@ const Products = (props) => {
           </p>
         </motion.div>
 
-        <div className="mb-12 flex flex-wrap justify-center gap-4">
+        <div className="mb-6 flex flex-wrap justify-center gap-2">
           <input
             type="text"
             placeholder="🔍 Search for a product..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full md:w-96 p-3 px-5 border border-gray-300 bg-white rounded-full shadow-sm focus:outline-none focus:ring-0 focus:border-gray-300 transition-all duration-300 ease-in-out"
+            className="w-full md:w-80 p-2 h-10 text-sm px-4 border border-gray-300 bg-white rounded-full shadow-sm focus:outline-none focus:ring-0 focus:border-gray-300 transition-all duration-300 ease-in-out"
           />
-          <div className="relative w-full md:w-64">
+          <div className="relative w-full md:w-56">
             <CustomDropdown category={category} setCategory={setCategory} />
           </div>
         </div>
@@ -115,7 +114,6 @@ const Products = (props) => {
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 };

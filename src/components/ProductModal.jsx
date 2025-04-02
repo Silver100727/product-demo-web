@@ -98,7 +98,7 @@ const ProductModal = ({ product, onClose }) => {
               {product.title}
             </h2>
             <p className="text-xl text-blue-600 font-semibold mb-4">
-              ${product.price}
+              ₹ {product.price}
             </p>
             <p className="text-gray-600 mb-6">{product.description}</p>
 
@@ -132,12 +132,14 @@ const ProductModal = ({ product, onClose }) => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className={`flex justify-between ${
+                      className={`flex items-center ${
                         index !== 0 ? "border-t border-gray-200 pt-2 mt-2" : ""
                       }`}
                     >
-                      <span className="text-gray-600">{key}</span>
-                      <span className="font-medium text-gray-900">{value}</span>
+                      <span className="text-gray-600">{key}:</span>
+                      <span className="font-medium text-gray-900 ml-3">
+                        {value}
+                      </span>
                     </motion.div>
                   )
                 )}

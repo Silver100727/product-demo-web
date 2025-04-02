@@ -2,12 +2,14 @@ import React, { useState, useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import { Gift, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { label } from "framer-motion/client";
 
 const links = [
   { to: "/", label: "Home" },
+  { to: "/Corporate-Gifts", label: "Corporate Gifts" },
   { to: "/products", label: "Products" },
-  { to: "/brands", label: "Brands" },
   { to: "/categories", label: "Categories" },
+  { to: "/Contact-us", label: "Contact" },
   { to: "/about", label: "About" },
 ];
 
@@ -22,15 +24,15 @@ const Navbar = ({ scrolled }) => {
     <motion.nav
       initial={{ borderRadius: "0px" }}
       animate={{
-        borderRadius: scrolled ? (isOpen ? "20px" : "20px") : "0px",
-        width: scrolled ? "90%" : "100%",
-        left: scrolled ? "5%" : "",
-        top: scrolled ? "2%" : "",
+        borderRadius: scrolled ? (isOpen ? "0px" : "0px") : "0px",
+        width: scrolled ? "100%" : "100%",
+        left: scrolled ? "0%" : "0%",
+        top: scrolled ? "0%" : "0%",
       }}
       transition={{ duration: 0.5 }}
       className="bg-white shadow-lg fixed w-full z-50"
     >
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="max-w-7xl mx-auto px-2">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <NavLink
@@ -49,11 +51,12 @@ const Navbar = ({ scrolled }) => {
                 key={index}
                 to={link.to}
                 className={({ isActive }) =>
-                  `text-gray-600 hover:text-blue-400 transition-colors ${
-                    isActive ? "font-semibold text-blue-500" : ""
+                  `blocktext-sm rounded-md text-sm font-medium ${
+                    isActive
+                      ? "text-[#c27aff]"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   }`
                 }
-                end
               >
                 {link.label}
               </NavLink>
@@ -93,9 +96,9 @@ const Navbar = ({ scrolled }) => {
                   to={link.to}
                   onClick={handleToggle}
                   className={({ isActive }) =>
-                    `block px-3 py-1.5 rounded-md text-base font-medium ${
+                    `block px-3 py-1.5 text-sm rounded-md font-medium ${
                       isActive
-                        ? "text-blue-600 bg-blue-50"
+                        ? "text-[#c27aff] bg-blue-50"
                         : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                     }`
                   }

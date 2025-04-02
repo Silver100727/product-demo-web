@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { brands } from "../utils";
 import Dummy from "./dummy";
+import Trending from "../components/Trending.component";
 
 const Banner = [
   {
@@ -44,7 +45,7 @@ const Banner = [
   {
     title: "High-Quality, Thoughtful Gifts",
     description:
-      "At RS Gratitude Gifts, we pride ourselves on offering a wide variety of high-quality options—from branded merchandise to luxury items and personalized keepsakes. Each gift is carefully curated to create a lasting impression.",
+      "At RS Gratitude Gifts, we pride ourselves on offering a wide variety of high-quality options from branded merchandise to luxury items and personalized keepsakes. Each gift is carefully curated to create a lasting impression.",
     icon: () => (
       <svg
         className="w-12 h-12"
@@ -130,7 +131,7 @@ const FutureImg = [
   },
 ];
 
-const Home = () => {
+const Home = (props) => {
   const [selectedFuturePrd, setselectedFuturePrd] = useState(FutureImg[0]);
   const indexRef = useRef(0);
   useEffect(() => {
@@ -141,53 +142,64 @@ const Home = () => {
       } else {
         indexRef.current = indexRef.current + 1;
       }
-    }, 3000);
+    }, 10000);
 
     return () => {
       clearInterval(timer);
     };
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
-      <div className="min-h-screen flex flex-col gap-6 pt-16">
+      <div className="min-h-screen flex gap-7 flex-col pt-16 bg-[#FFFFFF]">
         {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="relative h-[80vh] bg-gradient-to-r from-blue-600 to-purple-600"
+          className="relative h-[80vh]"
         >
           <div className="absolute inset-0">
-            <img
-              src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1920"
-              alt="Hero background"
-              className="w-full h-full object-cover mix-blend-overlay"
-            />
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={selectedFuturePrd.key} // Ensure the key changes with the image
+                src={'https://rsgratitudegifts.com/api/banner/corporate_banner/corpokjh678.jpg'} // Dynamic background image
+                alt="Hero background"
+                className="w-full h-full object-cover"
+                initial={{ opacity: 0, scale: 0.95 }} // Start slightly smaller
+                animate={{ opacity: 1, scale: 1 }} // Fade in and scale up
+                exit={{ opacity: 0, scale: 1.05 }} // Fade out and scale up slightly
+                transition={{ duration: 0.5 }} // Adjust duration for fade and scale effect
+              />
+            </AnimatePresence>
           </div>
-          <div className="relative max-w-7xl mx-auto px-4 h-full flex items-center justify-center">
+          <div className="relative max-w-5xl mx-auto px-4 h-full flex items-center justify-center">
             <motion.div
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
               className="text-white max-w-full text-center flex flex-col items-center"
             >
-              <h1 className="text-3xl md:text-5xl font-bold">
+              <h1 className="text-3xl md:text-4xl font-bold">
                 Celebrate Every Moment with RS Gratitude Gifts
               </h1>
-              <p className="mb-8 max-w-2xl text-base sm:text-lg">
+              <p className="mb-8 max-w-2xl text-lg sm:text-lg">
                 Discover our exclusive collection of premium gifts designed to
                 express appreciation, celebrate milestones, and create lasting
                 memories.
               </p>
               <Link
                 to="/products"
-                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-semibold hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 transition-colors"
+                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 transition-transform transform hover:scale-105"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-4 h-4 mr-1.5"
+                  className="w-5 h-5 mr-2"
                 >
                   <path
                     fillRule="evenodd"
@@ -201,64 +213,32 @@ const Home = () => {
           </div>
         </motion.section>
 
-        {/* Featured Product Section */}
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <h2 className="text-4xl font-bold text-center mb-4">
-            Featured Product
-          </h2>
-          <div className="text-center mb-12">
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              At RS Gratitude Gifts, we offer a curated selection of top-quality
-              products, from stylish apparel to cutting-edge electronics and
-              more. Whether you're celebrating a milestone, showing
-              appreciation, or planning a team event, we have the perfect
-              solution to make every moment special. Explore our featured
-              product and find the ideal gift today!
+        {/* trending Product Section */}
+        <section className="py-16 bg-white">
+          <div className="container px-4 mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-4">
+              Our Trending Product
+            </h2>
+            <p className="text-neutral-600 text-center max-w-4xl mx-auto mb-12">
+              At RS Gratitude Gifts, we offer premium products from stylish
+              apparel to cutting edge electronics. Whether celebrating
+              milestones or showing appreciation, find the perfect gift today!
             </p>
-          </div>
-          <div className="flex flex-col items-center justify-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="relative max-sm:h-[250px] max-sm:w-full bg-[#EFF6FF]"
-            >
-              <AnimatePresence mode="wait">
-                <motion.img
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="h-full w-full rounded-lg"
-                  src={selectedFuturePrd.link}
-                  key={selectedFuturePrd.key}
-                  alt="Featured product"
-                />
-              </AnimatePresence>
-            </motion.div>
 
-            {/* Responsive grid: 2 columns on very small screens, increasing for larger devices */}
-            <div className="grid grid-cols-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-5">
-              {FutureImg.map((product) => (
-                <div
-                  key={product.key}
-                  onClick={() => {
-                    setselectedFuturePrd(product);
-                  }}
-                >
-                  <img
-                    className="h-auto max-w-full rounded-lg cursor-pointer"
-                    src={product.link}
-                    alt="Product thumbnail"
-                  />
-                </div>
-              ))}
-            </div>
+            <Trending brands={props.trentingList} />
           </div>
-        </div>
+        </section>
 
         {/* Brands Carousel Section (commented out for now) */}
-        <section className=" bg-[#EFF6FF]">
+        <section className="mb-12 bg-[#FFFFFF]">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-8">Our Brands</h2>
+
+            <h2 className="text-4xl font-bold text-center mb-2">Our Brands</h2>
+            <p className="text-neutral-600 text-center max-w-4xl mx-auto mb-4">
+              We partner with premium brands to bring you exceptional quality
+              and unique gifting options.
+            </p>
+
             <div className="overflow-hidden">
               <div className="flex animate-marquee">
                 {brands.map((brand, index) => (
@@ -267,9 +247,10 @@ const Home = () => {
                     className="flex-shrink-0 w-1/10  max-sm:w-1/4 p-4"
                   >
                     <img
+                      loading="lazy"
                       src={brand.logo}
                       alt={brand.name}
-                      className="w-24 h-24 object-contain"
+                      className="w-full h-24 object-contain"
                     />
                   </div>
                 ))}
@@ -277,11 +258,10 @@ const Home = () => {
             </div>
           </div>
         </section>
-        
       </div>
 
       {/* Footer Section */}
-      <Dummy/>
+      <Dummy />
       <footer className="text-white relative bg-black">
         <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_2px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_2px)] bg-[size:34px_44px]"></div>
         <div className="max-w-7xl mx-auto px-4">
@@ -309,19 +289,17 @@ const Home = () => {
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true, amount: 1 }}
                 transition={{ delay: index * 0.2 }}
-                className="bg-white p-6 rounded-lg shadow-md border-b-2 z-10"
+                className="bg-white p-4 rounded-lg shadow-md border-b-2 z-10"
               >
-                <feature.icon className="w-12 h-12 text-blue-600 mb-4" />
-                <h3 className="text-xl text-black font-semibold mb-2">
+                <h3 className="text-lg text-black font-semibold mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <p className="text-gray-600 text-xs">{feature.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </footer>
-      <Footer />
     </>
   );
 };

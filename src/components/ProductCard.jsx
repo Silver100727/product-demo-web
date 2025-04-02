@@ -17,6 +17,7 @@ const ProductCard = ({ product }) => {
       >
         <div className="relative overflow-hidden aspect-2/1">
           <img
+            loading="lazy"
             src={product.imageLinks[0]}
             alt={product.title}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
@@ -32,10 +33,10 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
         <div className="p-4">
-          <h3 className="text-xl font-semibold text-gray-600">
+          <h3 className="text-lg font-semibold text-gray-600">
             {product.title}
           </h3>
-          <p className="mt-2 text-sm text-gray-600 line-clamp-2">
+          <p className="mt-0.5 text-sm text-gray-600 line-clamp-2">
             {product.description}
           </p>
           <div className="mt-4 flex items-center justify-end">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ScanEye, X } from "lucide-react";
@@ -33,6 +33,10 @@ const ProductDetail = (props) => {
   // Handlers to open/close modal
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="h-screen pt-24 pb-12 flex flex-col px-4 bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
@@ -104,13 +108,13 @@ const ProductDetail = (props) => {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="md:aspect-3/2 overflow-y-auto"
+          className="md:aspect-3/2 overflow-y-auto bg-white"
         >
           <h1 className="text-3xl font-bold text-gray-900 mb-4">
             {product.title}
           </h1>
           <p className="text-2xl text-blue-600 font-semibold mb-6">
-            ${product.price}
+            ₹ {product.price}
           </p>
           <p className="text-gray-600 mb-8">{product.description}</p>
           <h2 className="text-xl font-semibold mb-4">Features</h2>
@@ -139,12 +143,14 @@ const ProductDetail = (props) => {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className={`flex justify-between ${
+                  className={`flex items-center ${
                     index !== 0 ? "border-t border-gray-100 pt-3 mt-3" : ""
                   }`}
                 >
-                  <span className="text-gray-600">{key}</span>
-                  <span className="font-medium text-gray-900">{value}</span>
+                  <span className="text-gray-600">{key} :</span>
+                  <span className="font-medium text-gray-900 ml-3">
+                    {value}
+                  </span>
                 </motion.div>
               )
             )}
@@ -177,7 +183,6 @@ const ProductDetail = (props) => {
               />
             </motion.div>
 
-           
             {/* Close Button */}
             <motion.button
               whileHover={{ scale: 1.1 }}

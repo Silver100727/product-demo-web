@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import CategoryCard from "../components/CategoryCard.jsx";
-import Footer from "../components/Footer.jsx";
 
 const Categories = (props) => {
   useEffect(() => {
@@ -15,7 +14,7 @@ const Categories = (props) => {
           animate={{ y: 0, opacity: 1 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Categories</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">Categories</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Browse our product categories to find exactly what you're looking
             for
@@ -54,7 +53,6 @@ const Categories = (props) => {
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 };

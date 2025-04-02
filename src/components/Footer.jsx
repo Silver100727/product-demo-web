@@ -28,14 +28,46 @@ const Footer = () => {
               <Gift className="h-8 w-8 text-purple-400" />
               <span className="ml-2 text-xl font-bold">RS Gratitude Gifts</span>
             </div>
-            <p className="text-gray-400">
+
+            <p className="text-gray-400 text-sm w-[250px] mb-4">
               Curating the perfect gifts for every occasion.
             </p>
+
+            <div className="flex space-x-4">
+              {[
+                {
+                  icon: <InstagramIcon className="h-5 w-5" />,
+                  link: "https://www.instagram.com/rsgratitudegifts/",
+                },
+                {
+                  icon: <FacebookIcon className="h-5 w-5" />,
+                  link: "https://www.facebook.com/people/RS-Gratitude-Gifts/61573472153305/",
+                },
+                {
+                  icon: <Whatsapp className="h-5 w-5" />,
+                  link: "https://wa.me/919900123901",
+                },
+                {
+                  icon: <LinkedinIcon className="h-5 w-5" />,
+                  link: "https://www.linkedin.com/in/rs-gratitude-gifts-642524351/",
+                },
+              ].map((item, index) => (
+                <a
+                  href={item.link}
+                  key={index}
+                  className="text-gray-400 hover:text-white"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {item.icon}
+                </a>
+              ))}
+            </div>
           </div>
 
           <div>
             <h3 className="text-lg font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-sm">
               {[
                 { to: "/", page: "Home" },
                 { to: "/products", page: "Products" },
@@ -53,13 +85,13 @@ const Footer = () => {
 
           <div>
             <h3 className="text-lg font-bold mb-4">Contact</h3>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-gray-400 text-sm">
               {[
                 { page: "No. 20, 3rd floor, Shivanand," },
                 { page: "Nagar, 6th Phase, JP Nagar," },
                 { page: "Bangalore - 560078" },
-                { page: "rs.gratitudegifts@gmail.com" },
-                { page: "(+91) 123-456-7356" },
+                { page: "@rsgratitudegifts.com" },
+                { page: "(+91) 9900123901" },
               ].map((item, index) => {
                 return <li key={index}>{item.page}</li>;
               })}
@@ -67,46 +99,51 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4">Follow Us</h3>
-            <div className="flex space-x-4">
-              {[
-                {
-                  icon: <InstagramIcon className="h-6 w-6" />,
-                  link: "https://www.instagram.com/rsgratitudegifts/",
-                },
-                {
-                  icon: <FacebookIcon className="h-6 w-6" />,
-                  link: "https://www.facebook.com/people/RS-Gratitude-Gifts/61573472153305/",
-                },
-                {
-                  icon: <Whatsapp className="h-6 w-6" />,
-                  link: "https://wa.me/919900123901",
-                },
-                {
-                  icon: <LinkedinIcon className="h-6 w-6" />,
-                  link: "https://www.linkedin.com/in/rs-gratitude-gifts-642524351/",
-                },
-              ].map((item, index) => (
-                <a
-                  href={item.link}
-                  key={index}
-                  className="text-gray-400 hover:text-white"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {item.icon}
-                </a>
-              ))}
-            </div>
+            <h3 className="text-white text-lg font-semibold mb-4">
+              Business Hours
+            </h3>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li className="flex justify-between">
+                <span>Monday - Friday:</span>
+                <span>9:00 AM - 6:00 PM</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Saturday:</span>
+                <span>10:00 AM - 4:00 PM</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Sunday:</span>
+                <span>Closed</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="pt-15 pb-2 text-center text-[13px] text-gray-400">
-          <p>Terms and Conditions Privacy Policy</p>
-          <p>
+        <div className="border-t border-neutral-800 mt-12 py-8  flex flex-col md:flex-row justify-between items-center">
+          <p className="text-sm mb-4 md:mb-0">
             &copy; {new Date().getFullYear()} RS Gratitude Gifts. All rights
             reserved.
           </p>
+          <div className="flex space-x-6 text-sm">
+            <Link
+              href="/privacy-policy"
+              className="hover:text-gold-300 transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms-of-service"
+              className="hover:text-white transition-colors"
+            >
+              Terms of Service
+            </Link>
+            <Link
+              href="/shipping-policy"
+              className="hover:text-gold-300 transition-colors"
+            >
+              Shipping Policy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
+import person1 from "../asset/Image/pic1.jpeg";
+import person2 from "../asset/Image/pic2.jpeg";
 import {
   Users,
   Shield,
@@ -79,25 +81,18 @@ const work = [
 
 const team = [
   {
-    name: "Sarah Johnson",
-    position: "Founder & Creative Director",
+    name: "",
+    position: "Managing Director",
     description:
-      "With a keen eye for detail and a passion for meaningful gifting, Sarah leads our creative vision.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
+      "A visionary leader with expertise in corporate gifting, dedicated to creating meaningful business connections through thoughtful and impactful gift solutions.",
+    image: person1,
   },
   {
-    name: "Michael Chen",
-    position: "Head of Gifting Strategy",
+    name: "",
+    position: "Business Development Analyst",
     description:
-      "Michael curates our exclusive collection, ensuring each gift tells its own unique story.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
-  },
-  {
-    name: "Emily Rodriguez",
-    position: "Customer Happiness Manager",
-    description:
-      "Emily is dedicated to providing exceptional service, making every experience unforgettable.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
+      "Strategic thinker who curates our premium collection, ensuring each gift perfectly aligns with client branding while creating lasting impressions.",
+    image: person2,
   },
 ];
 const About = () => {
@@ -105,7 +100,7 @@ const About = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="min-h-screen flex flex-col gap-6 pt-24 bg-white">
+    <div className="min-h-screen flex flex-col gap-6 py-24 bg-white">
       <div className="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
       <div className="absolute bottom-auto left-0 right-auto top-200 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
       <div className="absolute bottom-auto left-auto right-0 top-400 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
@@ -121,7 +116,7 @@ const About = () => {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             About RS Gratitude Gifts
           </h1>
-          <p className="text-gray-600 max-w-5xl text-justify max-sm:text-start  mx-auto">
+          <p className="text-gray-600 max-w-6xl text-sm text-cent max-sm:text-start  mx-auto">
             At RS Gratitude Gifts, we specialize in crafting memorable and
             meaningful corporate gifts designed to strengthen and enhance
             business relationships. Whether you're looking to recognize a valued
@@ -153,7 +148,7 @@ const About = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-4 ">
               Our Mission
             </h2>
-            <p className="text-gray-600 text-justify max-sm:text-start ">
+            <p className="text-gray-600 text-justify text-sm max-sm:text-start ">
               At RS Gratitude Gifts, our mission is to create meaningful
               connections by offering thoughtfully designed, personalized gifts
               that express appreciation and strengthen relationships between
@@ -174,7 +169,7 @@ const About = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Our Vision
             </h2>
-            <p className="text-gray-600 text-justify max-sm:text-start">
+            <p className="text-gray-600 text-justify text-sm max-sm:text-start">
               To become the leading provider of customized corporate gifts,
               known for our creativity, attention to detail, and commitment to
               delivering exceptional service. We envision a world where every
@@ -210,7 +205,7 @@ const About = () => {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {value.title}
                 </h3>
-                <p className="text-gray-600">{value.description}</p>
+                <p className="text-gray-600 text-sm">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -237,7 +232,7 @@ const About = () => {
               >
                 <value.icon className="w-12 h-12 mx-auto mb-4 text-purple-600" />
                 <h3 className="text-3xl font-bold mb-2">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+                <p className="text-gray-600 text-sm">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -251,7 +246,7 @@ const About = () => {
           className="text-center "
         >
           <h2 className="text-3xl font-bold text-gray-900 mb-12">Our Team</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {team.map((member, index) => (
               <motion.div
                 key={member.name}
@@ -268,14 +263,13 @@ const About = () => {
                 <h3 className="text-xl font-semibold text-gray-900 mb-1">
                   {member.name}
                 </h3>
-                <p className="text-blue-600 mb-3">{member.position}</p>
-                <p className="text-gray-600">{member.description}</p>
+                <p className="text-blue-600 text-sm mb-3">{member.position}</p>
+                <p className="text-gray-600 text-sm">{member.description}</p>
               </motion.div>
             ))}
           </div>
         </motion.div>
       </div>
-      <Footer />
     </div>
   );
 };
