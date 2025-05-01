@@ -81,14 +81,14 @@ const work = [
 
 const team = [
   {
-    name: "",
+    name: "Dalavatam Ashok",
     position: "Managing Director",
     description:
       "A visionary leader with expertise in corporate gifting, dedicated to creating meaningful business connections through thoughtful and impactful gift solutions.",
     image: person1,
   },
   {
-    name: "",
+    name: "Damodar reddy",
     position: "Business Development Analyst",
     description:
       "Strategic thinker who curates our premium collection, ensuring each gift perfectly aligns with client branding while creating lasting impressions.",
