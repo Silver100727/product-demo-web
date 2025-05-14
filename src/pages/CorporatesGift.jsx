@@ -1,34 +1,12 @@
 import { ChevronRight } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
-const FutureImg = [
-  {
-    key: 1,
-    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg",
-  },
-  {
-    key: 2,
-    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg",
-  },
-  {
-    key: 3,
-    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg",
-  },
-  {
-    key: 4,
-    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg",
-  },
-  {
-    key: 5,
-    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg",
-  },
-];
+import { Link, useNavigate } from "react-router-dom";
+import CorporateBanner from "../asset/Image/Corporate.png";
+import FestivalBanner from "../asset/Image/Festival.png";
 
 const CorporatesGift = (props) => {
-  const [selectedFuturePrd, setselectedFuturePrd] = useState(FutureImg[0]);
-  const indexRef = useRef(0);
-
   const Navto = useNavigate();
 
   const CoperateProductList = props.productsList.filter(
@@ -38,30 +16,23 @@ const CorporatesGift = (props) => {
   const FestivalProductList = props.productsList.filter(
     (p) => p.category == "Festival"
   );
-  useEffect(() => {
-    let timer = setInterval(() => {
-      setselectedFuturePrd(FutureImg[indexRef.current]);
-      if (indexRef.current === FutureImg.length - 1) {
-        indexRef.current = 0;
-      } else {
-        indexRef.current = indexRef.current + 1;
-      }
-    }, 10000);
 
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
   return (
     <main className="flex-1">
-      <section className="relative bg-[#C27AFF] text-white">
-        <div className="absolute inset-0 overflow-hidden">
-          <img
-            loading="lazy"
-            key={selectedFuturePrd.key} // Ensure the key changes with the image
-            src={selectedFuturePrd.link} // Dynamic background image
-            alt="Corporate gifting"
-            className="w-full h-full object-cover opacity-20"
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="relative h-[80vh] text-white"
+      >
+        <div className="absolute inset-0">
+          <motion.img
+            src={CorporateBanner}
+            alt="Corporate background"
+            className="w-full h-full object-cover"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.05 }}
+            transition={{ duration: 0.5 }}
           />
         </div>
         <div className="container relative px-4 py-20 md:py-32 mx-auto">
@@ -77,7 +48,7 @@ const CorporatesGift = (props) => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to={`/categories/Corporate%20Gift`}
-                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 transition-transform transform hover:scale-105"
+                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-[#1FC4E4] hover:to-[#123E85] transition-transform transform hover:scale-105"
               >
                 Explore Corporate Collections
                 <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -85,7 +56,7 @@ const CorporatesGift = (props) => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <section className="py-16 bg-neutral-50">
         <div className="container px-4 mx-auto">
@@ -130,16 +101,23 @@ const CorporatesGift = (props) => {
         </div>
       </section>
 
-      <section className="relative bg-[#C27AFF] text-white">
-        <div className="absolute inset-0 overflow-hidden">
-          <img
-            loading="lazy"
-            key={selectedFuturePrd.key} // Ensure the key changes with the image
-            src={selectedFuturePrd.link} // Dynamic background image
-            alt="Corporate gifting"
-            className="w-full h-full object-cover opacity-20"
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="relative h-[80vh] text-white"
+      >
+        <div className="absolute inset-0">
+          <motion.img
+            src={FestivalBanner}
+            alt="festival background"
+            className="w-full h-full object-cover"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.05 }}
+            transition={{ duration: 0.5 }}
           />
         </div>
+
         <div className="container relative px-4 py-20 md:py-32 mx-auto">
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
@@ -153,7 +131,7 @@ const CorporatesGift = (props) => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to={`/categories/Festival`}
-                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 transition-transform transform hover:scale-105"
+                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-[#800000] to-[#B22222] text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-[#B22222] hover:to-[#800000] transition-transform transform hover:scale-105"
               >
                 Explore Festival Collections
                 <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -161,7 +139,8 @@ const CorporatesGift = (props) => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
+
       <section className="py-16 bg-neutral-50">
         <div className="container px-4 mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12">

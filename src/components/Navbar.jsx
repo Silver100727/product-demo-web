@@ -53,7 +53,7 @@ const Navbar = ({ scrolled }) => {
                 className={({ isActive }) =>
                   `blocktext-sm rounded-md text-sm font-medium ${
                     isActive
-                      ? "text-[#c27aff]"
+                      ? "text-[#123E85]"
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   }`
                 }
@@ -98,7 +98,7 @@ const Navbar = ({ scrolled }) => {
                   className={({ isActive }) =>
                     `block px-3 py-1.5 text-sm rounded-md font-medium ${
                       isActive
-                        ? "text-[#c27aff] bg-blue-50"
+                        ? "text-[#123E85] bg-blue-50"
                         : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                     }`
                   }

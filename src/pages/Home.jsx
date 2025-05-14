@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import MainBanner from "../asset/Image/Main banner.png";
+import MainBanner from "../asset/Image/Mainbanner.png";
 import { brands } from "../utils";
 import Dummy from "./dummy";
 import Trending from "../components/Trending.component";
@@ -108,29 +108,6 @@ const Banner = [
   },
 ];
 
-const FutureImg = [
-  {
-    key: 1,
-    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg",
-  },
-  {
-    key: 2,
-    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg",
-  },
-  {
-    key: 3,
-    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg",
-  },
-  {
-    key: 4,
-    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg",
-  },
-  {
-    key: 5,
-    link: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg",
-  },
-];
-
 const Home = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -156,6 +133,7 @@ const Home = (props) => {
               transition={{ duration: 0.5 }}
             />
           </div>
+          
           <div className="relative max-w-5xl mx-auto px-4 h-full flex items-center justify-center">
             <motion.div
               initial={{ x: -100, opacity: 0 }}
