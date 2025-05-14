@@ -42,7 +42,7 @@ const Dummy = () => {
     <div className="px-[70px] py-8 bg-white">
       <div className="relative">
         {/* Main timeline line */}
-        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-blue-300 transform -translate-x-1/2 z-0 hidden md:block" />
+        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-[#1FC4E4] transform -translate-x-1/2 z-0 hidden md:block" />
 
         {categories.map((category, index) => {
           const isLeft = index % 2 === 0;
@@ -55,7 +55,7 @@ const Dummy = () => {
                 } flex-col md:flex-row`}
               >
                 {/* Timeline node */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow-md hidden md:block" />
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#123E85] border-4 border-white shadow-md hidden md:block" />
 
                 {/* Content card */}
                 <div
@@ -68,21 +68,21 @@ const Dummy = () => {
                       isLeft ? "md:border-l-4" : "md:border-r-4"
                     }  ${
                       hoveredIndex === index
-                        ? "border-blue-500 transform scale-105"
-                        : "border-blue-300"
+                        ? "border-[#123E85] transform scale-105"
+                        : "border-[#123E85]"
                     } transition-all duration-300`}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                   >
                     <div className="flex items-center gap-3 mb-2">
                       <div
-                        className={`p-2 rounded-full bg-blue-100 ${
+                        className={`p-2 rounded-full bg-[#123E85] ${
                           !isLeft ? "md:order-last" : ""
                         }`}
                       >
-                        <category.icon className="h-5 w-5 text-blue-600" />
+                        <category.icon className="h-5 w-5 text-white" />
                       </div>
-                      <h3 className="font-bold text-blue-800">
+                      <h3 className="font-bold text-[#123E85]">
                         {category.label}
                       </h3>
                     </div>

@@ -8,17 +8,14 @@ import {
   PhoneIcon,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
-    subject: "",
+    mobile: "",
     message: "",
-    inquiryType: "general",
-    supportType: "order-status",
-    company: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,25 +33,26 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      // Show toast notification
-      alert("Thank you for your message. We'll get back to you shortly.");
-
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-        inquiryType: "general",
-        supportType: "order-status",
-        company: "",
+    await axios
+      .post(
+        "https://rsgratitudegifts.com/api/routes.php?action=addcustomer",
+        formData
+      )
+      .then((response) => {
+        console.log(response.data);
+        alert("Thank you for your message. We'll get back to you shortly.");
+        setFormData({
+          name: "",
+          email: "",
+          mobile: "",
+          message: "",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      setIsSubmitting(false);
-    }, 1500);
+    setIsSubmitting(true);
   };
 
   useEffect(() => {
@@ -63,7 +61,7 @@ export default function Contact() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <section className="bg-[#C27AFF] text-white py-16 md:py-24">
+      <section className="bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white py-16 md:py-24">
         <div className="container px-4 mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
           <p className="text-lg max-w-2xl mx-auto">
@@ -141,7 +139,7 @@ export default function Contact() {
                         htmlFor="name"
                         className="block text-sm font-medium text-neutral-700 mb-1"
                       >
-                        Full Name *
+                        Full Name
                       </label>
                       <input
                         type="text"
@@ -159,7 +157,7 @@ export default function Contact() {
                         htmlFor="email"
                         className="block text-sm font-medium text-neutral-700 mb-1"
                       >
-                        Email Address *
+                        Email Address
                       </label>
                       <input
                         type="email"
@@ -167,70 +165,28 @@ export default function Contact() {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        required
                         placeholder="Your email"
                         className="w-full h-7 text-xs px-3 py-2 border border-neutral-300 rounded-md shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-0 focus:ring-burgundy-500 focus:border-burgundy-500"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="block text-sm font-medium text-neutral-700 mb-1"
-                      >
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="Your phone number"
-                        className="w-full h-7 text-xs px-3 py-2 border border-neutral-300 rounded-md shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-1 focus:ring-burgundy-500 focus:border-burgundy-500"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="inquiryType"
-                        className="block text-xs font-medium text-neutral-700 mb-1"
-                      >
-                        Inquiry Type *
-                      </label>
-                      <select
-                        id="inquiryType"
-                        name="inquiryType"
-                        value={formData.inquiryType}
-                        onChange={handleSelectChange}
-                        className="w-full px-3 h-7 text-xs text-neutral-700  border border-neutral-300 rounded-md shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-0 focus:ring-burgundy-500 focus:border-burgundy-500"
-                      >
-                        <option value="general">General Inquiry</option>
-                        <option value="order">Order Question</option>
-                        <option value="product">Product Information</option>
-                        <option value="corporate">Corporate Gifting</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                  </div>
-
                   <div>
                     <label
-                      htmlFor="subject"
-                      className="block text-xs font-medium text-neutral-700 mb-1"
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-neutral-700 mb-1"
                     >
-                      Subject *
+                      Phone Number
                     </label>
                     <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
+                      type="tel"
+                      id="mobile"
+                      name="mobile"
+                      value={formData.mobile}
                       required
-                      placeholder="Subject of your message"
-                      className="w-full h-7 text-xs px-3 py-2 border border-neutral-300 rounded-md shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-burgundy-500 focus:border-burgundy-500"
+                      onChange={handleChange}
+                      placeholder="Your phone number"
+                      className="w-full h-7 text-xs px-3 py-2 border border-neutral-300 rounded-md shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-1 focus:ring-burgundy-500 focus:border-burgundy-500"
                     />
                   </div>
 
@@ -239,14 +195,13 @@ export default function Contact() {
                       htmlFor="message"
                       className="block text-sm font-medium text-neutral-700 mb-1"
                     >
-                      Message *
+                      Message
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      required
                       placeholder="Your message"
                       rows={5}
                       className="w-full text-xs px-3 py-2 border border-neutral-300 rounded-md shadow-sm placeholder-neutral-400 focus:outline-none focus:ring-0 focus:ring-burgundy-500 focus:border-burgundy-500"
@@ -255,7 +210,7 @@ export default function Contact() {
 
                   <button
                     type="submit"
-                    className="w-full bg-[#C27AFF] text-xs text-white py-2 px-4 rounded-md font-medium hover:bg-burgundy-800 focus:outline-none focus:ring-0 focus:ring-offset-2 focus:ring-burgundy-500 transition-colors"
+                    className="w-full bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-xs text-white py-2 px-4 rounded-md font-medium hover:bg-burgundy-800 focus:outline-none focus:ring-0 focus:ring-offset-2 focus:ring-burgundy-500 transition-colors"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (

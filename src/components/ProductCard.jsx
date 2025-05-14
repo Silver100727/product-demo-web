@@ -42,7 +42,7 @@ const ProductCard = ({ product }) => {
           <div className="mt-4 flex items-center justify-end">
             <Link
               to={`/products/${product._id}`}
-              className="flex items-center text-blue-600 hover:text-blue-700"
+              className="flex items-center text-[#1FC4E4]"
             >
               View Details
               <ChevronRight size={16} className="ml-1" />

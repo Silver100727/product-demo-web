@@ -12,7 +12,6 @@ import {
   Flower2,
 } from "lucide-react";
 import { Building2, Award } from "lucide-react";
-import Footer from "../components/Footer";
 const values = [
   {
     title: "Appreciation",
@@ -101,9 +100,9 @@ const About = () => {
   }, []);
   return (
     <div className="min-h-screen flex flex-col gap-6 py-24 bg-white">
-      <div className="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
-      <div className="absolute bottom-auto left-0 right-auto top-200 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
-      <div className="absolute bottom-auto left-auto right-0 top-400 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
+      <div className="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(109,217,244,0.5)] opacity-50 blur-[80px]"></div>
+      <div className="absolute bottom-auto left-0 right-auto top-200 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(109,217,244,0.5)] opacity-50 blur-[80px]"></div>
+      <div className="absolute bottom-auto left-auto right-0 top-400 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(109,217,244,0.5)] opacity-50 blur-[80px]"></div>
 
       <div className="max-w-7xl mx-auto px-4">
         {/* Hero Section */}
@@ -200,7 +199,7 @@ const About = () => {
                 className={`text-center ${index === 6 ? "md:col-start-2" : ""}`}
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-4">
-                  <value.icon size={32} className="text-purple-600" />
+                  <value.icon size={32} className="text-[#123E85]" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {value.title}
@@ -230,7 +229,7 @@ const About = () => {
                 viewport={{ once: true, amount: 0.3 }}
                 className="text-center bg-white rounded-lg shadow-md p-6 z-10"
               >
-                <value.icon className="w-12 h-12 mx-auto mb-4 text-purple-600" />
+                <value.icon className="w-12 h-12 mx-auto mb-4 text-[#123E85]" />
                 <h3 className="text-3xl font-bold mb-2">{value.title}</h3>
                 <p className="text-gray-600 text-sm">{value.description}</p>
               </motion.div>
@@ -263,7 +262,7 @@ const About = () => {
                 <h3 className="text-xl font-semibold text-gray-900 mb-1">
                   {member.name}
                 </h3>
-                <p className="text-blue-600 text-sm mb-3">{member.position}</p>
+                <p className="text-[#123E85] text-sm mb-3">{member.position}</p>
                 <p className="text-gray-600 text-sm">{member.description}</p>
               </motion.div>
             ))}

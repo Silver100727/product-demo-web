@@ -7,11 +7,24 @@ const CustomDropdown = ({ category, setCategory }) => {
   const [isOpen, setIsOpen] = useState(false);
   const categories = [
     { label: "All Categories", value: "all" },
-    { label: "Electronics", value: "electronics" },
     { label: "T-shirt", value: "T-shirt" },
-    { label: "Fashion", value: "fashion" },
-    { label: "Home", value: "home" },
-    { label: "Beauty", value: "beauty" },
+    { label: "Shirt", value: "Shirt" },
+    { label: "Pants", value: "Pants" },
+    { label: "Jeans", value: "Jeans" },
+    { label: "Electronic Gadgets", value: "Electronic Gadgets" },
+    { label: "Track Suit", value: "Track Suit" },
+    { label: "Luggage", value: "Luggage" },
+    { label: "Trophies", value: "Trophies" },
+    { label: "Jackets", value: "Jackets" },
+    { label: "Bags", value: "Bags" },
+    { label: "Table desk", value: "Table desk" },
+    { label: "Joining kits", value: "Joining kits" },
+    { label: "Desktop accessories", value: "Desktop accessories" },
+    { label: "Drinkware & Kitchenware", value: "Drinkware & Kitchenware" },
+    { label: "Festival", value: "Festival" },
+    { label: "Corporate Gift", value: "Corporate Gift" },
+    { label: "Personalized & Custom Gifts", value: "Personalized & Custom Gifts" },
+    { label: "Others", value: "Others" }
   ];
 
   return (
