@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Gift, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import logo from "../asset/Image/logo.jpeg";
 import { motion, AnimatePresence } from "framer-motion";
-import { label } from "framer-motion/client";
 
 const links = [
   { to: "/", label: "Home" },
@@ -39,7 +39,7 @@ const Navbar = ({ scrolled }) => {
               to="/"
               className="text-xl font-bold text-gray-800 flex items-center"
             >
-              <Gift className="h-8 w-8 text-purple-400 mx-2" />
+              <img src={logo} alt="logo" className="h-10 w-12  rounded-md" />
               RS Gratitude Gift
             </NavLink>
           </div>

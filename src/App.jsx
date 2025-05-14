@@ -79,15 +79,6 @@ function App() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-
-
-
-
-
-
-
-  console.log('categoryList',categoryList)
   return (
     <Router>
       <div className="min-h-screen bg-blue-50">

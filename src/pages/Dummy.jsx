@@ -39,7 +39,7 @@ const categories = [
 const Dummy = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   return (
-    <div className="p-8 bg-white">
+    <div className="px-[70px] py-8 bg-white">
       <div className="relative">
         {/* Main timeline line */}
         <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-blue-300 transform -translate-x-1/2 z-0 hidden md:block" />

@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
+import MainBanner from "../asset/Image/Main banner.png";
 import { brands } from "../utils";
 import Dummy from "./dummy";
 import Trending from "../components/Trending.component";
@@ -132,23 +132,6 @@ const FutureImg = [
 ];
 
 const Home = (props) => {
-  const [selectedFuturePrd, setselectedFuturePrd] = useState(FutureImg[0]);
-  const indexRef = useRef(0);
-  useEffect(() => {
-    let timer = setInterval(() => {
-      setselectedFuturePrd(FutureImg[indexRef.current]);
-      if (indexRef.current === FutureImg.length - 1) {
-        indexRef.current = 0;
-      } else {
-        indexRef.current = indexRef.current + 1;
-      }
-    }, 10000);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -163,18 +146,15 @@ const Home = (props) => {
           className="relative h-[80vh]"
         >
           <div className="absolute inset-0">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={selectedFuturePrd.key} // Ensure the key changes with the image
-                src={'https://rsgratitudegifts.com/api/banner/corporate_banner/corpokjh678.jpg'} // Dynamic background image
-                alt="Hero background"
-                className="w-full h-full object-cover"
-                initial={{ opacity: 0, scale: 0.95 }} // Start slightly smaller
-                animate={{ opacity: 1, scale: 1 }} // Fade in and scale up
-                exit={{ opacity: 0, scale: 1.05 }} // Fade out and scale up slightly
-                transition={{ duration: 0.5 }} // Adjust duration for fade and scale effect
-              />
-            </AnimatePresence>
+            <motion.img
+              src={MainBanner}
+              alt="Hero background"
+              className="w-full h-full object-cover"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ duration: 0.5 }}
+            />
           </div>
           <div className="relative max-w-5xl mx-auto px-4 h-full flex items-center justify-center">
             <motion.div
@@ -193,7 +173,7 @@ const Home = (props) => {
               </p>
               <Link
                 to="/products"
-                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-600 transition-transform transform hover:scale-105"
+                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-[#1FC4E4] hover:to-[#123E85] transition-transform transform hover:scale-105"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +212,6 @@ const Home = (props) => {
         {/* Brands Carousel Section (commented out for now) */}
         <section className="mb-12 bg-[#FFFFFF]">
           <div className="max-w-7xl mx-auto px-4">
-
             <h2 className="text-4xl font-bold text-center mb-2">Our Brands</h2>
             <p className="text-neutral-600 text-center max-w-4xl mx-auto mb-4">
               We partner with premium brands to bring you exceptional quality

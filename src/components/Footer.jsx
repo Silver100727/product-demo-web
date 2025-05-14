@@ -1,6 +1,7 @@
-import { FacebookIcon, Gift, InstagramIcon, LinkedinIcon } from "lucide-react";
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../asset/Image/logo.jpeg";
 
 const Whatsapp = (props) => (
   <svg
@@ -25,7 +26,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center mb-4">
-              <Gift className="h-8 w-8 text-purple-400" />
+              {/* <Gift className="h-8 w-8 text-purple-400" /> */}
+              <img src={logo} alt="logo" className="h-10 w-10 rounded-md" />
+
               <span className="ml-2 text-xl font-bold">RS Gratitude Gifts</span>
             </div>
 

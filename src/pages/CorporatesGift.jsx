@@ -67,7 +67,7 @@ const CorporatesGift = (props) => {
         <div className="container relative px-4 py-20 md:py-32 mx-auto">
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Corporate Gifting Solutions
+              Corporate Gifting
             </h1>
             <p className="text-md mb-8">
               Strengthen business relationships and show appreciation with our
