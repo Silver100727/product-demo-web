@@ -120,7 +120,7 @@ const Home = (props) => {
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="relative h-[80vh]"
+          className="relative h-[50vh] sm:h-[60vh] md:h-[80vh]"
         >
           <div className="absolute inset-0">
             <motion.img
@@ -133,25 +133,22 @@ const Home = (props) => {
               transition={{ duration: 0.5 }}
             />
           </div>
-          
-          <div className="relative max-w-5xl mx-auto px-4 h-full flex items-center justify-center">
+          <div className="relative max-w-5xl mx-auto px-2 sm:px-4 h-full flex items-center justify-center">
             <motion.div
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-white max-w-full text-center flex flex-col items-center"
+              className="text-[#123E85] max-w-full text-center flex flex-col items-center"
             >
-              <h1 className="text-3xl md:text-4xl font-bold">
+              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
                 Celebrate Every Moment with RS Gratitude Gifts
               </h1>
-              <p className="mb-8 max-w-2xl text-lg sm:text-lg">
-                Discover our exclusive collection of premium gifts designed to
-                express appreciation, celebrate milestones, and create lasting
-                memories.
+              <p className="mb-8 max-w-2xl text-base sm:text-lg">
+                Discover our exclusive collection of premium gifts designed to express appreciation, celebrate milestones, and create lasting memories.
               </p>
               <Link
                 to="/products"
-                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-[#1FC4E4] hover:to-[#123E85] transition-transform transform hover:scale-105"
+                className="inline-flex flex-row items-center justify-center px-4 sm:px-6 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-[#1FC4E4] hover:to-[#123E85] transition-transform transform hover:scale-105"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -172,17 +169,14 @@ const Home = (props) => {
         </motion.section>
 
         {/* trending Product Section */}
-        <section className="py-16 bg-white">
-          <div className="container px-4 mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-4">
+        <section className="py-8 sm:py-12 md:py-16 bg-white">
+          <div className="container px-2 sm:px-4 mx-auto">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-2 sm:mb-4">
               Our Trending Product
             </h2>
-            <p className="text-neutral-600 text-center max-w-4xl mx-auto mb-12">
-              At RS Gratitude Gifts, we offer premium products from stylish
-              apparel to cutting edge electronics. Whether celebrating
-              milestones or showing appreciation, find the perfect gift today!
+            <p className="text-sm sm:text-base md:text-lg text-neutral-600 text-center max-w-4xl mx-auto mb-6 sm:mb-8 md:mb-12">
+              At RS Gratitude Gifts, we offer premium products from stylish apparel to cutting edge electronics. Whether celebrating milestones or showing appreciation, find the perfect gift today!
             </p>
-
             <Trending brands={props.trentingList} />
           </div>
         </section>

@@ -18,23 +18,22 @@ const CorporatesGift = (props) => {
   );
 
   return (
-    <main className="flex-1">
+    <main className="flex-1 mt-[60px]">
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="relative h-[80vh] text-white"
+        className="relative h-[47vh] text-white"
       >
-        <div className="absolute inset-0">
-          <motion.img
-            src={CorporateBanner}
-            alt="Corporate background"
-            className="w-full h-full object-cover"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.05 }}
-            transition={{ duration: 0.5 }}
-          />
-        </div>
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: `url(${CorporateBanner})`,
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+          }}
+        ></div>
+
         <div className="container relative px-4 py-20 md:py-32 mx-auto">
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
@@ -70,7 +69,7 @@ const CorporatesGift = (props) => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-12">
             {CoperateProductList.filter((_, idx) => idx < 4).map((item) => (
               <div
                 onClick={() => {
@@ -104,19 +103,17 @@ const CorporatesGift = (props) => {
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="relative h-[80vh] text-white"
+        className="relative h-[47vh] text-white"
       >
-        <div className="absolute inset-0">
-          <motion.img
-            src={FestivalBanner}
-            alt="festival background"
-            className="w-full h-full object-cover"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.05 }}
-            transition={{ duration: 0.5 }}
-          />
-        </div>
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: `url(${FestivalBanner})`,
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+          }}
+        ></div>
 
         <div className="container relative px-4 py-20 md:py-32 mx-auto">
           <div className="max-w-2xl">
@@ -151,7 +148,7 @@ const CorporatesGift = (props) => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-12">
             {FestivalProductList.filter((_, idx) => idx < 4).map((item) => (
               <div
                 onClick={() => {

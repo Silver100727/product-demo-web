@@ -309,8 +309,8 @@ const contactInfo = [
     title: "Contact Us",
     links: [
       {
-        label: "@rsgratitudegifts.com",
-        href: "mailto:@rsgratitudegifts.com",
+        label: "contact.us@rsgratitudegifts.com",
+        href: "mailto:contact.us@rsgratitudegifts.com",
       },
       { label: "+91 990-012-3901", href: "tel:+15551234567" },
     ],

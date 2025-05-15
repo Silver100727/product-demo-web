@@ -93,7 +93,7 @@ const Footer = () => {
                 { page: "No. 20, 3rd floor, Shivanand," },
                 { page: "Nagar, 6th Phase, JP Nagar," },
                 { page: "Bangalore - 560078" },
-                { page: "@rsgratitudegifts.com" },
+                { page: "contact.us@rsgratitudegifts.com" },
                 { page: "(+91) 9900123901" },
               ].map((item, index) => {
                 return <li key={index}>{item.page}</li>;
