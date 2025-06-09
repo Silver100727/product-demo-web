@@ -19,21 +19,85 @@ import {
 } from "lucide-react";
 
 const categories = [
-  { icon: UserPlus, label: "New Joiner or Onboarding Kits" },
-  { icon: Gift, label: "Annual Day Gifts" },
-  { icon: Package, label: "Festive Gifts and Hampers" },
-  { icon: Users, label: "Departmental Appreciation Gifts" },
-  { icon: BadgeCheck, label: "Retirement Gifts or Gratitude Gifts" },
-  { icon: Cake, label: "Birthdays or Work Anniversary Gifts" },
-  { icon: Trophy, label: "Rewards and Recognition" },
-  { icon: Coins, label: "Dealer Incentive Programs" },
-  { icon: Rocket, label: "New Product Launches" },
-  { icon: Handshake, label: "Distributor Appreciation Awards" },
-  { icon: Megaphone, label: "Brand Promotion Gifts" },
-  { icon: Star, label: "Client Visit Gifts" },
-  { icon: Ticket, label: "Gift Vouchers" },
-  { icon: Leaf, label: "Corporate Green Marketing Campaigns" },
-  { icon: Globe, label: "CSR Campaigns" },
+  {
+    icon: UserPlus,
+    label: "New Joiner or Onboarding Kits",
+    description:
+      "Welcome new employees with curated onboarding kits to make their first day memorable.",
+  },
+  {
+    icon: Gift,
+    label: "Annual Day Gifts",
+    description:
+      "Celebrate annual milestones with thoughtful gifts for your team.",
+  },
+  {
+    icon: Package,
+    label: "Festive Gifts and Hampers",
+    description:
+      "Spread festive cheer with special hampers and gifts for every occasion.",
+  },
+  {
+    icon: Users,
+    label: "Departmental Appreciation Gifts",
+    description: "Show appreciation to departments with personalized gifts.",
+  },
+  {
+    icon: BadgeCheck,
+    label: "Retirement Gifts or Gratitude Gifts",
+    description: "Honor retirees and express gratitude with meaningful gifts.",
+  },
+  {
+    icon: Cake,
+    label: "Birthdays or Work Anniversary Gifts",
+    description:
+      "Celebrate birthdays and work anniversaries with special tokens.",
+  },
+  {
+    icon: Trophy,
+    label: "Rewards and Recognition",
+    description: "Motivate employees through rewards and recognition programs.",
+  },
+  {
+    icon: Coins,
+    label: "Dealer Incentive Programs",
+    description: "Boost dealer engagement with attractive incentive gifts.",
+  },
+  {
+    icon: Rocket,
+    label: "New Product Launches",
+    description: "Mark new product launches with memorable gifts.",
+  },
+  {
+    icon: Handshake,
+    label: "Distributor Appreciation Awards",
+    description: "Recognize distributors for their valuable contributions.",
+  },
+  {
+    icon: Megaphone,
+    label: "Brand Promotion Gifts",
+    description: "Promote your brand with creative and useful gifts.",
+  },
+  {
+    icon: Star,
+    label: "Client Visit Gifts",
+    description: "Impress clients during visits with thoughtful gifts.",
+  },
+  {
+    icon: Ticket,
+    label: "Gift Vouchers",
+    description: "Offer flexible gifting options with vouchers.",
+  },
+  {
+    icon: Leaf,
+    label: "Corporate Green Marketing Campaigns",
+    description: "Support green initiatives with eco-friendly gifts.",
+  },
+  {
+    icon: Globe,
+    label: "CSR Campaigns",
+    description: "Enhance CSR campaigns with impactful gifting solutions.",
+  },
 ];
 
 const Dummy = () => {
@@ -46,7 +110,6 @@ const Dummy = () => {
 
         {categories.map((category, index) => {
           const isLeft = index % 2 === 0;
-
           return (
             <div key={index} className="relative z-10 mb-2">
               <div
@@ -86,9 +149,8 @@ const Dummy = () => {
                         {category.label}
                       </h3>
                     </div>
-                    <p className="text-sm text-gray-600">
-                      Perfect for expressing appreciation and strengthening
-                      relationships.
+                    <p className="text-sm flex items-start justify-start text-gray-600">
+                      {category.description}
                     </p>
                   </div>
                 </div>

@@ -1,88 +1,64 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ProductCard from "../components/ProductCard.jsx";
-import { ChevronDown } from "lucide-react";
-
-const CustomDropdown = ({ category, setCategory }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const categories = [
-    { label: "All Categories", value: "all" },
-    { label: "T-shirt", value: "T-shirt" },
-    { label: "Shirt", value: "Shirt" },
-    { label: "Pants", value: "Pants" },
-    { label: "Jeans", value: "Jeans" },
-    { label: "Electronic Gadgets", value: "Electronic Gadgets" },
-    { label: "Track Suit", value: "Track Suit" },
-    { label: "Luggage", value: "Luggage" },
-    { label: "Trophies", value: "Trophies" },
-    { label: "Jackets", value: "Jackets" },
-    { label: "Bags", value: "Bags" },
-    { label: "Table desk", value: "Table desk" },
-    { label: "Joining kits", value: "Joining kits" },
-    { label: "Desktop accessories", value: "Desktop accessories" },
-    { label: "Drinkware & Kitchenware", value: "Drinkware & Kitchenware" },
-    { label: "Festival", value: "Festival" },
-    { label: "Corporate Gift", value: "Corporate Gift" },
-    { label: "Personalized & Custom Gifts", value: "Personalized & Custom Gifts" },
-    { label: "Others", value: "Others" }
-  ];
-
-  return (
-    <div className="relative w-full md:w-64">
-      {/* Dropdown Button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between h-10 text-sm text-gray-600 items-center p-3 px-7 border border-gray-300 bg-white rounded-full shadow-sm focus:outline-none transition-all duration-300 ease-in-out cursor-pointer"
-      >
-        {categories.find((c) => c.value === category)?.label}
-        <ChevronDown className="w-4 h-4 text-gray-500 transition-transform duration-300" />
-      </button>
-
-      {/* Dropdown Menu */}
-      {isOpen && (
-        <div className="absolute left-0 mt-2 w-full p-3 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
-          {categories.map((item) => (
-            <div
-              key={item.value}
-              onClick={() => {
-                setCategory(item.value);
-                setIsOpen(false);
-              }}
-              className={`p-2  cursor-pointer hover:bg-[#C27AFF] text-sm hover:text-white transition duration-300 rounded-lg ${
-                category === item.value ? "bg-gray-100" : ""
-              }`}
-            >
-              {item.label}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
+import axios from "axios";
 
 const Products = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState(props.productsList);
-  const [category, setCategory] = useState("all");
+  const [productList, setproductList] = useState([]);
+  const [categories, setcategories] = useState([]);
+
+  const fetchProdutFromDb = () => {
+    axios
+      .post(
+        "https://rsgratitudegifts.com/api/routes.php?action=addproduct",
+        {
+          type: "get",
+          offset: 0,
+          limit: 10,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        if (res.data.success) {
+          setproductList(res.data.data);
+        } else {
+          setproductList([]);
+        }
+      })
+      .catch((err) => {});
+  };
+  const getsubCategoryFromDb = () => {
+    axios
+      .get(
+        "https://rsgratitudegifts.com/api/routes.php?action=getsubcategory",
+        {}
+      )
+      .then((res) => {
+        if (res.data.success) {
+          setcategories(res.data.data);
+        } else {
+          setcategories([]);
+        }
+      })
+      .catch((err) => {});
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
-    setFilteredProducts(
-      props.productsList.filter(
-        (product) =>
-          product.isLive &&
-          product.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-          (category === "all" || product.category === category)
-      )
-    );
-  }, [searchTerm, category, props.productsList]);
+    fetchProdutFromDb();
+    getsubCategoryFromDb();
+  }, []);
 
   return (
-    <div className="min-h-screen flex flex-col gap-6 py-24 bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
+    <div className="min-h-screen flex flex-col gap-6 py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           initial={{ y: -70, opacity: 0 }}
@@ -107,17 +83,24 @@ const Products = (props) => {
             className="w-full md:w-80 p-2 h-10 text-sm px-4 border border-gray-300 bg-white rounded-full shadow-sm focus:outline-none focus:ring-0 focus:border-gray-300 transition-all duration-300 ease-in-out"
           />
           <div className="relative w-full md:w-56">
-            <CustomDropdown category={category} setCategory={setCategory} />
+            <select className="w-full p-2 h-10 text-sm px-4 border  border-gray-300 bg-white rounded-full shadow-sm focus:outline-none focus:ring-0 focus:border-gray-300 transition-all duration-300 ease-in-out hover:border-gray-400 hover:shadow-md appearance-none">
+              <option value="">All Categories</option>
+              {categories?.map((category, index) => (
+                <option key={index} value={category._id}>
+                  {category.subcategory}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
-        {filteredProducts.length > 0 ? (
+        {productList?.length > 0 ? (
           <motion.div
             initial={{ y: 70, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-12"
           >
-            {filteredProducts.map((product, index) => (
+            {productList?.map((product, index) => (
               <ProductCard key={product._id} product={product} index={index} />
             ))}
           </motion.div>

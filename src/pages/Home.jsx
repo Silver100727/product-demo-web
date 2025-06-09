@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import MainBanner from "../asset/Image/Mainbanner.png";
+import MainBanner from "../asset/Image/MainBanner.jpg";
 import { brands } from "../utils";
 import Dummy from "./dummy";
 import Trending from "../components/Trending.component";
@@ -113,42 +113,65 @@ const Home = (props) => {
     window.scrollTo(0, 0);
   }, []);
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    let startInterval;
+    if (props.MainBannerImageList?.length > 1) {
+      startInterval = setInterval(() => {
+        setCurrentIndex(
+          (prevIndex) => (prevIndex + 1) % props.MainBannerImageList?.length
+        );
+      }, 3000);
+    }
+
+    return () => clearInterval(startInterval);
+  }, [currentIndex, props.MainBannerImageList?.length]);
+
   return (
     <>
       <div className="min-h-screen flex gap-7 flex-col pt-16 bg-[#FFFFFF]">
-        {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="relative h-[50vh] sm:h-[60vh] md:h-[80vh]"
         >
-          <div className="absolute inset-0">
-            <motion.img
-              src={MainBanner}
-              alt="Hero background"
-              className="w-full h-full object-cover"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.05 }}
+          <div className="absolute inset-0 slider-container">
+            <motion.div
+              className="slider"
+              initial={{ x: 0 }}
+              animate={{ x: -currentIndex * 100 + "%" }}
               transition={{ duration: 0.5 }}
-            />
+            >
+              {props.MainBannerImageList?.map((image, index) => (
+                <motion.img
+                  key={index}
+                  src={image}
+                  alt={`Slide ${index}`}
+                  className="slide"
+                  style={{ width: "100%", display: "inline-block" }}
+                />
+              ))}
+            </motion.div>
           </div>
           <div className="relative max-w-5xl mx-auto px-2 sm:px-4 h-full flex items-center justify-center">
             <motion.div
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-[#123E85] max-w-full text-center flex flex-col items-center"
+              className="text-white max-w-full text-center flex flex-col items-center"
             >
               <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
                 Celebrate Every Moment with RS Gratitude Gifts
               </h1>
               <p className="mb-8 max-w-2xl text-base sm:text-lg">
-                Discover our exclusive collection of premium gifts designed to express appreciation, celebrate milestones, and create lasting memories.
+                Discover our exclusive collection of premium gifts designed to
+                express appreciation, celebrate milestones, and create lasting
+                memories.
               </p>
               <Link
                 to="/products"
-                className="inline-flex flex-row items-center justify-center px-4 sm:px-6 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-[#1FC4E4] hover:to-[#123E85] transition-transform transform hover:scale-105"
+                className="inline-flex flex-row items-center justify-center px-4 sm:px-6 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold hover:bg-gradient-to-r transition-transform transform hover:scale-105"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -162,26 +185,26 @@ const Home = (props) => {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-                Explore Our Collection
+                Contact Us
               </Link>
             </motion.div>
           </div>
         </motion.section>
 
-        {/* trending Product Section */}
         <section className="py-8 sm:py-12 md:py-16 bg-white">
           <div className="container px-2 sm:px-4 mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-2 sm:mb-4">
               Our Trending Product
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-neutral-600 text-center max-w-4xl mx-auto mb-6 sm:mb-8 md:mb-12">
-              At RS Gratitude Gifts, we offer premium products from stylish apparel to cutting edge electronics. Whether celebrating milestones or showing appreciation, find the perfect gift today!
+              At RS Gratitude Gifts, we offer premium products from stylish
+              apparel to cutting edge electronics. Whether celebrating
+              milestones or showing appreciation, find the perfect gift today!
             </p>
             <Trending brands={props.trentingList} />
           </div>
         </section>
 
-        {/* Brands Carousel Section (commented out for now) */}
         <section className="mb-12 bg-[#FFFFFF]">
           <div className="max-w-7xl mx-auto px-4">
             <h2 className="text-4xl font-bold text-center mb-2">Our Brands</h2>
@@ -211,8 +234,17 @@ const Home = (props) => {
         </section>
       </div>
 
-      {/* Footer Section */}
-      <Dummy />
+      <section className="mb-12 bg-[#FFFFFF]">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-2">
+            We Are Specialist In
+          </h2>
+          <p className="text-neutral-600 text-center max-w-4xl mx-auto mb-4"></p>
+
+          <Dummy />
+        </div>
+      </section>
+
       <footer className="text-white relative bg-black">
         <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_2px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_2px)] bg-[size:34px_44px]"></div>
         <div className="max-w-7xl mx-auto px-4">

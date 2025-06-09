@@ -32,15 +32,15 @@ export default function Contact() {
   };
 
   const handleSubmit = async (e) => {
+    setIsSubmitting(true);
     e.preventDefault();
-
     await axios
       .post(
         "https://rsgratitudegifts.com/api/routes.php?action=addcustomer",
         formData
       )
       .then((response) => {
-        console.log(response.data);
+        setIsSubmitting(false);
         alert("Thank you for your message. We'll get back to you shortly.");
         setFormData({
           name: "",
@@ -50,9 +50,9 @@ export default function Contact() {
         });
       })
       .catch((error) => {
+        setIsSubmitting(false);
         console.log(error);
       });
-    setIsSubmitting(true);
   };
 
   useEffect(() => {

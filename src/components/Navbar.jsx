@@ -32,14 +32,14 @@ const Navbar = ({ scrolled }) => {
       transition={{ duration: 0.5 }}
       className="bg-white shadow-lg fixed w-full z-50"
     >
-      <div className="max-w-7xl mx-auto px-2">
+      <div className="px-5">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <NavLink
               to="/"
-              className="text-xl font-bold text-gray-800 flex items-center"
+              className="text-2xl  font-bold text-gray-800 flex items-center"
             >
-              <img src={logo} alt="logo" className="h-10 w-12  rounded-md" />
+              <img src={logo} alt="logo" className="h-14 w-16  rounded-md" />
               RS Gratitude Gift
             </NavLink>
           </div>

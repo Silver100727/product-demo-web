@@ -23,4 +23,17 @@
     display: flex;
     animation: marquee 20s linear infinite;
   }
+
+  .slider-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  .slide {
+    flex: 0 0 100%;
+  }
 }
