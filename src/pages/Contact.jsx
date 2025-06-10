@@ -239,7 +239,7 @@ export default function Contact() {
               <div className="bg-white rounded-lg overflow-hidden shadow-md mb-8">
                 <div className="aspect-video w-full">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.0!2d77.59!3d12.91!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU0JzIxLjAiTiA3N8KwMzUnMzEuMCJF!5e0!3m2!1sen!2sin!4v1617010000000!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.0611906207455!2d77.5719814750753!3d12.903786887405312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDU0JzEzLjYiTiA3N8KwMzQnMjguNCJF!5e0!3m2!1sen!2sin!4v1749551485058!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -277,7 +277,7 @@ export default function Contact() {
                     </div>
                   </div>
                   <a
-                    href="https://www.google.com/maps/dir/?api=1&destination=12.905826,77.586386"
+                    href="https://www.google.com/maps/dir//12.9037778,77.5745556/@12.9037778,77.5745556,16z"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-4 inline-block text-sm px-4 py-2 border border-neutral-300 rounded-md text-neutral-700 bg-white hover:bg-neutral-50 focus:outline-none focus:ring-0 focus:ring-offset-2 focus:ring-burgundy-500 transition-colors"
@@ -299,9 +299,7 @@ const contactInfo = [
   {
     title: "Visit Us",
     content: `
-    No. 20, 3rd floor, Shivanand,
-    Nagar, 6th Phase, JP Nagar,
-    Bangalore - 560078
+      No.20, 3rd floor, Shivananda Nagar, 6th phase, JP Nagar, Bangalore - 560078
     `,
     icon: MapPinIcon,
   },
@@ -312,7 +310,7 @@ const contactInfo = [
         label: "contact.us@rsgratitudegifts.com",
         href: "mailto:contact.us@rsgratitudegifts.com",
       },
-      { label: "+91 990-012-3901", href: "tel:+15551234567" },
+      { label: "+91 990-012-3901", href: "+91 990-012-3901" },
     ],
     icon: PhoneIcon,
   },

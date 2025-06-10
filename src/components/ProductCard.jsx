@@ -41,7 +41,7 @@ const ProductCard = ({ product }) => {
           </p>
           <div className="mt-4 flex items-center justify-end">
             <Link
-              to={`/products/${product._id}`}
+              to={`/product-details/${product._id}`}
               className="flex items-center text-[#1FC4E4]"
             >
               View Details

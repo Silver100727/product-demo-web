@@ -201,7 +201,7 @@ const Home = (props) => {
               apparel to cutting edge electronics. Whether celebrating
               milestones or showing appreciation, find the perfect gift today!
             </p>
-            <Trending brands={props.trentingList} />
+            <Trending />
           </div>
         </section>
 

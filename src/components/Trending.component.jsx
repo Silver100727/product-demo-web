@@ -3,12 +3,31 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-export default function Trending({ brands }) {
+export default function Trending() {
+  const [brands, setbrands] = useState([]);
   const Navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleBrands, setVisibleBrands] = useState(4);
   const containerRef = useRef(null);
+
+  const fetchTrendingProductsFromDb = () => {
+    axios
+      .get(
+        "https://rsgratitudegifts.com/api/routes.php?action=trendingproducts"
+      )
+      .then((res) => {
+        if (res.data.success) {
+          setbrands(res.data.data);
+        } else {
+          setbrands([]);
+        }
+      })
+      .catch((err) => {
+        console.error("Product fetch error:", err);
+      });
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -23,6 +42,7 @@ export default function Trending({ brands }) {
       }
     };
 
+    fetchTrendingProductsFromDb();
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);

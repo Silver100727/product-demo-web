@@ -11,6 +11,7 @@ import NestedProduct from "./pages/NestedProduct.jsx";
 import Contact from "./pages/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import CorporatesGift from "./pages/CorporatesGift.jsx";
+import SubCategory from "./pages/SubCategory.jsx";
 const BaseUrl = "https://rsgratitudegifts.com/api/routes.php?action=addproduct";
 
 function App() {
@@ -69,10 +70,17 @@ function App() {
               />
             }
           />
-          <Route path="/products/:id" element={<ProductDetail />} />
-          <Route path="/categories" element={<Categories />} />
+          <Route path="/product-details/:id" element={<ProductDetail />} />
 
-          <Route path="/categories/:product" element={<NestedProduct />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route
+            path="/categories/subcategory/:subcategoryname"
+            element={<SubCategory />}
+          />
+          <Route
+            path="/categories/subcategory/product/:productName"
+            element={<NestedProduct />}
+          />
 
           <Route path="/about" element={<About />} />
         </Routes>

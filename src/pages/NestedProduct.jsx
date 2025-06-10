@@ -1,18 +1,52 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ProductCard from "../components/ProductCard.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
+import axios from "axios";
 
-const NestedProduct = (props) => {
-  const { product } = useParams();
+const NestedProduct = () => {
+  const { productName } = useParams();
   const navigate = useNavigate();
-  const NestedProductList = props.productsList.filter(
-    (p) => p.category == product
-  );
+  const [NestedProductList, setNestedProductList] = useState([]);
+  
+  const fetchProductsFromDb = () => {
+    axios
+      .post(
+        "https://rsgratitudegifts.com/api/routes.php?action=addproduct",
+        {
+          type: "get",
+          offset: 0,
+          limit: 1000,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        if (res.data.success) {
+          const filteredProducts = res.data.data.filter(
+            (product) => product.subcategory === productName
+          );
+          setNestedProductList(filteredProducts);
+
+          console.log("filteredProducts", filteredProducts);
+        } else {
+          setNestedProductList([]);
+        }
+      })
+      .catch((err) => {
+        console.error("Product fetch error:", err);
+      });
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    fetchProductsFromDb();
   }, []);
+
   return (
     <div className="min-h-screen pt-24 pb-12 bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
       <div className="max-w-7xl mx-auto px-4">
@@ -28,7 +62,9 @@ const NestedProduct = (props) => {
           animate={{ y: 0, opacity: 1 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">{product}</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            {productName}
+          </h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Discover our collection of premium products designed to enhance your
             lifestyle

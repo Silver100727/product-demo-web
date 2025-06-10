@@ -1,21 +1,53 @@
 import { ChevronRight } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import { Link, useNavigate } from "react-router-dom";
 import CorporateBanner from "../asset/Image/Corporate.png";
 import FestivalBanner from "../asset/Image/Festival.png";
+import axios from "axios";
 
 const CorporatesGift = (props) => {
   const Navto = useNavigate();
+  const [CoperateProductList, setCoperateProductList] = useState([]);
+  const [FestivalProductList, setFestivalProductList] = useState([]);
 
-  const CoperateProductList = props.productsList.filter(
-    (p) => p.category == "Corporate Gift"
-  );
+  const getcorporateproductsFromDb = () => {
+    axios
+      .get(
+        "https://rsgratitudegifts.com/api/routes.php?action=corporateproducts",
+        {}
+      )
+      .then((res) => {
+        if (res.data.success) {
+          setCoperateProductList(res.data.data);
+        } else {
+          setCoperateProductList([]);
+        }
+      })
+      .catch((err) => {});
+  };
+  const getfestivalproductsFromDb = () => {
+    axios
+      .get(
+        "https://rsgratitudegifts.com/api/routes.php?action=festivalproducts",
+        {}
+      )
+      .then((res) => {
+        if (res.data.success) {
+          setFestivalProductList(res.data.data);
+        } else {
+          setcategoryList([]);
+        }
+      })
+      .catch((err) => {});
+  };
 
-  const FestivalProductList = props.productsList.filter(
-    (p) => p.category == "Festival"
-  );
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    getcorporateproductsFromDb();
+    getfestivalproductsFromDb();
+  }, []);
 
   return (
     <main className="flex-1 mt-[60px]">

@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
+import CategoryCard from "../components/CategoryCard";
 import { motion } from "framer-motion";
-import CategoryCard from "../components/CategoryCard.jsx";
 import axios from "axios";
 
-const Categories = () => {
-  const [categoryList, setcategoryList] = useState([]);
+const SubCategory = () => {
+  const { subcategoryname } = useParams();
+  const location = useLocation();
+  const { subcategory } = location.state || {};
+
+  const [subcategoryList, setsubcategoryList] = useState([]);
   const [spinner, setspinner] = useState(false);
 
-  const getCategoryFromDb = () => {
+  const getsubCategoryFromDb = () => {
     setspinner(true);
-
     axios
-      .get("https://rsgratitudegifts.com/api/routes.php?action=getcategory", {})
+      .post(
+        "https://rsgratitudegifts.com/api/routes.php?action=getsubcategorybycategory",
+        {
+          category_id: subcategory._id,
+        }
+      )
       .then((res) => {
         if (res.data.success) {
-          setcategoryList(res.data.data);
+          setsubcategoryList(res.data.data);
           setspinner(false);
         } else {
+          setsubcategoryList([]);
           setspinner(false);
-          setcategoryList([]);
         }
       })
       .catch((err) => {
@@ -28,7 +37,7 @@ const Categories = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    getCategoryFromDb();
+    getsubCategoryFromDb();
   }, []);
 
   return (
@@ -39,7 +48,9 @@ const Categories = () => {
           animate={{ y: 0, opacity: 1 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Categories</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            {subcategoryname}
+          </h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Browse our product categories to find exactly what you're looking
             for
@@ -50,7 +61,7 @@ const Categories = () => {
           initial={{ y: 70, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           className={`px-12 ${
-            categoryList && categoryList.length > 0
+            subcategoryList && subcategoryList.length > 0
               ? "grid md:grid-cols-2 lg:grid-cols-3 gap-8"
               : "flex items-center justify-center h-56"
           }`}
@@ -77,12 +88,12 @@ const Categories = () => {
             </div>
           ) : (
             <>
-              {categoryList && categoryList.length > 0 ? (
-                categoryList.map((category) => (
+              {subcategoryList && subcategoryList.length > 0 ? (
+                subcategoryList.map((category) => (
                   <CategoryCard
-                    key={category._id}
+                    key={category.id}
                     category={category}
-                    type={"subcategory"}
+                    type={"product"}
                   />
                 ))
               ) : (
@@ -104,4 +115,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default SubCategory;
