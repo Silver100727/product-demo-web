@@ -9,15 +9,12 @@ const NestedProduct = () => {
   const { productName } = useParams();
   const navigate = useNavigate();
   const [NestedProductList, setNestedProductList] = useState([]);
-  
   const fetchProductsFromDb = () => {
     axios
       .post(
-        "https://rsgratitudegifts.com/api/routes.php?action=addproduct",
+        "https://rsgratitudegifts.com/api/routes.php?action=getproductList",
         {
-          type: "get",
-          offset: 0,
-          limit: 1000,
+          product: productName,
         },
         {
           headers: {
@@ -27,12 +24,7 @@ const NestedProduct = () => {
       )
       .then((res) => {
         if (res.data.success) {
-          const filteredProducts = res.data.data.filter(
-            (product) => product.subcategory === productName
-          );
-          setNestedProductList(filteredProducts);
-
-          console.log("filteredProducts", filteredProducts);
+          setNestedProductList(res.data.data);
         } else {
           setNestedProductList([]);
         }
