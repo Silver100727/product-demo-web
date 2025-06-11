@@ -14,7 +14,7 @@ const NestedProduct = () => {
       .post(
         "https://rsgratitudegifts.com/api/routes.php?action=getproductList",
         {
-          product: productName,
+          product: productName.trim(),
         },
         {
           headers: {

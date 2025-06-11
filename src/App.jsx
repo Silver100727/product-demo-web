@@ -78,7 +78,7 @@ function App() {
             element={<SubCategory />}
           />
           <Route
-            path="/categories/subcategory/product/:productName"
+            path="/categories/subcategory/:subcategoryname/:productName"
             element={<NestedProduct />}
           />
 

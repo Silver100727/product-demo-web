@@ -14,7 +14,9 @@ const CategoryCard = ({ category, type }) => {
         },
       });
     } else {
-      navigatedto(`/categories/subcategory/product/${category.subcategory}`);
+      navigatedto(
+        `/categories/subcategory/${category.category}/${category.subcategory}`
+      );
     }
   };
   return (
