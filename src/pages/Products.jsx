@@ -66,9 +66,15 @@ const Products = () => {
   const filteredProducts = productList.filter((product) => {
     const matchesSearch = product.title
       ?.toLowerCase()
-      .includes(searchTerm.toLowerCase() || selectedCategory.toLowerCase());
-    return matchesSearch;
+      .includes(searchTerm.toLowerCase());
+
+    const matchesCategory =
+      selectedCategory === "" ||
+      product.subcategory?.toLowerCase() === selectedCategory.toLowerCase();
+
+    return matchesSearch && matchesCategory;
   });
+
   return (
     <div className="min-h-screen flex flex-col gap-6 py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
