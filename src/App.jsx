@@ -16,7 +16,9 @@ const BaseUrl = "https://rsgratitudegifts.com/api/routes.php?action=addproduct";
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
-  const [BannerList, setBannerList] = useState([]);
+  const [homeBanner, sethomeBanner] = useState([]);
+  const [coporateBanner, setcoporateBanner] = useState([]);
+  const [festivalBanner, setfestivalBanner] = useState([]);
 
   const fetchBannerFromDb = () => {
     axios
@@ -33,7 +35,15 @@ function App() {
       )
       .then((res) => {
         if (res.data.success) {
-          setBannerList(res.data.data);
+          res.data.data.forEach((banner) => {
+            if (banner.banner_type === "MainBanner") {
+              sethomeBanner(banner.imageLinks);
+            } else if (banner.banner_type === "CoporateBanner") {
+              setcoporateBanner(banner.imageLinks);
+            } else if (banner.banner_type === "FestivalBanner") {
+              setfestivalBanner(banner.imageLinks);
+            }
+          });
         } else {
           setBannerList([]);
         }
@@ -55,18 +65,15 @@ function App() {
       <div className="min-h-screen bg-blue-50">
         <Navbar scrolled={scrolled} />
         <Routes>
-          <Route
-            path="/"
-            element={<Home MainBannerImageList={BannerList[2]?.imageLinks} />}
-          />
+          <Route path="/" element={<Home MainBannerImageList={homeBanner} />} />
           <Route path="/products" element={<Products />} />
           <Route path="/Contact-us" element={<Contact />} />
           <Route
             path="/Corporate-Gifts"
             element={
               <CorporatesGift
-                FestivalBannerImageList={BannerList[1]?.imageLinks}
-                CorporateBannerImageList={BannerList[0]?.imageLinks}
+                coporateBanner={coporateBanner}
+                festivalBanner={festivalBanner}
               />
             }
           />

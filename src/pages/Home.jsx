@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import MainBanner from "../asset/Image/MainBanner.jpg";
 import { brands } from "../utils";
 import Dummy from "./dummy";
 import Trending from "../components/Trending.component";

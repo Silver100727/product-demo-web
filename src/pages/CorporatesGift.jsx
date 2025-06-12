@@ -1,16 +1,35 @@
 import { ChevronRight } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
 import { Link, useNavigate } from "react-router-dom";
-import CorporateBanner from "../asset/Image/Corporate.png";
-import FestivalBanner from "../asset/Image/Festival.png";
 import axios from "axios";
 
 const CorporatesGift = (props) => {
   const Navto = useNavigate();
   const [CoperateProductList, setCoperateProductList] = useState([]);
   const [FestivalProductList, setFestivalProductList] = useState([]);
+
+  // slider state
+  const [corpIndex, setCorpIndex] = useState(0);
+  const [festIndex, setFestIndex] = useState(0);
+
+  // advance corporate banner every 5s
+  useEffect(() => {
+    if (!props.coporateBanner?.length) return;
+    const timer = setInterval(() => {
+      setCorpIndex((idx) => (idx + 1) % props.coporateBanner.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [props.coporateBanner]);
+
+  // advance festival banner every 5s
+  useEffect(() => {
+    if (!props.festivalBanner?.length) return;
+    const timer = setInterval(() => {
+      setFestIndex((idx) => (idx + 1) % props.festivalBanner.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [props.festivalBanner]);
 
   const getcorporateproductsFromDb = () => {
     axios
@@ -59,7 +78,9 @@ const CorporatesGift = (props) => {
         <div
           className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage: `url(${CorporateBanner})`,
+            backgroundImage: `url("${
+              props.coporateBanner?.[corpIndex] || ""
+            }")`,
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
@@ -140,7 +161,9 @@ const CorporatesGift = (props) => {
         <div
           className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage: `url(${FestivalBanner})`,
+            backgroundImage: `url("${
+              props.festivalBanner?.[festIndex] || ""
+            }")`,
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
