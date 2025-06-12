@@ -126,7 +126,7 @@ const CorporatesGift = (props) => {
             {CoperateProductList.filter((_, idx) => idx < 4).map((item) => (
               <div
                 onClick={() => {
-                  Navto(`/products/${item._id}`);
+                  Navto(`/product-details/${item._id}`);
                 }}
                 key={item}
                 className="bg-white rounded-lg shadow-md overflow-hidden w-full"
@@ -207,7 +207,7 @@ const CorporatesGift = (props) => {
             {FestivalProductList.filter((_, idx) => idx < 4).map((item) => (
               <div
                 onClick={() => {
-                  Navto(`/products/${item._id}`);
+                  Navto(`/product-details/${item._id}`);
                 }}
                 key={item}
                 className="bg-white rounded-lg shadow-md overflow-hidden w-full"
