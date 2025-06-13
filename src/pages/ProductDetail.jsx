@@ -51,7 +51,7 @@ const ProductDetail = () => {
   }, []);
 
   return (
-    <div className="h-screen pt-24 pb-12 flex flex-col px-4 bg-white">
+    <div className="pt-24 pb-12 flex flex-col px-4 bg-white">
       {product && (
         <>
           <button
@@ -61,6 +61,7 @@ const ProductDetail = () => {
             <ChevronLeft size={20} />
             <span>Back</span>
           </button>
+
           <div className="grid md:grid-cols-2 gap-5">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -117,22 +118,22 @@ const ProductDetail = () => {
                 </button>
               </div>
             </motion.div>
-
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="md:aspect-3/2 overflow-y-auto bg-white"
+              className="md:aspect-3/2 bg-white md:overflow-y-auto overflow-y-visible"
             >
               <h1 className="text-3xl font-bold text-gray-900 mb-4">
                 {product.title}
               </h1>
-              <p className="text-2xl text-blue-600 font-semibold mb-6">
+              <p className="text-2xl text-blue-600 font-semibold mb-4">
                 ₹ {product.price}
               </p>
-              <p className="text-gray-600 mb-8">{product.description}</p>
-              <h2 className="text-xl font-semibold mb-4">Features</h2>
-              <div className="mb-8 bg-white rounded-lg p-6">
-                <ul className="space-y-2">
+              <p className="text-gray-600">{product.description}</p>
+
+              <h2 className="text-xl font-semibold mt-4">Features</h2>
+              <div className="bg-white rounded-lg p-2">
+                <ul className="space-y-1">
                   {product.features.map((feature, index) => (
                     <motion.li
                       key={index}
@@ -147,8 +148,9 @@ const ProductDetail = () => {
                   ))}
                 </ul>
               </div>
-              <h2 className="text-xl font-semibold mb-4">Specifications</h2>
-              <div className="rounded-lg p-6">
+
+              <h2 className="text-xl font-semibold mt-4">Specifications</h2>
+              <div className="rounded-lg p-3">
                 {Object.entries(product.specification).map(
                   ([key, value], index) => (
                     <motion.div
@@ -170,6 +172,7 @@ const ProductDetail = () => {
               </div>
             </motion.div>
           </div>
+
           <AnimatePresence>
             {isModalOpen && (
               <motion.div

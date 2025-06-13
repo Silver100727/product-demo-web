@@ -130,28 +130,85 @@ const Home = (props) => {
   return (
     <>
       <div className="min-h-screen flex gap-7 flex-col pt-16 bg-[#FFFFFF]">
+        {/* Mobile Main Banner Slider */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="relative h-[50vh] sm:h-[60vh] md:h-[80vh]"
+          className="relative h-[38vh] text-white sm:hidden"
         >
-          <div className="absolute inset-0 slider-container">
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
             <motion.div
-              className="slider"
+              className="w-full h-full"
               initial={{ x: 0 }}
               animate={{ x: -currentIndex * 100 + "%" }}
               transition={{ duration: 0.5 }}
+              style={{ whiteSpace: "nowrap" }}
             >
               {props.MainBannerImageList?.map((image, index) => (
                 <motion.img
                   key={index}
                   src={image}
                   alt={`Slide ${index}`}
-                  className="slide"
-                  style={{ width: "100%", display: "inline-block" }}
+                  className="w-full h-full object-cover inline-block"
                 />
               ))}
             </motion.div>
+            <div className="absolute inset-0 bg-black/30" />
+          </div>
+          <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 py-6 text-center">
+            <h1 className="text-lg font-bold mb-2">
+              Celebrate Every Moment with RS Gratitude Gifts
+            </h1>
+            <p className="mb-5 text-xs">
+              Discover our exclusive collection of premium gifts designed to
+              express appreciation, celebrate milestones, and create lasting
+              memories.
+            </p>
+            <Link
+              to="/contact-us"
+              className="inline-flex flex-row items-center justify-center px-4 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold text-sm hover:scale-105 transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-4 h-4 mr-2"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+              Contact Us
+            </Link>
+          </div>
+        </motion.section>
+
+        {/* Desktop/Tablet Main Banner Slider */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="relative h-[50vh] sm:h-[60vh] md:h-[80vh] text-white hidden sm:block"
+        >
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
+            <motion.div
+              className="w-full h-full"
+              initial={{ x: 0 }}
+              animate={{ x: -currentIndex * 100 + "%" }}
+              transition={{ duration: 0.5 }}
+              style={{ whiteSpace: "nowrap" }}
+            >
+              {props.MainBannerImageList?.map((image, index) => (
+                <motion.img
+                  key={index}
+                  src={image}
+                  alt={`Slide ${index}`}
+                  className="w-full h-full object-cover inline-block"
+                />
+              ))}
+            </motion.div>
+            <div className="absolute inset-0 bg-black/20" />
           </div>
           <div className="relative max-w-5xl mx-auto px-2 sm:px-4 h-full flex items-center justify-center">
             <motion.div
@@ -169,7 +226,7 @@ const Home = (props) => {
                 memories.
               </p>
               <Link
-                to="/products"
+                to="/contact-us"
                 className="inline-flex flex-row items-center justify-center px-4 sm:px-6 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold hover:bg-gradient-to-r transition-transform transform hover:scale-105"
               >
                 <svg
@@ -239,7 +296,6 @@ const Home = (props) => {
             We Are Specialist In
           </h2>
           <p className="text-neutral-600 text-center max-w-4xl mx-auto mb-4"></p>
-
           <Dummy />
         </div>
       </section>

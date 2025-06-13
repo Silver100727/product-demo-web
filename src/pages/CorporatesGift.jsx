@@ -73,7 +73,35 @@ const CorporatesGift = (props) => {
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="relative h-[47vh] text-white"
+        className="relative h-[34vh] text-white sm:hidden" // hide on sm and up
+      >
+        <img
+          src={props.coporateBanner?.[corpIndex] || ""}
+          alt="Corporate Banner"
+          className="absolute inset-0 w-full h-full object-cover"
+          draggable={false}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 flex flex-col justify-center h-full px-4 py-8">
+          <h1 className="text-2xl font-bold mb-4">Corporate Gifting</h1>
+          <p className="text-sm mb-4">
+            Strengthen business relationships and show appreciation with our
+            premium corporate gift collections, customized to reflect your
+            brand's values.
+          </p>
+          <Link
+            to={`/categories/Corporate%20Gift`}
+            className="inline-flex justify-center w-[300px] items-center px-4 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold text-base hover:scale-105 transition"
+          >
+            Explore Corporate Collections
+            <ChevronRight className="ml-2 h-4 w-4" />
+          </Link>
+        </div>
+      </motion.section>
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="relative h-[47vh] text-white hidden sm:block"
       >
         <div
           className="absolute inset-0 w-full h-full"
@@ -81,13 +109,14 @@ const CorporatesGift = (props) => {
             backgroundImage: `url("${
               props.coporateBanner?.[corpIndex] || ""
             }")`,
-            backgroundSize: "contain",
+            backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
           }}
-        ></div>
-
-        <div className="container relative px-4 py-20 md:py-32 mx-auto">
+        >
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
+        <div className="container relative px-4 py-20 md:py-32 mx-auto flex flex-col justify-center h-full">
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
               Corporate Gifting
@@ -100,7 +129,7 @@ const CorporatesGift = (props) => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to={`/categories/Corporate%20Gift`}
-                className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-[#1FC4E4] hover:to-[#123E85] transition-transform transform hover:scale-105"
+                className="inline-flex w-[280px] flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-[#1FC4E4] hover:to-[#123E85] transition-transform transform hover:scale-105"
               >
                 Explore Corporate Collections
                 <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -109,7 +138,6 @@ const CorporatesGift = (props) => {
           </div>
         </div>
       </motion.section>
-
       <section className="py-16 bg-neutral-50">
         <div className="container px-4 mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -153,10 +181,41 @@ const CorporatesGift = (props) => {
         </div>
       </section>
 
+      {/* Mobile Festival Banner */}
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="relative h-[47vh] text-white"
+        className="relative h-[34vh] text-white sm:hidden"
+      >
+        <img
+          src={props.festivalBanner?.[festIndex] || ""}
+          alt="Festival Banner"
+          className="absolute inset-0 w-full h-full object-cover"
+          draggable={false}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 flex flex-col justify-center h-full px-4 py-8">
+          <h1 className="text-2xl font-bold mb-4">Festival Gifting</h1>
+          <p className="text-sm mb-4">
+            Strengthen business relationships and show appreciation with our
+            premium corporate gift collections, customized to reflect your
+            brand's values.
+          </p>
+          <Link
+            to={`/categories/Festival`}
+            className="inline-flex w-[300px] justify-center items-center px-4 py-2 bg-gradient-to-r from-[#800000] to-[#B22222] text-white rounded-md font-semibold text-base hover:scale-105 transition"
+          >
+            Explore Festival Collections
+            <ChevronRight className="ml-2 h-4 w-4" />
+          </Link>
+        </div>
+      </motion.section>
+
+      {/* Desktop/Tablet Festival Banner */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="relative h-[47vh] text-white hidden sm:block"
       >
         <div
           className="absolute inset-0 w-full h-full"
@@ -164,13 +223,14 @@ const CorporatesGift = (props) => {
             backgroundImage: `url("${
               props.festivalBanner?.[festIndex] || ""
             }")`,
-            backgroundSize: "contain",
+            backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
           }}
-        ></div>
-
-        <div className="container relative px-4 py-20 md:py-32 mx-auto">
+        >
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
+        <div className="container relative px-4 py-20 md:py-32 mx-auto flex flex-col justify-center h-full">
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
               Festival Gifting

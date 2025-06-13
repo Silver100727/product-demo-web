@@ -114,8 +114,8 @@ const Dummy = () => {
             <div key={index} className="relative z-10 mb-2">
               <div
                 className={`flex items-center ${
-                  isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                } flex-col md:flex-row`}
+                  isLeft ? "md:flex-row" : "md:flex-row-reverse "
+                } flex-col md:flex-row `}
               >
                 {/* Timeline node */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-[#123E85] border-4 border-white shadow-md hidden md:block" />
