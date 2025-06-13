@@ -40,7 +40,7 @@ const Navbar = ({ scrolled }) => {
               className="text-2xl  font-bold text-gray-800 flex items-center"
             >
               <img src={logo} alt="logo" className="h-14 w-16  rounded-md" />
-              RS Gratitude Gift
+              RS Gratitude Gifts
             </NavLink>
           </div>
 
