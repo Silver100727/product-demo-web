@@ -89,15 +89,28 @@ const CorporatesGift = (props) => {
             premium corporate gift collections, customized to reflect your
             brand's values.
           </p>
-          <Link
-            to={`/categories/Corporate%20Gift`}
+          <button
+            onClick={() => {
+              Navto(`/categories/subcategory/${"Corporate Gifts"}`, {
+                state: {
+                  subcategory: {
+                    _id: "23",
+                    category: "Corporate Gifts",
+                    created_at: "2025-06-10 10:57:32",
+                    thumbnail_image:
+                      "https://rsgratitudegifts.com/api/thumbnail/1749751661_corporate-gifts.jpg",
+                  },
+                },
+              });
+            }}
             className="inline-flex justify-center w-[300px] items-center px-4 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold text-base hover:scale-105 transition"
           >
             Explore Corporate Collections
             <ChevronRight className="ml-2 h-4 w-4" />
-          </Link>
+          </button>
         </div>
       </motion.section>
+
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -127,13 +140,21 @@ const CorporatesGift = (props) => {
               brand's values.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                to={`/categories/Corporate%20Gift`}
+              <button
+                onClick={() => {
+                  Navto(`/categories/subcategory/${"Corporate Gifts"}`, {
+                    state: {
+                      subcategory: {
+                        _id: "23",
+                      },
+                    },
+                  });
+                }}
                 className="inline-flex w-[280px] flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-[#1FC4E4] hover:to-[#123E85] transition-transform transform hover:scale-105"
               >
                 Explore Corporate Collections
                 <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -201,13 +222,21 @@ const CorporatesGift = (props) => {
             premium corporate gift collections, customized to reflect your
             brand's values.
           </p>
-          <Link
-            to={`/categories/Festival`}
+          <button
+            onClick={() => {
+              Navto(`/categories/subcategory/${"Festival Gifts"}`, {
+                state: {
+                  subcategory: {
+                    _id: "24",
+                  },
+                },
+              });
+            }}
             className="inline-flex w-[300px] justify-center items-center px-4 py-2 bg-gradient-to-r from-[#800000] to-[#B22222] text-white rounded-md font-semibold text-base hover:scale-105 transition"
           >
             Explore Festival Collections
             <ChevronRight className="ml-2 h-4 w-4" />
-          </Link>
+          </button>
         </div>
       </motion.section>
 
@@ -241,13 +270,21 @@ const CorporatesGift = (props) => {
               brand's values.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                to={`/categories/Festival`}
+              <button
+                onClick={() => {
+                  Navto(`/categories/subcategory/${"Festival Gifts"}`, {
+                    state: {
+                      subcategory: {
+                        _id: "24",
+                      },
+                    },
+                  });
+                }}
                 className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-[#800000] to-[#B22222] text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-[#B22222] hover:to-[#800000] transition-transform transform hover:scale-105"
               >
                 Explore Festival Collections
                 <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </button>
             </div>
           </div>
         </div>

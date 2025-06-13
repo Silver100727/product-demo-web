@@ -40,7 +40,7 @@ const NestedProduct = () => {
   }, []);
 
   return (
-    <div className="min-h-screen pt-24 pb-12 bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
+    <div className="min-h-screen pt-24 pb-12 bg-white ">
       <div className="max-w-7xl mx-auto px-4">
         <button
           onClick={() => navigate(-1)}
