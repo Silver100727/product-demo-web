@@ -6,7 +6,6 @@ const CategoryCard = ({ category, type }) => {
   const navigatedto = useNavigate();
 
   const handleNavigation = (category) => {
-    console.log("category", category);
     if (type == "subcategory") {
       navigatedto(`/categories/subcategory/${category.category}`, {
         state: {
@@ -15,7 +14,7 @@ const CategoryCard = ({ category, type }) => {
       });
     } else {
       navigatedto(
-        `/categories/subcategory/${category.category}/${category.subcategory}`
+        `/categories/subcategory/${category.category_id}/${category.subcategory}`
       );
     }
   };

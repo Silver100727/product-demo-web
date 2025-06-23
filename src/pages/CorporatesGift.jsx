@@ -91,17 +91,7 @@ const CorporatesGift = (props) => {
           </p>
           <button
             onClick={() => {
-              Navto(`/categories/subcategory/${"Corporate Gifts"}`, {
-                state: {
-                  subcategory: {
-                    _id: "23",
-                    category: "Corporate Gifts",
-                    created_at: "2025-06-10 10:57:32",
-                    thumbnail_image:
-                      "https://rsgratitudegifts.com/api/thumbnail/1749751661_corporate-gifts.jpg",
-                  },
-                },
-              });
+              Navto(`/categories/subcategory/23/${"Corporate Gifts"}`);
             }}
             className="inline-flex justify-center w-[300px] items-center px-4 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold text-base hover:scale-105 transition"
           >
@@ -142,13 +132,7 @@ const CorporatesGift = (props) => {
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={() => {
-                  Navto(`/categories/subcategory/${"Corporate Gifts"}`, {
-                    state: {
-                      subcategory: {
-                        _id: "23",
-                      },
-                    },
-                  });
+                  Navto(`/categories/subcategory/23/${"Corporate Gifts"}`);
                 }}
                 className="inline-flex w-[280px] flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-[#1FC4E4] hover:to-[#123E85] transition-transform transform hover:scale-105"
               >
@@ -159,6 +143,7 @@ const CorporatesGift = (props) => {
           </div>
         </div>
       </motion.section>
+
       <section className="py-16 bg-neutral-50">
         <div className="container px-4 mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -172,7 +157,7 @@ const CorporatesGift = (props) => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-12">
-            {CoperateProductList.filter((_, idx) => idx < 4).map((item) => (
+            {CoperateProductList.filter((_, idx) => idx < 9).map((item) => (
               <div
                 onClick={() => {
                   Navto(`/product-details/${item._id}`);
@@ -224,13 +209,7 @@ const CorporatesGift = (props) => {
           </p>
           <button
             onClick={() => {
-              Navto(`/categories/subcategory/${"Festival Gifts"}`, {
-                state: {
-                  subcategory: {
-                    _id: "24",
-                  },
-                },
-              });
+              Navto(`/categories/subcategory/24/${"Festival Gifts"}`, {});
             }}
             className="inline-flex w-[300px] justify-center items-center px-4 py-2 bg-gradient-to-r from-[#800000] to-[#B22222] text-white rounded-md font-semibold text-base hover:scale-105 transition"
           >
@@ -272,13 +251,7 @@ const CorporatesGift = (props) => {
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={() => {
-                  Navto(`/categories/subcategory/${"Festival Gifts"}`, {
-                    state: {
-                      subcategory: {
-                        _id: "24",
-                      },
-                    },
-                  });
+                  Navto(`/categories/subcategory/24/${"Festival Gifts"}`);
                 }}
                 className="inline-flex flex-row items-center justify-center px-6 py-2 bg-gradient-to-r from-[#800000] to-[#B22222] text-white rounded-md font-semibold hover:bg-gradient-to-r hover:from-[#B22222] hover:to-[#800000] transition-transform transform hover:scale-105"
               >
@@ -301,7 +274,7 @@ const CorporatesGift = (props) => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-12">
-            {FestivalProductList.filter((_, idx) => idx < 4).map((item) => (
+            {FestivalProductList.filter((_, idx) => idx < 9).map((item) => (
               <div
                 onClick={() => {
                   Navto(`/product-details/${item._id}`);
