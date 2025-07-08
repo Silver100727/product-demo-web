@@ -79,13 +79,13 @@ const work = [
 ];
 
 const team = [
-  {
-    name: "Dalavatam Ashok",
-    position: "Managing Director",
-    description:
-      "A visionary leader with expertise in corporate gifting, dedicated to creating meaningful business connections through thoughtful and impactful gift solutions.",
-    image: person1,
-  },
+  // {
+  //   name: "Dalavatam Ashok",
+  //   position: "Managing Director",
+  //   description:
+  //     "A visionary leader with expertise in corporate gifting, dedicated to creating meaningful business connections through thoughtful and impactful gift solutions.",
+  //   image: person1,
+  // },
   {
     name: "Damodar reddy",
     position: "Business Development Analyst",
@@ -245,7 +245,7 @@ const About = () => {
           className="text-center "
         >
           <h2 className="text-3xl font-bold text-gray-900 mb-12">Our Team</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-1 gap-8">
             {team.map((member, index) => (
               <motion.div
                 key={member.name}
