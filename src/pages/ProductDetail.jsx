@@ -14,7 +14,7 @@ const ProductDetail = () => {
   const GetProductDeatailsFromDb = () => {
     axios
       .post(
-        "https://rsgratitudegifts.com/api/routes.php?action=GetProductDeatailsFromDbById",
+        "https://rsglobalsolutions.in/api/routes.php?action=GetProductDeatailsFromDbById",
         {
           id: id,
         }

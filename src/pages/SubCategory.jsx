@@ -16,7 +16,7 @@ const SubCategory = () => {
     setspinner(true);
     axios
       .post(
-        "https://rsgratitudegifts.com/api/routes.php?action=getsubcategorybycategory",
+        "https://rsglobalsolutions.in/api/routes.php?action=getsubcategorybycategory",
         {
           category_id: subcategory._id,
         }

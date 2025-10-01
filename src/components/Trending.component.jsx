@@ -16,7 +16,7 @@ export default function Trending() {
   useEffect(() => {
     axios
       .get(
-        "https://rsgratitudegifts.com/api/routes.php?action=trendingproducts"
+        "https://rsglobalsolutions.in/api/routes.php?action=trendingproducts"
       )
       .then((res) => {
         if (res.data.success) setBrands(res.data.data);

@@ -12,7 +12,7 @@ const NestedProduct = () => {
   const fetchProductsFromDb = () => {
     axios
       .post(
-        "https://rsgratitudegifts.com/api/routes.php?action=getproductList",
+        "https://rsglobalsolutions.in/api/routes.php?action=getproductList",
         {
           product: productName.trim(),
         },

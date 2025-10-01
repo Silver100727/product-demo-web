@@ -11,7 +11,7 @@ const Categories = () => {
     setspinner(true);
 
     axios
-      .get("https://rsgratitudegifts.com/api/routes.php?action=getcategory", {})
+      .get("https://rsglobalsolutions.in/api/routes.php?action=getcategory", {})
       .then((res) => {
         if (res.data.success) {
           setcategoryList(res.data.data);

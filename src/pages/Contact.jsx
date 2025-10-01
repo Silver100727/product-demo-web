@@ -36,7 +36,7 @@ export default function Contact() {
     e.preventDefault();
     await axios
       .post(
-        "https://rsgratitudegifts.com/api/routes.php?action=addcustomer",
+        "https://rsglobalsolutions.in/api/routes.php?action=addcustomer",
         formData
       )
       .then((response) => {
@@ -307,8 +307,8 @@ const contactInfo = [
     title: "Contact Us",
     links: [
       {
-        label: "contact.us@rsgratitudegifts.com",
-        href: "mailto:contact.us@rsgratitudegifts.com",
+        label: "contact.us@rsglobalsolutions.in",
+        href: "mailto:contact.us@rsglobalsolutions.in",
       },
       { label: "+91 990-012-3901", href: "+91 990-012-3901" },
     ],

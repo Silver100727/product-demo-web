@@ -34,7 +34,7 @@ const CorporatesGift = (props) => {
   const getcorporateproductsFromDb = () => {
     axios
       .get(
-        "https://rsgratitudegifts.com/api/routes.php?action=corporateproducts",
+        "https://rsglobalsolutions.in/api/routes.php?action=corporateproducts",
         {}
       )
       .then((res) => {
@@ -49,7 +49,7 @@ const CorporatesGift = (props) => {
   const getfestivalproductsFromDb = () => {
     axios
       .get(
-        "https://rsgratitudegifts.com/api/routes.php?action=festivalproducts",
+        "https://rsglobalsolutions.in/api/routes.php?action=festivalproducts",
         {}
       )
       .then((res) => {

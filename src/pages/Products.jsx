@@ -15,7 +15,7 @@ const Products = () => {
 
     axios
       .post(
-        "https://rsgratitudegifts.com/api/routes.php?action=addproduct",
+        "https://rsglobalsolutions.in/api/routes.php?action=addproduct",
         {
           type: "get",
           offset: 0,
@@ -44,7 +44,7 @@ const Products = () => {
 
   const getSubCategoriesFromDb = () => {
     axios
-      .get("https://rsgratitudegifts.com/api/routes.php?action=getsubcategory")
+      .get("https://rsglobalsolutions.in/api/routes.php?action=getsubcategory")
       .then((res) => {
         if (res.data.success) {
           setCategories(res.data.data);

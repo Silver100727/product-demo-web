@@ -95,7 +95,7 @@ const Footer = () => {
                 { page: "No. 20, 3rd floor, Shivanand," },
                 { page: "Nagar, 6th Phase, JP Nagar," },
                 { page: "Bangalore - 560078" },
-                { page: "contact.us@rsgratitudegifts.com" },
+                { page: "contact.us@rsglobalsolutions.in" },
                 { page: "(+91) 9900123901" },
               ].map((item, index) => {
                 return <li key={index}>{item.page}</li>;

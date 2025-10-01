@@ -12,7 +12,7 @@ import Contact from "./pages/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import CorporatesGift from "./pages/CorporatesGift.jsx";
 import SubCategory from "./pages/SubCategory.jsx";
-const BaseUrl = "https://rsgratitudegifts.com/api/routes.php?action=addproduct";
+const BaseUrl = "https://rsglobalsolutions.in/api/routes.php?action=addproduct";
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,7 +23,7 @@ function App() {
   const fetchBannerFromDb = () => {
     axios
       .post(
-        "https://rsgratitudegifts.com/api/routes.php?action=addbanner",
+        "https://rsglobalsolutions.in/api/routes.php?action=addbanner",
         {
           type: "get",
         },
