@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import CategoryCard from "../components/CategoryCard";
 import { motion } from "framer-motion";
 import axios from "axios";
+import { ChevronLeft } from "lucide-react";
 
 const SubCategory = () => {
   const { subcategoryname } = useParams();
   const location = useLocation();
   const { subcategory } = location.state || {};
+  const navigate = useNavigate();
 
   const [subcategoryList, setsubcategoryList] = useState([]);
   const [spinner, setspinner] = useState(false);
@@ -43,6 +45,13 @@ const SubCategory = () => {
   return (
     <div className="min-h-screen flex flex-col gap-6 py-24 bg-white ">
       <div className="max-w-7xl mx-auto px-4">
+        <button
+          onClick={() => navigate(-1)}
+          className="cursor-pointer mb-3 flex items-center text-gray-600 hover:text-gray-900"
+        >
+          <ChevronLeft size={20} />
+          <span>Back</span>
+        </button>
         <motion.div
           initial={{ y: -70, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
