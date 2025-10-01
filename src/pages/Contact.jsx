@@ -250,7 +250,7 @@ export default function Contact() {
                 </div>
                 <div className="p-6">
                   <h3 className="font-semibold text-lg mb-2">
-                    RS Gratitude Gifts Flagship Store
+                    RS Global Solutions Flagship Store
                   </h3>
                   <p className="text-neutral-600 text-sm mb-4">
                     No. 20, 3rd floor, Shivanand, Nagar, 6th Phase, JP Nagar,

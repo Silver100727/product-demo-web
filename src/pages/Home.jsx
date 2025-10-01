@@ -44,7 +44,7 @@ const Banner = [
   {
     title: "High-Quality, Thoughtful Gifts",
     description:
-      "At RS Gratitude Gifts, we pride ourselves on offering a wide variety of high-quality options from branded merchandise to luxury items and personalized keepsakes. Each gift is carefully curated to create a lasting impression.",
+      "At RS Global Solutions, we pride ourselves on offering a wide variety of high-quality options from branded merchandise to luxury items and personalized keepsakes. Each gift is carefully curated to create a lasting impression.",
     icon: () => (
       <svg
         className="w-12 h-12"
@@ -157,7 +157,7 @@ const Home = (props) => {
           </div>
           <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 py-6 text-center">
             <h1 className="text-lg font-bold mb-2">
-              Celebrate Every Moment with RS Gratitude Gifts
+              Celebrate Every Moment with RS Global Solutions
             </h1>
             <p className="mb-5 text-xs">
               Discover our exclusive collection of premium gifts designed to
@@ -218,7 +218,7 @@ const Home = (props) => {
               className="text-white max-w-full text-center flex flex-col items-center"
             >
               <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
-                Celebrate Every Moment with RS Gratitude Gifts
+                Celebrate Every Moment with RS Global Solutions
               </h1>
               <p className="mb-8 max-w-2xl text-base sm:text-lg">
                 Discover our exclusive collection of premium gifts designed to
@@ -253,7 +253,7 @@ const Home = (props) => {
               Our Trending Product
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-neutral-600 text-center max-w-4xl mx-auto mb-6 sm:mb-8 md:mb-12">
-              At RS Gratitude Gifts, we offer premium products from stylish
+              At RS Global Solutions, we offer premium products from stylish
               apparel to cutting edge electronics. Whether celebrating
               milestones or showing appreciation, find the perfect gift today!
             </p>
@@ -310,10 +310,10 @@ const Home = (props) => {
             className="text-center mb-16 pt-10"
           >
             <h2 className="text-3xl font-bold text-white mb-4">
-              Why Choose RS Gratitude Gifts?
+              Why Choose RS Global Solutions?
             </h2>
             <p className="text-white max-w-2xl mx-auto">
-              Choose RS Gratitude Gifts for a gifting experience that reflects
+              Choose RS Global Solutions for a gifting experience that reflects
               the value you place on your business relationships. Let us help
               you leave a lasting impression, one gift at a time.
             </p>

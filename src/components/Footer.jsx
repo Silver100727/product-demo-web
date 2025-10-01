@@ -29,7 +29,9 @@ const Footer = () => {
               {/* <Gift className="h-8 w-8 text-purple-400" /> */}
               <img src={logo} alt="logo" className="h-10 w-10 rounded-md" />
 
-              <span className="ml-2 text-xl font-bold">RS Gratitude Gifts</span>
+              <span className="ml-2 text-xl font-bold">
+                RS Global Solutions
+              </span>
             </div>
 
             <p className="text-gray-400 text-sm w-[250px] mb-4">
@@ -124,7 +126,7 @@ const Footer = () => {
 
         <div className="border-t border-neutral-800 mt-12 py-8  flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} RS Gratitude Gifts. All rights
+            &copy; {new Date().getFullYear()} RS Global Solutions. All rights
             reserved.
           </p>
           <div className="flex space-x-6 text-sm">

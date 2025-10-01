@@ -113,10 +113,10 @@ const About = () => {
           className="text-center mb-16"
         >
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            About RS Gratitude Gifts
+            About RS Global Solutions
           </h1>
           <p className="text-gray-600 max-w-6xl text-sm text-cent max-sm:text-start  mx-auto">
-            At RS Gratitude Gifts, we specialize in crafting memorable and
+            At RS Global Solutions, we specialize in crafting memorable and
             meaningful corporate gifts designed to strengthen and enhance
             business relationships. Whether you're looking to recognize a valued
             employee, impress a client, or celebrate a partnership, we offer a
@@ -148,7 +148,7 @@ const About = () => {
               Our Mission
             </h2>
             <p className="text-gray-600 text-justify text-sm max-sm:text-start ">
-              At RS Gratitude Gifts, our mission is to create meaningful
+              At RS Global Solutions, our mission is to create meaningful
               connections by offering thoughtfully designed, personalized gifts
               that express appreciation and strengthen relationships between
               businesses, clients, employees, and partners. We provide
@@ -173,7 +173,7 @@ const About = () => {
               known for our creativity, attention to detail, and commitment to
               delivering exceptional service. We envision a world where every
               business relationship is celebrated through thoughtful gifting,
-              and where RS Gratitude Gifts plays a pivotal role in building
+              and where RS Global Solutions plays a pivotal role in building
               trust, loyalty, and success for organizations across industries
             </p>
           </motion.div>
