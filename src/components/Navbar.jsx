@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logo from "../asset/Image/logo.jpeg";
+import logo from "../asset/Image/RSGlobalSolutions.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
@@ -39,8 +39,12 @@ const Navbar = ({ scrolled }) => {
               to="/"
               className="text-2xl  font-bold text-gray-800 flex items-center"
             >
-              <img src={logo} alt="logo" className="h-14 w-16  rounded-md" />
-              RS Global Solutions
+              <img
+                src={logo}
+                alt="logo"
+                className="h-11 w-[maxx-content]  rounded-md mr-3"
+              />
+              {/* RS Global Solutions */}
             </NavLink>
           </div>
 
