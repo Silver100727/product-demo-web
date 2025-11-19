@@ -34,7 +34,7 @@ const Navbar = ({ scrolled }) => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-30 transition-all duration-500 ${
         hasScrolled
           ? "bg-white/80 backdrop-blur-2xl shadow-[0_8px_32px_rgba(51,68,94,0.12)] border-primary-100/20"
           : "bg-white/90 backdrop-blur-md shadow-[0_2px_16px_rgba(51,68,94,0.06)]"
