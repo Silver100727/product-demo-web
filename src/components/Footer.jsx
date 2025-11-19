@@ -1,7 +1,16 @@
-import { FacebookIcon, InstagramIcon, LinkedinIcon } from "lucide-react";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  Mail,
+  MapPin,
+  Phone,
+  Clock,
+} from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../asset/Image/logo.jpeg";
+import { motion } from "framer-motion";
+import logo from "../asset/Image/RSGlobalSolutions.png";
 
 const Whatsapp = (props) => (
   <svg
@@ -19,135 +28,233 @@ const Whatsapp = (props) => (
 );
 
 const Footer = () => {
-  return (
-    <footer className="text-white relative pt-10 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#123E85_100%)]">
-      <div className="absolute bottom-0 left-0 right-0 top-0 pointer-events-none bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_2px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_2px)] bg-[size:34px_44px]" />
-      <div className="max-w-7xl mx-auto px-8 pt-15">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center mb-4">
-              {/* <Gift className="h-8 w-8 text-purple-400" /> */}
-              <img src={logo} alt="logo" className="h-10 w-10 rounded-md" />
+  const socialLinks = [
+    {
+      icon: <InstagramIcon className="h-5 w-5" />,
+      link: "https://www.instagram.com/rsgratitudegifts/",
+      label: "Instagram",
+    },
+    {
+      icon: <FacebookIcon className="h-5 w-5" />,
+      link: "https://www.facebook.com/people/RS-Gratitude-Gifts/61573472153305/",
+      label: "Facebook",
+    },
+    {
+      icon: <Whatsapp className="h-5 w-5" />,
+      link: "https://wa.me/919900123901",
+      label: "WhatsApp",
+    },
+    {
+      icon: <LinkedinIcon className="h-5 w-5" />,
+      link: "https://www.linkedin.com/in/rs-gratitude-gifts-642524351/",
+      label: "LinkedIn",
+    },
+  ];
 
-              <span className="ml-2 text-xl font-bold">
-                RS Global Solutions
-              </span>
+  const quickLinks = [
+    { to: "/", page: "Home" },
+    { to: "/products", page: "Products" },
+    { to: "/categories", page: "Categories" },
+    { to: "/about", page: "About" },
+    { to: "/Contact-us", page: "Contact" },
+  ];
+
+  const businessHours = [
+    { day: "Monday - Friday", hours: "9:00 AM - 6:00 PM" },
+    { day: "Saturday", hours: "10:00 AM - 4:00 PM" },
+    { day: "Sunday", hours: "Closed" },
+  ];
+
+  return (
+    <footer className="relative bg-gradient-to-br from-[#0a0e14] via-[#202d3f] to-[#33445E] text-white overflow-hidden">
+      {/* Premium background effects */}
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+        {/* Main footer content */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-12">
+          {/* Company Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-1"
+          >
+            <div className="flex items-center mb-6">
+              <motion.img
+                whileHover={{ scale: 1.05, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+                src={logo}
+                alt="RS Global Solutions"
+                className="h-12 w-42  shadow-lg"
+              />
             </div>
 
-            <p className="text-gray-400 text-sm w-[250px] mb-4">
-              Curating the perfect gifts for every occasion.
+            <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-xs">
+              Curating the perfect gifts for every occasion. Building lasting
+              relationships through thoughtful corporate gifting solutions.
             </p>
 
-            <div className="flex space-x-4">
-              {[
-                {
-                  icon: <InstagramIcon className="h-5 w-5" />,
-                  link: "https://www.instagram.com/rsgratitudegifts/",
-                },
-                {
-                  icon: <FacebookIcon className="h-5 w-5" />,
-                  link: "https://www.facebook.com/people/RS-Gratitude-Gifts/61573472153305/",
-                },
-                {
-                  icon: <Whatsapp className="h-5 w-5" />,
-                  link: "https://wa.me/919900123901",
-                },
-                {
-                  icon: <LinkedinIcon className="h-5 w-5" />,
-                  link: "https://www.linkedin.com/in/rs-gratitude-gifts-642524351/",
-                },
-              ].map((item, index) => (
-                <a
-                  href={item.link}
+            {/* Social Links */}
+            <div className="flex gap-3">
+              {socialLinks.map((item, index) => (
+                <motion.a
                   key={index}
-                  className="text-gray-400 hover:text-white"
+                  href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  whileHover={{ y: -4, scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group relative w-10 h-10 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 flex items-center justify-center hover:bg-[#0AAE5F] hover:border-[#0AAE5F] transition-all duration-300"
+                  aria-label={item.label}
                 >
-                  {item.icon}
-                </a>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0AAE5F]/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative text-white/60 group-hover:text-white transition-colors duration-300">
+                    {item.icon}
+                  </div>
+                </motion.a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div>
-            <h3 className="text-lg font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
-              {[
-                { to: "/", page: "Home" },
-                { to: "/products", page: "Products" },
-                { to: "/categories", page: "Categories" },
-                { to: "/about", page: "About" },
-              ].map((item, index) => {
-                return (
-                  <li key={index} className="text-gray-400 hover:text-white">
-                    <Link to={item.to}>{item.page}</Link>
-                  </li>
-                );
-              })}
+          {/* Quick Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <h3 className="text-lg font-bold mb-6 text-white">Quick Links</h3>
+            <ul className="space-y-3">
+              {quickLinks.map((item, index) => (
+                <motion.li
+                  key={index}
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Link
+                    to={item.to}
+                    className="text-white/70 hover:text-[#0AAE5F] text-sm transition-colors duration-300 inline-flex items-center group"
+                  >
+                    <span className="w-0 h-px bg-[#0AAE5F] group-hover:w-4 mr-0 group-hover:mr-2 transition-all duration-300" />
+                    {item.page}
+                  </Link>
+                </motion.li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
-            <h3 className="text-lg font-bold mb-4">Contact</h3>
-            <ul className="space-y-2 text-gray-400 text-sm">
-              {[
-                { page: "No. 20, 3rd floor, Shivanand," },
-                { page: "Nagar, 6th Phase, JP Nagar," },
-                { page: "Bangalore - 560078" },
-                { page: "contact.us@rsglobalsolutions.in" },
-                { page: "(+91) 9900123901" },
-              ].map((item, index) => {
-                return <li key={index}>{item.page}</li>;
-              })}
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h3 className="text-lg font-bold mb-6 text-white">Contact Us</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 group">
+                <div className="w-8 h-8 rounded-lg bg-[#0AAE5F]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#0AAE5F]/20 transition-colors duration-300">
+                  <MapPin className="w-4 h-4 text-[#0AAE5F]" />
+                </div>
+                <p className="text-white/70 text-sm leading-relaxed">
+                  No. 20, 3rd floor, Shivanand Nagar, 6th Phase, JP Nagar,
+                  Bangalore - 560078
+                </p>
+              </li>
+              <li className="flex items-start gap-3 group">
+                <div className="w-8 h-8 rounded-lg bg-[#0AAE5F]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#0AAE5F]/20 transition-colors duration-300">
+                  <Mail className="w-4 h-4 text-[#0AAE5F]" />
+                </div>
+                <a
+                  href="mailto:contact.us@rsglobalsolutions.in"
+                  className="text-white/70 hover:text-[#0AAE5F] text-sm transition-colors duration-300"
+                >
+                  contact.us@rsglobalsolutions.in
+                </a>
+              </li>
+              <li className="flex items-start gap-3 group">
+                <div className="w-8 h-8 rounded-lg bg-[#0AAE5F]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#0AAE5F]/20 transition-colors duration-300">
+                  <Phone className="w-4 h-4 text-[#0AAE5F]" />
+                </div>
+                <a
+                  href="tel:+919900123901"
+                  className="text-white/70 hover:text-[#0AAE5F] text-sm transition-colors duration-300"
+                >
+                  +91 990-012-3901
+                </a>
+              </li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
-            <h3 className="text-white text-lg font-semibold mb-4">
+          {/* Business Hours */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <h3 className="text-lg font-bold mb-6 text-white">
               Business Hours
             </h3>
-            <ul className="space-y-2 text-gray-400 text-sm">
-              <li className="flex justify-between">
-                <span>Monday - Friday:</span>
-                <span>9:00 AM - 6:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Saturday:</span>
-                <span>10:00 AM - 4:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Sunday:</span>
-                <span>Closed</span>
-              </li>
+            <ul className="space-y-3">
+              {businessHours.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex items-center justify-between text-sm"
+                >
+                  <span className="text-white/70">{item.day}:</span>
+                  <span className="text-[#0AAE5F] font-semibold">
+                    {item.hours}
+                  </span>
+                </li>
+              ))}
             </ul>
-          </div>
+
+            {/* CTA Button */}
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="mt-6"
+            >
+              <Link
+                to="/Contact-us"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#0AAE5F] to-[#099950] text-white text-sm font-semibold rounded-xl hover:shadow-lg hover:shadow-[#0AAE5F]/25 transition-all duration-300"
+              >
+                <Mail className="w-4 h-4" />
+                Get In Touch
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
 
-        <div className="border-t border-neutral-800 mt-12 py-8  flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} RS Global Solutions. All rights
-            reserved.
-          </p>
-          <div className="flex space-x-6 text-sm">
-            <Link
-              href="/privacy-policy"
-              className="hover:text-gold-300 transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms-of-service"
-              className="hover:text-white transition-colors"
-            >
-              Terms of Service
-            </Link>
-            <Link
-              href="/shipping-policy"
-              className="hover:text-gold-300 transition-colors"
-            >
-              Shipping Policy
-            </Link>
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-white/60 text-sm">
+              &copy; {new Date().getFullYear()} RS Global Solutions. All rights
+              reserved.
+            </p>
+            <div className="flex flex-wrap gap-6 text-sm">
+              <Link
+                to="/privacy-policy"
+                className="text-white/60 hover:text-[#0AAE5F] transition-colors duration-300"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                to="/terms-of-service"
+                className="text-white/60 hover:text-[#0AAE5F] transition-colors duration-300"
+              >
+                Terms of Service
+              </Link>
+              <Link
+                to="/shipping-policy"
+                className="text-white/60 hover:text-[#0AAE5F] transition-colors duration-300"
+              >
+                Shipping Policy
+              </Link>
+            </div>
           </div>
         </div>
       </div>
