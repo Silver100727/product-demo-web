@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { ChevronRight, ShoppingBag, Sparkles, Award, TrendingUp, Shield } from "lucide-react";
 import { brands } from "../utils";
 import Dummy from "./dummy";
 import Trending from "../components/Trending.component";
@@ -108,9 +109,9 @@ const Banner = [
 ];
 
 const Home = (props) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -129,210 +130,477 @@ const Home = (props) => {
 
   return (
     <>
-      <div className="min-h-screen flex gap-7 flex-col pt-16 bg-[#FFFFFF]">
+      <div className="min-h-screen flex gap-0 flex-col pt-16  relative overflow-hidden">
         {/* Mobile Main Banner Slider */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="relative h-[38vh] text-white sm:hidden"
+          transition={{ duration: 0.6 }}
+          className="relative h-[45vh] text-white sm:hidden overflow-hidden"
         >
           <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <motion.div
-              className="w-full h-full"
-              initial={{ x: 0 }}
-              animate={{ x: -currentIndex * 100 + "%" }}
-              transition={{ duration: 0.5 }}
-              style={{ whiteSpace: "nowrap" }}
-            >
-              {props.MainBannerImageList?.map((image, index) => (
-                <motion.img
-                  key={index}
-                  src={image}
-                  alt={`Slide ${index}`}
-                  className="w-full h-full object-cover inline-block"
-                />
-              ))}
-            </motion.div>
-            <div className="absolute inset-0 bg-black/30" />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.8 }}
+                className="w-full h-full"
+              >
+                {props.MainBannerImageList?.[currentIndex] && (
+                  <img
+                    src={props.MainBannerImageList[currentIndex]}
+                    alt={`Slide ${currentIndex}`}
+                    className="w-full h-full object-cover"
+                  />
+                )}
+              </motion.div>
+            </AnimatePresence>
           </div>
-          <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 py-6 text-center">
-            <h1 className="text-lg font-bold mb-2">
+
+          {/* Multi-layer overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-accent/20" />
+
+          {/* Top decorative bar */}
+          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-accent/80 via-primary/80 via-50% to-accent/80 z-10">
+            <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent" />
+          </div>
+
+          <div className="relative z-10 h-full flex flex-col items-center justify-center px-5 py-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="flex items-center gap-2 mb-3"
+            >
+              <div className="w-8 h-8 rounded-xl bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center">
+                <Sparkles className="w-4 h-4 text-white" strokeWidth={2.5} />
+              </div>
+              <span className="text-xs font-bold text-white/90 uppercase tracking-wider">Premium Gifting</span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="text-2xl font-bold mb-3 leading-tight"
+            >
               Celebrate Every Moment with RS Global Solutions
-            </h1>
-            <p className="mb-5 text-xs">
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="mb-6 text-sm text-white/90 leading-relaxed max-w-md"
+            >
               Discover our exclusive collection of premium gifts designed to
               express appreciation, celebrate milestones, and create lasting
               memories.
-            </p>
-            <Link
-              to="/contact-us"
-              className="inline-flex flex-row items-center justify-center px-4 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold text-sm hover:scale-105 transition"
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-4 h-4 mr-2"
+              <Link
+                to="/contact-us"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white/98 backdrop-blur-xl text-primary rounded-2xl font-bold text-sm shadow-xl border border-white/50 hover:shadow-2xl transition-all duration-300 group"
+                style={{ boxShadow: '0 8px 32px rgba(255,255,255,0.3), inset 0 1px 0 rgba(255,255,255,0.8)' }}
               >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-              Contact Us
-            </Link>
+                <ShoppingBag className="w-4 h-4" strokeWidth={2.5} />
+                Contact Us
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" strokeWidth={2.5} />
+              </Link>
+            </motion.div>
           </div>
+
+          {/* Slide Indicators */}
+          {props.MainBannerImageList?.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {props.MainBannerImageList.map((_, idx) => (
+                <div
+                  key={idx}
+                  className={`h-1 rounded-full transition-all duration-300 ${
+                    idx === currentIndex ? "w-8 bg-white" : "w-4 bg-white/50"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
         </motion.section>
 
         {/* Desktop/Tablet Main Banner Slider */}
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="relative h-[50vh] sm:h-[60vh] md:h-[80vh] text-white hidden sm:block"
+          transition={{ duration: 0.6 }}
+          className="relative h-[60vh] md:h-[75vh] text-white hidden sm:block overflow-hidden"
         >
           <div className="absolute inset-0 w-full h-full overflow-hidden">
-            <motion.div
-              className="w-full h-full"
-              initial={{ x: 0 }}
-              animate={{ x: -currentIndex * 100 + "%" }}
-              transition={{ duration: 0.5 }}
-              style={{ whiteSpace: "nowrap" }}
-            >
-              {props.MainBannerImageList?.map((image, index) => (
-                <motion.img
-                  key={index}
-                  src={image}
-                  alt={`Slide ${index}`}
-                  className="w-full h-full object-cover inline-block"
-                />
-              ))}
-            </motion.div>
-            <div className="absolute inset-0 bg-black/20" />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, scale: 1.08 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.05 }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full h-full"
+              >
+                {props.MainBannerImageList?.[currentIndex] && (
+                  <img
+                    src={props.MainBannerImageList[currentIndex]}
+                    alt={`Slide ${currentIndex}`}
+                    className="w-full h-full object-cover"
+                  />
+                )}
+              </motion.div>
+            </AnimatePresence>
           </div>
-          <div className="relative max-w-5xl mx-auto px-2 sm:px-4 h-full flex items-center justify-center">
+
+          {/* Multi-layer overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/50 to-slate-900/70" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-primary/25 via-transparent to-accent/25" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
+
+          {/* Top decorative bar */}
+          <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-accent/80 via-primary/80 via-50% to-accent/80 z-10">
+            <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent" />
+          </div>
+
+          <div className="relative max-w-6xl mx-auto px-6 h-full flex items-center justify-center">
             <motion.div
-              initial={{ x: -100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="text-white max-w-full text-center flex flex-col items-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-white text-center flex flex-col items-center max-w-4xl"
             >
-              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                style={{ textShadow: '0 4px 24px rgba(0,0,0,0.5)' }}
+              >
                 Celebrate Every Moment with RS Global Solutions
-              </h1>
-              <p className="mb-8 max-w-2xl text-base sm:text-lg">
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+                className="mb-8 text-lg md:text-xl leading-relaxed text-white/95"
+                style={{ textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}
+              >
                 Discover our exclusive collection of premium gifts designed to
                 express appreciation, celebrate milestones, and create lasting
                 memories.
-              </p>
-              <Link
-                to="/contact-us"
-                className="inline-flex flex-row items-center justify-center px-4 sm:px-6 py-2 bg-gradient-to-r from-[#123E85] to-[#1FC4E4] text-white rounded-md font-semibold hover:bg-gradient-to-r transition-transform transform hover:scale-105"
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-5 h-5 mr-2"
+                <Link
+                  to="/contact-us"
+                  className="inline-flex items-center gap-3 px-8 py-3 bg-[#38B564] backdrop-blur-2xl text-white rounded-2xl font-bold text-base shadow-2xl hover:shadow-[0_20px_60px_rgba(255,255,255,0.4)] transition-all duration-300 group hover:scale-105"
+
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-                Contact Us
-              </Link>
+                  <ShoppingBag className="w-5 h-5" strokeWidth={2.5} />
+                  Contact Us Today
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" strokeWidth={2.5} />
+                </Link>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Slide Indicators */}
+          {props.MainBannerImageList?.length > 1 && (
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2.5">
+              {props.MainBannerImageList.map((_, idx) => (
+                <motion.div
+                  key={idx}
+                  whileHover={{ scale: 1.2 }}
+                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    idx === currentIndex ? "w-12 bg-white" : "w-6 bg-white/50 hover:bg-white/70"
+                  }`}
+                  onClick={() => setCurrentIndex(idx)}
+                />
+              ))}
+            </div>
+          )}
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden"
+        >
+          {/* Decorative background elements */}
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-accent/5 to-transparent rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-tl from-primary/5 to-transparent rounded-full blur-3xl" />
+
+          <div className="container px-2 sm:px-4 mx-auto relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="flex items-center justify-center gap-3 mb-4"
+            >
+              <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center border border-accent/20">
+                <TrendingUp className="w-5 h-5 text-white" strokeWidth={2.5} />
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-primary/80 uppercase tracking-widest">Premium Collection</span>
+              </div>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-2 sm:mb-4 bg-clip-text text-slate-800"
+              style={{ backgroundSize: '200% auto' }}
+            >
+              Our Trending Products
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-sm sm:text-base md:text-lg text-slate-800 text-center max-w-4xl mx-auto mb-6 sm:mb-8 md:mb-12 leading-relaxed"
+            >
+              At RS Global Solutions, we offer premium products from stylish
+              apparel to cutting edge electronics. Whether celebrating
+              milestones or showing appreciation, find the perfect gift today!
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+            >
+              <Trending />
             </motion.div>
           </div>
         </motion.section>
 
-        <section className="py-8 sm:py-12 md:py-16 bg-white">
-          <div className="container px-2 sm:px-4 mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-2 sm:mb-4">
-              Our Trending Product
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-neutral-600 text-center max-w-4xl mx-auto mb-6 sm:mb-8 md:mb-12">
-              At RS Global Solutions, we offer premium products from stylish
-              apparel to cutting edge electronics. Whether celebrating
-              milestones or showing appreciation, find the perfect gift today!
-            </p>
-            <Trending />
-          </div>
-        </section>
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          className="mb-5 py-12 bg-gradient-to-b from-white via-slate-50/30 to-white relative overflow-hidden "
+        >
+          {/* Decorative elements */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-primary/3 to-transparent rounded-full blur-3xl" />
 
-        <section className="mb-12 bg-[#FFFFFF]">
-          <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-2">Our Brands</h2>
-            <p className="text-neutral-600 text-center max-w-4xl mx-auto mb-4">
+          <div className="max-w-7xl mx-auto px-4 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="flex items-center justify-center gap-3 mb-4"
+            >
+              <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center border border-primary/20">
+                <Award className="w-5 h-5 text-white" strokeWidth={2.5} />
+              </div>
+              <span className="text-xs font-bold text-slate-800 uppercase tracking-widest">Trusted Partners</span>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-4xl font-bold text-center mb-2 bg-clip-text text-slate-800"
+            >
+              Our Brands
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-slate-800 text-center max-w-4xl mx-auto mb-8"
+            >
               We partner with premium brands to bring you exceptional quality
               and unique gifting options.
-            </p>
+            </motion.p>
 
-            <div className="overflow-hidden">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="overflow-hidden rounded-2xl bg-white/50 backdrop-blur-sm border border-slate-200/50 p-8 shadow-xl"
+            >
               <div className="flex animate-marquee">
                 {brands.map((brand, index) => (
-                  <div
+                  <motion.div
                     key={index}
-                    className="flex-shrink-0 w-1/10  max-sm:w-1/4 p-4"
+                    whileHover={{ scale: 1.05, y: -4 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    className="flex-shrink-0 w-1/10 max-sm:w-1/4 p-4"
                   >
-                    <img
-                      loading="lazy"
-                      src={brand.logo}
-                      alt={brand.name}
-                      className="w-full h-24 object-contain"
-                    />
-                  </div>
+                    <div className="bg-white rounded-xl p-4 border border-slate-100 h-24 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow">
+                      <img
+                        loading="lazy"
+                        src={brand.logo}
+                        alt={brand.name}
+                        className="w-full h-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+                      />
+                    </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
       </div>
 
-      <section className="mb-12 bg-[#FFFFFF]">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-2">
-            We Are Specialist In
-          </h2>
-          <p className="text-neutral-600 text-center max-w-4xl mx-auto mb-4"></p>
-          <Dummy />
-        </div>
-      </section>
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="bg-gradient-to-b from-white via-cyan-50/20 to-white relative overflow-hidden"
+      >
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="flex items-center justify-center gap-3 mb-4"
+          >
+            <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center border border-accent/20">
+              <Sparkles className="w-5 h-5 text-white" strokeWidth={2.5} />
+            </div>
+            <span className="text-xs font-bold text-accent/80 uppercase tracking-widest">Our Expertise</span>
+          </motion.div>
 
-      <footer className="text-white relative bg-black">
-        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_2px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_2px)] bg-[size:34px_44px]"></div>
-        <div className="max-w-7xl mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-slate-800"
+          >
+            We Are Specialist In
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+          >
+            <Dummy />
+          </motion.div>
+        </div>
+      </motion.section>
+
+      <footer className="relative overflow-hidden">
+        {/* Grid pattern background */}
+
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center mb-16 pt-10"
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12 pt-16"
           >
-            <h2 className="text-3xl font-bold text-white mb-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="flex items-center justify-center gap-3 mb-4"
+            >
+              <div className="w-10 h-10 rounded-xl bg-slate-800 backdrop-blur-xl border border-white/20 flex items-center justify-center">
+                <Shield className="w-5 h-5 text-white" strokeWidth={2.5} />
+              </div>
+              <span className="text-xs font-bold text-slate-800 uppercase tracking-widest">Why Us</span>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-3xl md:text-4xl font-bold text-slate-800 mb-4"
+            >
               Why Choose RS Global Solutions?
-            </h2>
-            <p className="text-white max-w-2xl mx-auto">
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-slate-800 max-w-2xl mx-auto leading-relaxed"
+            >
               Choose RS Global Solutions for a gifting experience that reflects
               the value you place on your business relationships. Let us help
               you leave a lasting impression, one gift at a time.
-            </p>
+            </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 pb-16">
             {Banner.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                initial={{ x: -20, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true, amount: 1 }}
-                transition={{ delay: index * 0.2 }}
-                className="bg-white p-4 rounded-lg shadow-md border-b-2 z-10"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group bg-white/95 backdrop-blur-xl rounded-2xl overflow-hidden relative"
+                style={{ boxShadow: '0 20px 60px -15px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1)' }}
               >
-                <h3 className="text-lg text-black font-semibold mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 text-xs">{feature.description}</p>
+          
+
+                <div className="p-6">
+                  {/* Icon */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 + 0.3, type: "spring", stiffness: 500, damping: 25 }}
+                    className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent/80 to-primary/90 flex items-center justify-center mb-4 border border-accent/20 group-hover:border-accent/40 transition-colors"
+                  >
+                    <div className="text-[#111A2E]">
+                      {feature.icon()}
+                    </div>
+                  </motion.div>
+
+                  {/* Title */}
+                  <h3 className="text-lg font-bold text-[#3EB764] mb-3 group-hover:text-accent transition-colors">
+                    {feature.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+
+                {/* Decorative gradient */}
+                <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-accent/5 to-transparent rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
             ))}
           </div>
