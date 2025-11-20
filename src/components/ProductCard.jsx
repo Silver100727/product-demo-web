@@ -61,7 +61,12 @@ const ProductCard = ({ product }) => {
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                transition={{ delay: 0.2, type: "spring", stiffness: 500, damping: 25 }}
+                transition={{
+                  delay: 0.2,
+                  type: "spring",
+                  stiffness: 500,
+                  damping: 25,
+                }}
               >
                 <CheckCircle2 className="w-5 h-5 text-[#0AAE5F] flex-shrink-0" />
               </motion.div>

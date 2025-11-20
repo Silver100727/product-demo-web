@@ -2,7 +2,15 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProductCard from "../components/ProductCard.jsx";
 import axios from "axios";
-import { Search, Filter, ShoppingBag, Sparkles, Package, Check, ChevronDown } from "lucide-react";
+import {
+  Search,
+  Filter,
+  ShoppingBag,
+  Sparkles,
+  Package,
+  Check,
+  ChevronDown,
+} from "lucide-react";
 
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -104,7 +112,7 @@ const Products = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-12 md:pb-16">
+      <section className="relative pt-10 pb-8 md:pb-16">
         <div className="container px-4 mx-auto max-w-7xl relative">
           <motion.div
             initial={{ y: 30, opacity: 0 }}
@@ -112,26 +120,14 @@ const Products = () => {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="text-center mb-12"
           >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-xl rounded-full border border-white/30 shadow-[0_4px_16px_rgba(51,68,94,0.08)] mb-6"
-            >
-              <ShoppingBag className="w-4 h-4 text-accent" />
-              <span className="text-sm font-semibold text-primary-700 tracking-wide">
-                Premium Collection
-              </span>
-            </motion.div>
-
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               <span className="bg-gradient-to-r from-primary via-primary-600 to-accent bg-clip-text text-transparent">
                 Our Products
               </span>
             </h1>
             <p className="text-lg text-primary-600 max-w-3xl mx-auto leading-relaxed">
-              Discover our collection of premium products designed to enhance your lifestyle
-              and celebrate every moment.
+              Discover our collection of premium products designed to enhance
+              your lifestyle and celebrate every moment.
             </p>
           </motion.div>
 
@@ -213,7 +209,11 @@ const Products = () => {
                   )}
                 </div>
 
-                <span className={selectedCategory ? "text-gray-700" : "text-gray-400"}>
+                <span
+                  className={
+                    selectedCategory ? "text-gray-700" : "text-gray-400"
+                  }
+                >
                   {selectedCategory || "All Categories"}
                 </span>
 
@@ -273,19 +273,29 @@ const Products = () => {
                           setSelectedCategory("");
                           setIsDropdownOpen(false);
                         }}
-                        whileHover={{ backgroundColor: "rgba(10, 174, 95, 0.08)" }}
+                        whileHover={{
+                          backgroundColor: "rgba(10, 174, 95, 0.08)",
+                        }}
                         className={`w-full px-5 py-3 text-sm text-left transition-colors duration-200 flex items-center justify-between group ${
                           !selectedCategory ? "bg-accent/5" : ""
                         }`}
                       >
-                        <span className={`font-medium ${!selectedCategory ? "text-accent" : "text-gray-700"}`}>
+                        <span
+                          className={`font-medium ${
+                            !selectedCategory ? "text-accent" : "text-gray-700"
+                          }`}
+                        >
                           All Categories
                         </span>
                         {!selectedCategory && (
                           <motion.div
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
-                            transition={{ type: "spring", stiffness: 500, damping: 25 }}
+                            transition={{
+                              type: "spring",
+                              stiffness: 500,
+                              damping: 25,
+                            }}
                           >
                             <Check className="w-4 h-4 text-accent" />
                           </motion.div>
@@ -306,9 +316,13 @@ const Products = () => {
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.03 }}
-                          whileHover={{ backgroundColor: "rgba(10, 174, 95, 0.08)" }}
+                          whileHover={{
+                            backgroundColor: "rgba(10, 174, 95, 0.08)",
+                          }}
                           className={`w-full px-5 py-3 text-sm text-left transition-colors duration-200 flex items-center justify-between group ${
-                            selectedCategory === category.subcategory ? "bg-accent/5" : ""
+                            selectedCategory === category.subcategory
+                              ? "bg-accent/5"
+                              : ""
                           }`}
                         >
                           <span
@@ -324,7 +338,11 @@ const Products = () => {
                             <motion.div
                               initial={{ scale: 0 }}
                               animate={{ scale: 1 }}
-                              transition={{ type: "spring", stiffness: 500, damping: 25 }}
+                              transition={{
+                                type: "spring",
+                                stiffness: 500,
+                                damping: 25,
+                              }}
                             >
                               <Check className="w-4 h-4 text-accent" />
                             </motion.div>
@@ -346,7 +364,11 @@ const Products = () => {
               className="text-center mb-8"
             >
               <p className="text-sm text-gray-600">
-                Showing <span className="font-semibold text-accent">{filteredProducts.length}</span> product{filteredProducts.length !== 1 ? 's' : ''}
+                Showing{" "}
+                <span className="font-semibold text-accent">
+                  {filteredProducts.length}
+                </span>{" "}
+                product{filteredProducts.length !== 1 ? "s" : ""}
                 {selectedCategory && ` in ${selectedCategory}`}
               </p>
             </motion.div>
@@ -355,7 +377,7 @@ const Products = () => {
       </section>
 
       {/* Products Grid Section */}
-      <section className="pb-16 relative z-10">
+      <section className="pb-16 relative">
         <div className="container px-4 mx-auto max-w-7xl">
           <AnimatePresence mode="wait">
             {spinner ? (
@@ -370,7 +392,11 @@ const Products = () => {
                   {/* Outer rotating ring */}
                   <motion.div
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
                     className="w-20 h-20 border-4 border-accent/20 border-t-accent rounded-full"
                   />
                   {/* Inner pulsing circle */}
@@ -454,8 +480,8 @@ const Products = () => {
                         No Products Found
                       </h3>
                       <p className="text-primary-600 max-w-md mb-6 leading-relaxed">
-                        We couldn't find any products matching your criteria. Try adjusting
-                        your filters or search terms.
+                        We couldn't find any products matching your criteria.
+                        Try adjusting your filters or search terms.
                       </p>
 
                       {/* Action button */}

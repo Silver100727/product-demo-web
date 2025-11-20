@@ -35,7 +35,7 @@ const ProductModal = ({ product, onClose }) => {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         exit={{ opacity: 0, scale: 0.92, y: 30 }}
-        className="relative bg-white/98 backdrop-blur-3xl rounded-[32px] max-w-4xl w-full max-h-[92vh] overflow-hidden shadow-[0_32px_128px_rgba(0,0,0,0.4)] border border-white/40"
+        className="relative z-50 bg-white/98 backdrop-blur-3xl rounded-[32px] max-w-4xl w-full max-h-[92vh] overflow-hidden shadow-[0_32px_128px_rgba(0,0,0,0.4)] border border-white/40"
         style={{
           boxShadow: '0 32px 128px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.5)'
         }}

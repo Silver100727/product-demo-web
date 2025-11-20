@@ -109,19 +109,17 @@ const Dummy = () => {
   return (
     <div className="px-3 sm:px-6 md:px-8 lg:px-32 py-8 bg-gradient-to-b from-white via-slate-50/30 to-white relative overflow-hidden">
       {/* Decorative background elements */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-blue/5 to-blue rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-gradient-to-tr from-blue/5 to-blue rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative">
         {/* Main timeline line with gradient */}
-        {/* <div className="absolute left-1/2 top-0 bottom-0 w-px transform -translate-x-1/2 z-0 hidden md:block overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-blue via-blue to-blue opacity-30" />
+        <div className="absolute left-1/2 top-0 bottom-0 w-px transform -translate-x-1/2 z-0 hidden md:block overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#3EB764] via-[#33445E] to-[#33445E]" />
           <motion.div
-            className="absolute inset-0 bg-gradient-to-b from-transparent via-white to-blue"
+            className="absolute inset-0 bg-gradient-to-b from-[#3EB764] via-[#33445E] to-[#33445E]"
             animate={{ y: ["-100%", "100%"] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
           />
-        </div> */}
+        </div>
 
         {categories.map((category, index) => {
           const isLeft = index % 2 === 0;
